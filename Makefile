@@ -12,12 +12,15 @@ clean:
 distclean: clean
 
 really-clean: clean
-	rm -f *.dvi *.ps *.pdf
+	rm -f *.dvi *.ps *.pdf NorNet-Configuration-Images
 
 update-config:
-	../../nornet-control/src/Get-NorNet-Configuration -latex >config.tex.tmp
+	../../nornet-control/src/Get-NorNet-Configuration -latex -directory=NorNet-Configuration-Images >config.tex.tmp
 	./extract-section config.tex.tmp config.tmp BEGIN-OF-SITES-BLOCK END-OF-SITES-BLOCK
 	./insert-section Part-Configuration.tex.in config.tmp Part-Configuration.tex BEGIN-OF-SITES-BLOCK END-OF-SITES-BLOCK
+
+empty-config:
+	cp Part-Configuration.tex.in Part-Configuration.tex
 
 ps:	pdf
 	pdf2ps NorNet-Core-Handbook.pdf NorNet-Core-Handbook.ps
