@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# Thomas Dreibholz's LaTeX Toolchain
+# Copyright (C) 2007-2011 by Thomas Dreibholz, dreibh@iem.uni-due.de
+#
+# $Id: dia2pdf 3352 2011-11-04 16:09:02Z dreibh $
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNES6S FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+#
+# Contact: dreibh@iem.uni-due.de
+#
+
+if [ $# != 2 ] ; then
+   echo "Usage: dia2pdf [Source File] [Destination File]"
+   exit 1
+fi
+
+
+# echo "Converting $1 to $2 from Dia to PDF ..."
+
+# TEMP_DIA=`mktemp /tmp/tmpDIA.XXXXXXXXXX`
+# TEMP_PDF=`mktemp /tmp/tmpPDF.XXXXXXXXXX`
+#
+# zcat $1 | sed -e "s/<dia:font family=\"sans\"/<dia:font family=\"Verdana\"/g" -e "s/<dia:font family=\"serif\"/<dia:font family=\"Bitstream Vera Serif\"/g" >$TEMP_DIA && \
+# dia -n -t pdf -e $TEMP_PDF $TEMP_DIA    >/dev/null && \
+# pdf2ps $TEMP_PDF - | ps2pdf - $TEMP_PDF.pdf && \
+# pdfcrop $TEMP_PDF.pdf $2   >/dev/null
+#
+# rm -f $TEMP_PDF $TEMP_PDF.pdf $TEMP_DIA
+
+
+TEMP_EPS=`mktemp /tmp/tmpEPS.XXXXXXXXXX`
+TEMP_PDF=`mktemp /tmp/tmpPDF.XXXXXXXXXX`
+
+dia -n -t eps-pango -e $TEMP_EPS $1 >/dev/null && \
+epstopdf --outfile=$TEMP_PDF $TEMP_EPS && \
+pdfcrop $TEMP_PDF $2
+
+rm -f $TEMP_PDF $TEMP_EPS

@@ -1,0 +1,348 @@
+% ###########################################################################
+% #### The NorNet Core Handbook                                          ####
+% #### Copyright (C) 2012-2015 Thomas Dreibholz                          ####
+% ###########################################################################
+
+\documentclass[11pt,a4paper,norsk,german,english,titlepage]{book}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+
+\usepackage{fixltx2e}
+% \usepackage{times}
+\usepackage{a4wide}
+\usepackage{longtable}
+\usepackage{multirow}
+% ====== Page-break fix for \cline ========================
+\makeatletter
+\def\@cline#1-#2\@nil{%
+\omit
+\@multicnt#1%
+\advance\@multispan\m@ne
+\ifnum\@multicnt=\@ne\@firstofone{&\omit}\fi
+\@multicnt#2%
+\advance\@multicnt-#1%
+\advance\@multispan\@ne
+\leaders\hrule\@height\arrayrulewidth\hfill
+\cr
+\noalign{\nobreak\vskip-\arrayrulewidth}}
+\makeatother
+% =========================================================
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{pdfpages}
+
+%% Floats. Achtung: Muß unbedingt *vor* hyperref-Paket kommen!
+\usepackage{float}
+
+%% natbib sorgt auch dafür, daß zu lange Citations richtig umgebrochen werden!
+% \usepackage{natbib}
+% \bibpunct{[}{]}{,}{a}{}{;} 
+% \usepackage{apalike}
+
+% Literatur- und Stichwortverzeichnis ins Inhaltsverzeichnis
+\usepackage{tocbibind}
+
+%% AMS-Definitionen und Mengensymbole
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[geometry,weather]{ifsym}
+\usepackage{wasysym}
+
+%% URLs
+\usepackage{url}
+\urlstyle{rm}
+
+%% Kommentare
+\usepackage{comment}
+
+%% Index
+\usepackage{makeidx}
+\makeindex
+\makeatletter
+
+%% Kapitelnumerierungs- und Inhaltsverzeichnistiefe:
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+%% Graustufen
+\DefineNamedColor{named}{Grey95} {cmyk}{0,0,0,0.95}
+\DefineNamedColor{named}{Grey90} {cmyk}{0,0,0,0.90}
+\DefineNamedColor{named}{Grey85} {cmyk}{0,0,0,0.85}
+\DefineNamedColor{named}{Grey80} {cmyk}{0,0,0,0.80}
+\DefineNamedColor{named}{Grey75} {cmyk}{0,0,0,0.75}
+\DefineNamedColor{named}{Grey70} {cmyk}{0,0,0,0.70}
+\DefineNamedColor{named}{Grey65} {cmyk}{0,0,0,0.65}
+\DefineNamedColor{named}{Grey60} {cmyk}{0,0,0,0.60}
+\DefineNamedColor{named}{Grey55} {cmyk}{0,0,0,0.55}
+\DefineNamedColor{named}{Grey50} {cmyk}{0,0,0,0.50}
+\DefineNamedColor{named}{Grey45} {cmyk}{0,0,0,0.45}
+\DefineNamedColor{named}{Grey40} {cmyk}{0,0,0,0.40}
+\DefineNamedColor{named}{Grey35} {cmyk}{0,0,0,0.35}
+\DefineNamedColor{named}{Grey30} {cmyk}{0,0,0,0.30}
+\DefineNamedColor{named}{Grey25} {cmyk}{0,0,0,0.25}
+\DefineNamedColor{named}{Grey20} {cmyk}{0,0,0,0.20}
+\DefineNamedColor{named}{Grey15} {cmyk}{0,0,0,0.15}
+\DefineNamedColor{named}{Grey10} {cmyk}{0,0,0,0.10}
+\DefineNamedColor{named}{Grey05} {cmyk}{0,0,0,0.05}
+
+\definecolor{cyan2}{rgb}{0.000,0.9333333,0.9333333}
+\definecolor{cyan4}{rgb}{0.000,0.545098,0.545098}
+\definecolor{orange2}{rgb}{0.9333333,0.6039216,0.000}
+\definecolor{purple2}{rgb}{0.5686275,0.1725490,0.9333333}
+\definecolor{brown2}{rgb}{0.9333333,0.2313725,0.2313725}
+
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkblue}{rgb}{0,0,0.5}
+\definecolor{black}{rgb}{0,0,0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Hyperlinks für Referenzen, Verweise und Index
+%% Achtung: Funktioniert nur mit pdflatex!
+\usepackage[
+ pdfpagemode=UseOutlines,
+ plainpages=false,
+ hypertexnames=true,
+ pdfpagelabels=true,
+ hyperindex=true,
+ backref,
+ colorlinks=true]{hyperref}   % Hier wird die Farbe der Links ein und aus geschaltet
+% Achtung: Richtige Links im Index nur dann wenn:
+% plainpages=false, hypertexnames=true, pdfpagelabels=true, hyperindex=true
+
+\hypersetup{
+ pdfauthor={Thomas Dreibholz},
+ pdftitle={The NorNet Core Handbook -- A Real-World, Large-Scale Multi-Homing Testbed},
+ pdfsubject={NorNet Core},
+ pdfkeywords={NorNet Core, Multi-Homing, Testbed, Software, Applications},
+ colorlinks,
+ linkcolor=darkblue,   % <-- Hier ggf. Linkfarben auch "black" setzen
+ urlcolor=blue,
+ citecolor=darkblue,
+ filecolor=darkgreen}
+% Achtung: PDF-Metadaten hier setzen, nicht beim \usepackage! Ansonsten kommt
+%          bei Nicht-ASCII-Zeichen nur Müll!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% pdfLaTeX-String
+\def\pdfLaTeX{pdf\/\LaTeX}
+
+%% Algorithmus-Umgebung. Achtung: Muß *nach* hyperref-Paket kommen!
+\floatstyle{ruled}
+\newfloat{algorithm}{tbp}{loa}
+\floatname{algorithm}{Listing}
+
+%% Stichwortverzeichnis
+\usepackage{nomencl}
+\renewcommand{\nomname}{Glossary}
+\setlength{\nomitemsep}{-\parsep}   % <- Abstand zwischen Zeilen
+\setlength{\nomlabelwidth}{4.5cm}   % <- Platz für Bezeichner
+\makenomenclature
+
+%% Listings
+\usepackage{listings,color}
+\definecolor{listingbackgroundcolor}{rgb}{1,1,0.80}
+\definecolor{listingkeywordcolor}{rgb}{.6,.1,.1}
+\definecolor{listingcommentcolor}{rgb}{0,0,1}
+\lstset{language=C++,
+numbers=left,
+basicstyle=\small,
+backgroundcolor=\color{listingbackgroundcolor},
+keywordstyle=\color{listingkeywordcolor}\textbf,
+commentstyle=\color{listingcommentcolor}\textit,
+numberstyle=\tiny,
+stepnumber=1,
+numbersep=5pt
+}
+
+%% Mathematische Umgebungen
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+
+%% Eigennamen
+\newcommand{\noun}[1]{\textsc{#1}}
+
+%% Multi-Column/Multi-Row-Tabellen
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\mrII}[1]{\multirow{2}{*}{#1}}
+
+%% Exponentialschreibweise für Zahlen
+\newcommand{\expnumrm}[2]{$\textrm{#1}\textrm{*10}^{#2}$}
+\newcommand{\perms}{$\textrm{ms}^{\textrm{-1}}$}
+\newcommand{\expperms}[2]{\expnumrm{#1}{#2}\perms}
+
+%% Variablen
+\newcommand{\var}[1]{$\mathrm{#1}$}
+
+%% Lettrine-Paket für große Anfangsbuchstaben
+\usepackage{lettrine}
+
+%% Ausführliche Header
+\usepackage{fancyhdr}
+
+%% Trennregeln einbinden (in Hyphenation.tex)
+\include{Hyphenation}
+
+%% Abstände für Captions
+% \setlength{\abovecaptionskip}{0mm}
+% \setlength{\belowcaptionskip}{0mm}
+
+%% Zeilenabstand regulieren
+% \renewcommand{\baselinestretch}{1.00}
+
+
+%----------------------------------------------------------------------------
+%------ Eingabe der Metadaten des Deckblattes
+%------ Daten des Autors
+\newcommand{\dcauthorpre}{}
+\newcommand{\dcauthorname}{Thomas }
+\newcommand{\dcauthorsurname}{Dreibholz}
+\newcommand{\dcauthoradd}{Simula Research Laboratory}
+% Achtung: Autor nochmals für PDF-Informationen bei hyperref setzen!
+
+%------ Titel und Untertitel ------------------------------------------------
+\newcommand{\dctitle}{The \noun{NorNet Core} Handbook}
+\newcommand{\dcsubtitle}{A Real-World, Large-Scale Multi-Homing Testbed}
+% Falls dcsubtitle NICHT verwendet werden soll, einfach {\dcsubtitle}{~} eingeben.
+% Achtung: Titel nochmals für PDF-Informationen bei hyperref setzen!
+
+
+%------ Stichwörter, englisch -----------------------------------------------
+\newcommand{\dckeyena}{NorNet Core}
+\newcommand{\dckeyenb}{Multi-Homing}
+\newcommand{\dckeyenc}{Testbed}
+\newcommand{\dckeyend}{Software}
+\newcommand{\dckeyene}{Applications}
+\newcommand{\dckeywordsen}{\vspace*{2cm} \\{\bf{Keywords:}}\\ \dckeyena, \dckeyenb, \dckeyenc, \dckeyend, \dckeyene \\}
+% Bei mehr/weniger Stichwörtern hier editieren!
+
+%------ Stichwörter, deutsch ------------------------------------------------
+\newcommand{\dckeydea}{NorNet Core}
+\newcommand{\dckeydeb}{Multi-Homing}
+\newcommand{\dckeydec}{Testbett}
+\newcommand{\dckeyded}{Software}
+\newcommand{\dckeydee}{Anwendungen}
+\newcommand{\dckeywordsde}{\vspace*{2cm} \\{\bf{Schlagw\"orter:}}\\ \dckeydea, \dckeydeb, \dckeydec, \dckeyded, \dckeydee \\}
+% Bei mehr/weniger Stichwörtern hier editieren!
+
+%------ Stichwörter, bokmål -------------------------------------------------
+\newcommand{\dckeynoa}{NorNet Core}
+\newcommand{\dckeynob}{Multi-Homing}
+\newcommand{\dckeynoc}{Testbett}
+\newcommand{\dckeynod}{Software}
+\newcommand{\dckeynoe}{Applikasjoner}
+\newcommand{\dckeywordsno}{\vspace*{2cm} \\{\bf{Schlagw\"orter:}}\\ \dckeynoa, \dckeynob, \dckeynoc, \dckeynod, \dckeynoe \\}
+% Bei mehr/weniger Stichwörtern hier editieren!
+
+
+% ------ Titelseite ---------------------------------------------------------
+\include{Title}
+\begin{document}
+
+% ------ Front Cover --------------------------------------------------------
+% \pagestyle{empty}
+% \includepdfset{pages=-}
+% \includepdf[]{Images/PDF/FrontCover.pdf}
+% \cleardoublepage
+% ---------------------------------------------------------------------------
+
+\pagenumbering{roman}
+\pagestyle{plain}
+\maketitle
+
+
+%------ Abtract -------------------------------------------------------------
+\selectlanguage{english}
+\include{Abstract}
+
+%------ Acknowledgements ----------------------------------------------------
+\selectlanguage{english}
+\include{Acknowledgements}
+
+
+%------ Inhaltsverzeichnis --------------------------------------------------
+\selectlanguage{english}
+\tableofcontents
+\cleardoublepage
+% Ohne \cleardoublepage wird Seitennumerierung ggf. falsch fortgesetzt!
+
+%------ Abkürzungsverzeichnis -----------------------------------------------
+\printnomenclature
+\addcontentsline{toc}{chapter}{Glossary}
+\input{Glossary}
+\cleardoublepage
+% Ohne \cleardoublepage wird Seitennumerierung ggf. falsch fortgesetzt!
+
+
+%-------------------------------
+\pagenumbering{arabic}
+\pagestyle{headings}
+%-------------------------------
+
+
+%------ Kapitel -------------------------------------------------------------
+\part{\noun{NorNet Core} User Guide}
+\include{Chapter1}
+% \include{...}
+
+\part{\noun{NorNet Core} Maintenance Guide}
+% \include{...}
+
+\part{\noun{NorNet Core} Developer Guide}
+% \include{...}
+
+\part{\noun{NorNet Core} Configuration}
+\include{Part-Configuration}
+%----------------------------------------------------------------------------
+
+
+%---------------------- Anhang ----------------------------------------------
+\appendix
+%\include{Appendix-MessagesAndParameters}
+%----------------------------------------------------------------------------
+
+%------ Verzeichnisse -------------------------------------------------------
+\selectlanguage{english}
+
+\listoffigures
+
+\listof{algorithm}{List of Listings}
+\addcontentsline{toc}{chapter}{List of Listings}
+
+\listoftables
+
+
+%------ Referenzen ----------------------------------------------------------
+\bibliography{Referenzarchiv}
+% \bibliographystyle{abbrvnat}
+% \bibliographystyle{kluwer}
+% \bibliographystyle{apalike2url}
+\bibliographystyle{alphaurl}
+\clearpage   % Ohne \clearpage werden die ggf. wenigen letzten Einträge
+             % über die ganze letzte Seite gestreckt
+\pagebreak   % Ohne \pagebreak wird Seitennumerierung falsch fortgesetzt
+\cleardoublepage   % Ohne \cleardoublepage falsche PDF-Verweise
+
+
+%------ Index ---------------------------------------------------------------
+\printindex{}
+\clearpage
+% \pagebreak
+% \cleardoublepage
+
+
+% ------ Back Cover ---------------------------------------------------------
+% \pagestyle{empty}
+% \includepdfset{pages=-}
+% \includepdf[]{Images/PDF/BackCover.pdf}
+% ---------------------------------------------------------------------------
+
+\end{document}
