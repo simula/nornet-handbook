@@ -68,7 +68,7 @@ In the following, we describe the implementation of the fixed-line \noun{NorNet 
 \label{sub:The-Testbed-Management}
 % ===========================================================================
 
-\noun{NorNet Core} intends to reuse the \noun{PlanetLab}~\cite{PBF+05} software whenever possible. This software is available in a couple of distributions, most notably the original \noun{PlanetLab} software itself as well as \noun{OneLab}\footnote{\noun{OneLab}: \url{http://www.onelab.eu/}.}. All variants have in common that there is a central administration component, denoted as \emph{PlanetLab Central}~(PLC)~\cite{Hua06}. The PLC manages a database with the configurations of sites, nodes, users and slices. Also, it provides a web-based administration interface as well as an XMLRPC-based API -- called PLCAPI~\cite{PLCAPI} -- for software-based access to the configuration database. A particularly useful feature of the PLC software is to allow for custom extensions by adding so-called \emph{tags} to the database. Tags are additional information to be managed, like e.g.\ testbed-specific configuration parameters.
+\noun{NorNet Core} intends to reuse the \noun{PlanetLab}~\cite{PBF+05} software whenever possible. This software is available in a couple of distributions, most notably the original \noun{PlanetLab} software itself as well as \noun{OneLab}\footnote{\noun{OneLab}: \url{http://www.onelab.eu/}.}. All variants have in common that there is a central administration component, denoted as \emph{PlanetLab Central\nomenclature{PLC}{PlanetLab Central}\index{PlanetLab Central}}~(PLC\index{see{PlanetLab Central}}, \cite{Hua06}). The PLC manages a database with the configurations of sites, nodes, users and slices. Also, it provides a web-based administration interface as well as an XMLRPC-based API -- called PLCAPI~\cite{PLCAPI} -- for software-based access to the configuration database. A particularly useful feature of the PLC software is to allow for custom extensions by adding so-called \emph{tags} to the database. Tags are additional information to be managed, like e.g.\ testbed-specific configuration parameters.
 
 For \noun{NorNet Core}, it has been straightforward to reuse the PLC as a basis. Custom, \noun{NorNet}-specific configuration is simply realised by appropriate tags. In particular, tags are used to store additional information about the tunnelbox configurations (ISPs, addresses, etc.) and provider networks available at each site. The PLCAPI allows the \noun{NorNet} components -- which will be introduced later -- to access their configuration information and apply it as needed.
 
@@ -100,7 +100,7 @@ For \noun{NorNet Core}, it has been straightforward to reuse the PLC as a basis.
 Each \noun{NorNet Core} site needs appropriate hardware to realise routing (i.e.\ the tunnelbox functionality) as well as to provide resources for researchers. Therefore, we have decided to deploy the setup depicted in Figure~\ref{cap:The-Site-Setup} at each site; Subfigure~\ref{subcap:Setup-Schema} shows a schematic illustration of a site, while subfigure~\ref{subcap:Setup-Real} shows a picture of a real setup\footnote{Setup at Universitetet i Tromsø~(UiT), Troms/Nord-Norge.}.
 A site physically consists of one managed switch and four HP~DL320 servers. All servers have an identical configuration (4-core x86\_64-CPU, 8~GiB RAM, ca.\ 500~GiB harddisk, and two 1000BaseT Ethernet interfaces). Since server~1 (figure~\ref{subcap:Setup-Schema}) is intended to work as a tunnelbox, it also contains an additional network interface card with four 1000BaseT Ethernet ports. The first of these ports is connected to \noun{Uninett}; the other ports are used for further providers (not yet connected in the depicted setup). The switch connects the first built-in Ethernet port of the servers~1 to~4. This Ethernet hosts the \noun{NorNet}-internal, provider-specific networks (which are realised by Ethernet VLANs).
 
-The operating system installed on the servers is \noun{Ubuntu Linux}\footnote{\noun{Ubuntu Linux}: \url{http://www.ubuntu.com/}.} 12.04~LTS, a version with five years support, realised as a quite minimal server installation (to be explained in more detail in Subsection~\ref{sub:The-Software}). The purpose of this installation is to allow for basic configuration tasks, remote login by using \emph{Secure Shell}~(SSH)~\cite{RFC4254} as well as to run \noun{VirtualBox}~\cite{VirtualBoxUserManual} to host virtual machines for all further tasks. Particularly, this means that the tunnelbox, a control system (allowing remote debugging and configuration tasks) and all research systems are realised as virtual machines. This allows for a good utilisation of the available hardware resources, and it is furthermore possible to add and remove systems on demand (e.g.\ for testing, for special kernel-based experiments not being possible with the \noun{PlanetLab} software, etc.). Also, it allows to easily backup and restore the virtual systems, without requiring physical access to the hardware itself. This should make it possible to resolve most problems \emph{quickly}, in order to achieve minimal downtime for the testbed users.
+The operating system installed on the servers is \noun{Ubuntu Linux}\footnote{\noun{Ubuntu Linux}: \url{http://www.ubuntu.com/}.} 12.04~LTS, a version with five years support, realised as a quite minimal server installation (to be explained in more detail in Subsection~\ref{sub:The-Software}). The purpose of this installation is to allow for basic configuration tasks, remote login by using \emph{Secure Shell}\nomenclature{SSH}{Secure Shell}\index{Secure Shell}~(SSH\index{SSH|see{Secure Shell}})~\cite{RFC4254} as well as to run \noun{VirtualBox}~\cite{VirtualBoxUserManual} to host virtual machines for all further tasks. Particularly, this means that the tunnelbox, a control system (allowing remote debugging and configuration tasks) and all research systems are realised as virtual machines. This allows for a good utilisation of the available hardware resources, and it is furthermore possible to add and remove systems on demand (e.g.\ for testing, for special kernel-based experiments not being possible with the \noun{PlanetLab} software, etc.). Also, it allows to easily backup and restore the virtual systems, without requiring physical access to the hardware itself. This should make it possible to resolve most problems \emph{quickly}, in order to achieve minimal downtime for the testbed users.
 
 To provide access to a site even when server 1 (hosting the tunnelbox and therefore handling routing to other \noun{NorNet Core} sites and the Internet) is not working properly, the control system on the fourth server is also equipped with a global IP~address in the \noun{Uninett} network (not yet connected in Subfigure~\ref{subcap:Setup-Real}).
 
@@ -150,7 +150,7 @@ In addition, the ``Node'' package installs some management scripts. Particularly
 \begin{itemize}
  \item The hostname of the system is set.
  \item The IP configuration of the \noun{NorNet}-internal networks is applied.
- \item \emph{Domain Name System}~(DNS)~\cite{RFC1035} server addresses are set.
+ \item \emph{Domain Name System}\nomenclature{DNS}{Domain Name System}\index{Domain Name System}~(DNS\index{DNS|see{Domain Name System}})~\cite{RFC1035} server addresses are set.
  \item The \emph{Network Time Protocol}~(NTP) service for time synchronisation is configured (to be explained in Subsection~\ref{sub:The-Tunnelboxes}).
  \item The \emph{Simple Network Management Protocol}~(SNMP)~\cite{RFC3411} service is set up. It allows to query status information of the system within the \noun{NorNet}-internal network. Particularly, it will be used for monitoring (to be explained in Subsection~\ref{sub:The-Monitoring-Setup}).
 \end{itemize}
@@ -269,20 +269,65 @@ In this chapter, the user part of accessing and using \noun{NorNet Core} is desc
 \label{sec:User-Accounts}
 % ###########################################################################
 
-PLC
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+ \hline
+ Server             & User Name  & Password \\ \hline
+ \hline
+ gatekeeper.nntb.no (Gatekeeper) & ola                                                               & some-secret-password \\ \hline
+ plc.simula.nornet  (PLC)        & \href{mailto:ola.nordmann@example.com}{ola.nordmann@example.com}  & some-secret-password \\ \hline 
+\end{tabular}
+\end{center}
+\caption{An Example Accounts Table}
+\label{tbl:An-Example-Accounts-Table}
+\end{table}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Gatekeeper
+A new \noun{NorNet Core} user will at least receive the following accounts:
+\begin{itemize}
+ \item Gatekeeper Account providing access to a Linux machine that is connected to \noun{NorNet Core} and the outside Internet.
+ \item PLC Account providing access to the PLC (see Subsection~\ref{sub:The-Testbed-Management}). Note, that the PLC user name \emph{must} be a valid e-mail address of the user.
+\end{itemize}
+Possibly, further accounts will be provided, e.g.\ for web server, Wiki servers, etc.. Such accounts are optional and only provided when needed.
+Table~\ref{tbl:An-Example-Accounts-Table} provides an example for the user Ola Nordmann.
 
-Future work
+Note, that users are \emph{required} to change their initial passwords as soon as possible!
 
 
 
 % ###########################################################################
-\section{The Gatekeeper}
-\label{sec:The-Gatekeeper}
+\section{Getting Access into the \noun{NorNet Core} Network}
+\label{sec:Access-into-NorNet-Core-Network}
 % ###########################################################################
+
+A \noun{NorNet Core} user needs access into the \noun{NorNet Core} network. The possibilities for such accesses are introduced in the following subsections.
+
+
+% ===========================================================================
+\subsection{The Gatekeeper}
+\label{sub:The-Gatekeeper}
+% ===========================================================================
+
+The gatekeeper server\index{Gatekeeper} provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
+
+
+\subsubsection{Using Secure Shell}
+
+\index{Gatekeeper!Secure Shell}
 
 OpenSSH
+
+
+\subsubsection{Using Secure Copy}
+
+\index{Gatekeeper!Secure Copy}
+
+
+\subsubsection{Using Remote Synchronisation}
+
+\index{Gatekeeper!Remote Synchronisation}
 
 rsync
 
@@ -291,26 +336,31 @@ tunnel
 examples
 
 
+\subsubsection{Changing the Password}
 
-% ###########################################################################
-\section{Getting Physical Access}
-\label{sec:Getting-Physical-Access}
-% ###########################################################################
+Once logged in the the gatekeeper server, the user can change the password\index{Password}\index{Gatekeeper!Password Change} with the \texttt{passwd} command. It asks for the old password and twice for the new one. If both inputs of the new password are equal, the password is updated. The user is required to chose a ``good'' password for the gatekeeper, since it is exposed to the outside Internet.
 
-A user can get physical access to \noun{NorNet Core} by connecting devies to his local site's \noun{NorNet Core} switch (see Figure~\ref{cap:The-Site-Setup}). This ensures easy access and provides the lowest latency and greatest flexibility. The local network provides automatic IPv4 configuration of the primary ISP by the Dynamic Host Configuration Protocol\nomenclature{DHCP}{Dynamic Host Configuration Protocol}\index{Dynamic Host Configuration Protocol}~(DHCP\index{see{Dynamic Host Configuration Protocol}}, \cite{RFC2131,RFC2132}). Note, that DHCP does \emph{not} provide addresses for further ISPs. DHCP will also provide the DNS address (i.e.\ the tunnelbox, see Subsubsection~\ref{subsub:Tunnelbox-Name-Resolution}) so that \noun{NorNet}-internal names can be resolved. Note furthermore, that TCP access with port~80 to non-local endpoints is proxied via the local tunnelbox's Squid proxy, in order to provide caching.
 
-For IPv6, addresses for all ISPs will be provided by stateless auto-configuration via Internet Control Message Protocol version~6\nomenclature{ICMPv6}{Internet Control Message Protocol version~6}\index{Internet Control Message Protocol version~6}~(ICMPv6\index{see{Internet Control Message Protocol version~6}}, \cite{RFC4443}).
+
+% ===========================================================================
+\subsection{Getting Physical Access}
+\label{sub:Getting-Physical-Access}
+% ===========================================================================
+
+A user can get physical access to \noun{NorNet Core} by connecting devices to his local site's \noun{NorNet Core} switch (see Figure~\ref{cap:The-Site-Setup}). This ensures easy access and provides the lowest latency and greatest flexibility. The local network provides automatic IPv4 configuration of the primary ISP by the Dynamic Host Configuration Protocol\nomenclature{DHCP}{Dynamic Host Configuration Protocol}\index{Dynamic Host Configuration Protocol}~(DHCP\index{DHCP|see{Dynamic Host Configuration Protocol}}, \cite{RFC2131,RFC2132}). Note, that DHCP does \emph{not} provide addresses for further ISPs. DHCP will also provide the DNS address (i.e.\ the tunnelbox, see Subsubsection~\ref{subsub:Tunnelbox-Name-Resolution}) so that \noun{NorNet}-internal names can be resolved. Note furthermore, that TCP access with port~80 to non-local endpoints is proxied via the local tunnelbox's Squid proxy, in order to provide caching.
+
+For IPv6, addresses for all ISPs will be provided by stateless auto-configuration via Internet Control Message Protocol version~6\nomenclature{ICMPv6}{Internet Control Message Protocol version~6}\index{Internet Control Message Protocol version~6}~(ICMPv6\index{ICMPv6|see{Internet Control Message Protocol version~6}}, \cite{RFC4443}).
 
 Dynamic configuration is intended for short-term usage. For long-term usage of devices within the \noun{NorNet Core} network, it is required to configure permanent address mappings for DHCP as well as DNS names. See ******* for the maintenance details!
 
 
 
-% ###########################################################################
-\section{The Virtual Private Network Access}
-\label{sec:The-VPN-Access}
-% ###########################################################################
+% ===========================================================================
+\subsection{The Virtual Private Network Access}
+\label{sub:The-VPN-Access}
+% ===========================================================================
 
-An access via Virtual Private Network\nomenclature{VPN}{Virtual Private Network}\index{Virtual Private Network}~(VPN\index{see{Virtual Private Network}}) is planned but not yet implemented.
+An access via Virtual Private Network\nomenclature{VPN}{Virtual Private Network}\index{Virtual Private Network}~(VPN\index{VPN|see{Virtual Private Network}}) is planned but not yet implemented.
 
 
 
