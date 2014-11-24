@@ -309,7 +309,7 @@ A \noun{NorNet Core} user needs access into the \noun{NorNet Core} network. The 
 \label{sub:The-Gatekeeper}
 % ===========================================================================
 
-The Gatekeeper server\index{Gatekeeper} \texttt{gatekeeper.nntb.no}\index{gatekeeper.nntb.no} provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the Gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
+The Gatekeeper server\index{Gatekeeper} \href{ssh://gatekeeper.nntb.no}{gatekeeper.nntb.no}\index{gatekeeper.nntb.no}\footnote{\href{ssh://gatekeeper.nntb.no}{gatekeeper.nntb.no}\index{gatekeeper.nntb.no} is actually an alias for the server \href{ssh://oesthorn.nntb.no}{oesthorn.nntb.no}\index{oesthorn.nntb.no}, to be explained in Section~\ref{sec:The-Gatekeeper}.} provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the Gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
 
 The following examples give a short overview of what is possible with SSH. Note, that they are not meant to be complete. Refer to the manual page of \texttt{ssh}\footnote{\texttt{ssh} Manual Page: \texttt{\href{man:ssh}{man ssh}}.} and various SSH tutorials in the Internet for further information.
 
@@ -648,7 +648,7 @@ There are currently two mailing lists\index{Mailing Lists} for \noun{NorNet}-rel
  A list with general announcements about \noun{NorNet}, e.g.\ workshops, conferences, etc..
  The registration to this list can be managed at \url{https://sympa.uio.no/ifi.uio.no/modindex/nornet-announcements}.
 
- \item \noun{NorNet}~Users\index{Mailing Lists!\noun{NorNet} Users\index}:
+ \item \noun{NorNet}~Users\index{Mailing Lists!\noun{NorNet} Users}:
  A list with announcements for \noun{NorNet} users, e.g.\ maintenance, changes of the infrastructure, etc.. It is assumed that all \noun{NorNet} users are subscribed to this list.
  The registration to this list can be managed at \url{https://sympa.uio.no/ifi.uio.no/modindex/nornet-users}.
 \end{itemize}
