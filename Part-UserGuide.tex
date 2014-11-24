@@ -498,7 +498,7 @@ An access to the \noun{NorNet Core} network via Virtual Private Network\nomencla
 \label{sec:The-PLC}
 % ###########################################################################
 
-The PLC\index{PlanetLab Central} user interface used for \noun{NorNet Core} is strongly based on the upstream \noun{PlanetLab}~\cite{PR06} software. It is therefore only very briefly introduced here.
+The PLC\index{PlanetLab Central} user interface used for \noun{NorNet Core} is mostly based on the upstream \noun{PlanetLab}~\cite{PR06} software. It is therefore only very briefly introduced here.
 
 
 % ===========================================================================
@@ -509,17 +509,17 @@ The PLC\index{PlanetLab Central} user interface used for \noun{NorNet Core} is s
 First, it is necessary to get access to the PLC web interface via a web browser. There are two possibilities:
 \begin{itemize}
  \item \url{https://plc.simula.nornet}:
- In case of connection to the local \noun{NorNet Core} including its DNS service, the web browser can directly connect to the PLC.
+ In case of connection to the local \noun{NorNet Core} network including its DNS service, the web browser can directly connect to the PLC.
  
  \item \url{https://localhost:2000}:
- In access to the \noun{NorNet Core} network is only available via the Gatekeeper server, the SSH port forwarding -- as described in Subsubsection~\ref{subsub:Tunnelling-TCP-Connections} -- can be used. Then, if using the settings described there, the web browser connects to the local machine's port~2000. This port is forwarded, via the Gatekeeper server, to the PLC.
+ If access to the \noun{NorNet Core} network is only available via the Gatekeeper server, the SSH port forwarding -- as described in Subsubsection~\ref{subsub:Tunnelling-TCP-Connections} -- can be used. Then, if using the settings described there, the web browser connects to the local machine's port~2000. This port is forwarded, via SSH and the Gatekeeper server, to the PLC.
 \end{itemize}
 
 The PLC uses a self-signed Transport Layer Security\nomenclature{TLS}{Transport Layer Security}\index{Transport Layer Security}~(TLS\index{TLS|see{Transport Layer Security}}) certificate. When establishing a connection for the first time, this certificate has to be accepted for the web browser.
 
 
 Currently, the management of sites and nodes (particularly e.g.\ adding sites or nodes) is made directly by the \noun{NorNet Core} staff at the Simula Research Laboratory.
-The PLC web interface can be used by \noun{NorNet Core} uses for the following tasks:
+The PLC web interface can be used by \noun{NorNet Core} users to perform the following tasks:
 \begin{itemize}
  \item Managing the PLC account,
  \item Viewing sites and nodes information,
@@ -543,7 +543,7 @@ These tasks will be explained in the following subsections.
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The own account is managed under ``My Account''. Figure~\ref{cap:PLC-Account-Details-User} shows an example screenshot. Particularly, the user can revise title, first and last name, biography information as well as his own password. Also, the user can change his own password. Since the PLC is used my many users and misuse of an account may affect the whole testbed, all user are \emph{required} to choose ``good'' passwords!
+The own account is managed under ``My Account''. Figure~\ref{cap:PLC-Account-Details-User} shows an example screenshot. Particularly, the user can revise title, first and last name and biography information. Also, the user can change his own password. Since the PLC is used my many users and misuse of an account may affect the whole testbed, all user are \emph{required} to choose ``good'' passwords!
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
@@ -555,7 +555,7 @@ The own account is managed under ``My Account''. Figure~\ref{cap:PLC-Account-Det
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Further information under ``My Account'' provide mappings of the user to one or more \noun{NorNet Core} sites, mappings to slices and user roles. Since these functionalities are equal to \noun{PlanetLab}~\cite{PR06}, they are not introduced in detail here. Crucial for the access to \noun{NorNet Core} slivers is of course to provide an own SSH public key to the PLC. Similarly to configuring the Gatekeeper access with private/public key authentication (as introduced in Subsubsection~\ref{subsub:Key-Based-Authentication}), the same principle is used for accessing slivers. That is, the PLC provides the users' public keys to research nodes. The research nodes configure \texttt{authorized\_keys} with these keys for the slivers of the users. Then, the users can use their private key to authenticate to the research nodes to get access to their slivers.
+Further information under ``My Account'' provides mappings of the user to one or more \noun{NorNet Core} sites, mappings to slices and user roles. Since these functionalities are equal to \noun{PlanetLab}~\cite{PR06}, they are not introduced in detail here. Crucial for the access to \noun{NorNet Core} slivers is of course to provide an own SSH public key to the PLC. Like for using the Gatekeeper server with private/public key-based authentication (as introduced in Subsubsection~\ref{subsub:Key-Based-Authentication}), key-based authentication is used for accessing slivers. That is, the PLC provides the users' public keys to research nodes. The research nodes configure \texttt{authorized\_keys} with these keys for the slivers of the users. Then, the users can use their private key to authenticate to their slivers.
 
 The own SSH public can be uploaded in the ``Key'' section of the ``My Account'' view, as shown in Figure~\ref{cap:PLC-Account-Details-Key-and-Roles}. Note, that multiple keys can be provided here. However, the PLC user interface currently only supports a single key for authentication. Therefore, only the first key will be used. The PLC does not print a warning when having uploaded multiple keys! It is therefore strongly recommended to not have more than one key in the interface. A further pitfall for new users is trying to upload the private key here. The PLC will in this case complain about the key length, but not about using a private key.
 
