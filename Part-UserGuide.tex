@@ -189,6 +189,7 @@ For many network measurement tasks, it is quite handy to e.g.\ measure the one-w
 
 % ---------------------------------------------------------------------------
 \subsubsection{Name Resolution}
+\label{subsub:Tunnelbox-Name-Resolution}
 % ---------------------------------------------------------------------------
 
 A tunnelbox also acts as a DNS server~\cite{RFC1035} -- by using the \noun{BIND}~\cite{Bind9ARM} package -- for its local site, providing caching for external DNS resolutions. Furthermore, in order to help researchers working with the \noun{NorNet Core} private network addresses, all interfaces also have a DNS name below the private \texttt{nornet.}\ top-level domain~(TLD). Each site has its own second-level domain below this TLD, e.g.\ \texttt{simula.nornet.}\ is the domain of the Central Site as the Simula Research Laboratory. Each site's tunnelbox is the master DNS of its second-level domain; the Central Site's DNS acts as slave. For the Central Site (managing the TLD and the \texttt{simula.nornet.} second-level domain), the other sites' tunnelboxes act as slaves. This should ensure a sufficient resilience and load distribution.
@@ -260,7 +261,8 @@ For the research part of \noun{NorNet Core}, there are obviously use cases for r
 \label{cha:Getting-Access}
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-...
+In this chapter, the user part of accessing and using \noun{NorNet Core} is described. The maintenance part will be described in Chapter~\ref{cha:Maintenance}.
+
 
 % ###########################################################################
 \section{User Accounts}
@@ -287,6 +289,28 @@ rsync
 tunnel
 
 examples
+
+
+
+% ###########################################################################
+\section{Getting Physical Access}
+\label{sec:Getting-Physical-Access}
+% ###########################################################################
+
+A user can get physical access to \noun{NorNet Core} by connecting devies to his local site's \noun{NorNet Core} switch (see Figure~\ref{cap:The-Site-Setup}). This ensures easy access and provides the lowest latency and greatest flexibility. The local network provides automatic IPv4 configuration of the primary ISP by the Dynamic Host Configuration Protocol\nomenclature{DHCP}{Dynamic Host Configuration Protocol}\index{Dynamic Host Configuration Protocol}~(DHCP\index{see{Dynamic Host Configuration Protocol}}, \cite{RFC2131,RFC2132}). Note, that DHCP does \emph{not} provide addresses for further ISPs. DHCP will also provide the DNS address (i.e.\ the tunnelbox, see Subsubsection~\ref{subsub:Tunnelbox-Name-Resolution}) so that \noun{NorNet}-internal names can be resolved. Note furthermore, that TCP access with port~80 to non-local endpoints is proxied via the local tunnelbox's Squid proxy, in order to provide caching.
+
+For IPv6, addresses for all ISPs will be provided by stateless auto-configuration via Internet Control Message Protocol version~6\nomenclature{ICMPv6}{Internet Control Message Protocol version~6}\index{Internet Control Message Protocol version~6}~(ICMPv6\index{see{Internet Control Message Protocol version~6}}, \cite{RFC4443}).
+
+Dynamic configuration is intended for short-term usage. For long-term usage of devices within the \noun{NorNet Core} network, it is required to configure permanent address mappings for DHCP as well as DNS names. See ******* for the maintenance details!
+
+
+
+% ###########################################################################
+\section{The Virtual Private Network Access}
+\label{sec:The-VPN-Access}
+% ###########################################################################
+
+An access via Virtual Private Network\nomenclature{VPN}{Virtual Private Network}\index{Virtual Private Network}~(VPN\index{see{Virtual Private Network}}) is planned but not yet implemented.
 
 
 
