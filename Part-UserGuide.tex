@@ -310,51 +310,59 @@ A \noun{NorNet Core} user needs access into the \noun{NorNet Core} network. The 
 \label{sub:The-Gatekeeper}
 % ===========================================================================
 
-The gatekeeper server\index{Gatekeeper} provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
+The Gatekeeper server\index{Gatekeeper} provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the Gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
 
 The following examples give a short overview of what is possible with SSH. Note, that they are not meant to be complete. Refer to the manual page of \texttt{ssh}\footnote{SSH manual page: \texttt{\href{man:ssh}{man ssh}}.} and various SSH tutorials in the Internet for further information.
 
 
 % ---------------------------------------------------------------------------
 \subsubsection{Using Secure Shell}
+\label{subsub:Gatekeeper-Using-SSH}
 % ---------------------------------------------------------------------------
 
-An SSH remote shell connection to the gatekeeper server\index{Gatekeeper!Secure Shell} can be established e.g.\ by the \texttt{ssh}\index{\texttt{ssh}} command:
+An SSH remote shell connection to the Gatekeeper server\index{Gatekeeper!Secure Shell} can be established e.g.\ by the \texttt{ssh}\index{\texttt{ssh}} command:
 \begin{lstlisting}
-ssh ola@gatekeeper.nntb.so
+ssh ola@gatekeeper.nntb.no
 \end{lstlisting}
 for user ``ola''. For login, the password is required. Key-based authentication will be explained in Subsubsection~\ref{subsub:Key-Based-Authentication}.
+
+
+% ---------------------------------------------------------------------------
+\subsubsection{Changing the Password}
+% ---------------------------------------------------------------------------
+
+Once logged in the the Gatekeeper server, the user can change the password\index{Password}\index{Gatekeeper!Password Change} with the \texttt{passwd} command. It asks for the old password and twice for the new one. If both inputs of the new password are equal, the password is updated. The user is required to chose a ``good'' password for the Gatekeeper, since it is exposed to the outside Internet.
 
 
 % ---------------------------------------------------------------------------
 \subsubsection{Using Secure Copy}
 % ---------------------------------------------------------------------------
 
-Secure Copy\nomenclature{SCP}{Secure Copy}\index{Secure Copy}~(SCP\index{SCP|see{Secure Copy}}) uses SSH to transfer files between machines, i.e.\ it is possible to copy files from the local machine to the gatekeeper\index{Gatekeeper!Secure Copy} and vice versa. The corresponding command is named \texttt{scp}\index{\texttt{scp}}.
+Secure Copy\nomenclature{SCP}{Secure Copy}\index{Secure Copy}~(SCP\index{SCP|see{Secure Copy}}) uses SSH to transfer files between machines, i.e.\ it is possible to copy files from the local machine to the Gatekeeper\index{Gatekeeper!Secure Copy} and vice versa. The corresponding command is named \texttt{scp}\index{\texttt{scp}}.
 
-To copy a file \texttt{test.data} from the local machine to the gatekeeper server, use for example:
+To copy a file \texttt{test.data} from the local machine to the Gatekeeper server, use for example:
 \begin{lstlisting}
-ssh test.data ola@gatekeeper.nntb.so:
+ssh test.data ola@gatekeeper.nntb.no:
 \end{lstlisting}
-Note the colon (i.e.\ ``:''!). Without this colon, ssh will behave like a local file copy (i.e.\ \texttt{cp}) and just create a local copy of \texttt{test.data} with name \text{ola@gatekeeper.nntb.so}. SCP will store the file in the home directory (the default place) of the gatekeeper server. A different directory can be specified after the colon, e.g.\ \texttt{directory/subdirectory} (note, that these directories must exist):
+Note the colon (i.e.\ ``:''!). Without this colon, ssh will behave like a local file copy (i.e.\ \texttt{cp}) and just create a local copy of \texttt{test.data} with name \text{ola@gatekeeper.nntb.no}. SCP will store the file in the home directory (the default place) of the Gatekeeper server. A different directory can be specified after the colon, e.g.\ \texttt{directory/subdirectory} (note, that these directories must exist):
 \begin{lstlisting}
-ssh test.data ola@gatekeeper.nntb.so:directory/subdirectory/
+ssh test.data ola@gatekeeper.nntb.no:directory/subdirectory/
 \end{lstlisting}
 It is also possible to provide a file name for the destination (e.g.\ \texttt{my-first-test.data}):
 \begin{lstlisting}
-ssh test.data ola@gatekeeper.nntb.so:directory/my-first_test.data
+ssh test.data ola@gatekeeper.nntb.no:directory/my-first_test.data
 \end{lstlisting}
 SCP can also copy complete directories, using the ``-r'' option for recursive copy:
 \begin{lstlisting}
-ssh -r test-directory ola@gatekeeper.nntb.so:
+ssh -r test-directory ola@gatekeeper.nntb.no:
 \end{lstlisting}
-This will copy the whole directory \texttt{test-directory} to the gatekeeper.
+This will copy the whole directory \texttt{test-directory} to the Gatekeeper.
 
-Similarly, the reverse direction -- i.e.\ from the gatekeeper to the local machine -- can be used:
+Similarly, the reverse direction -- i.e.\ from the Gatekeeper to the local machine -- can be used:
 \begin{lstlisting}
-ssh ola@gatekeeper.nntb.so:test.data .
-ssh ola@gatekeeper.nntb.so:test.data some-local-directory/
-ssh -r ola@gatekeeper.nntb.so:my-test-directory/ .
+ssh ola@gatekeeper.nntb.no:test.data .
+ssh ola@gatekeeper.nntb.no:test.data some-local-directory/
+ssh -r ola@gatekeeper.nntb.no:my-test-directory/ .
 \end{lstlisting}
 Of course, copying from a remote to another remote machine would work as well.
 
@@ -365,10 +373,10 @@ Of course, copying from a remote to another remote machine would work as well.
 
 SCP only copies files and directories. When working with \noun{NorNet Core} experiment results, it becomes handy to synchronise files and directories, i.e.\ only copy data when it has actually been updated. This functionality is provided by the texttt{rsync}\index{\texttt{rsync}} command\index{Gatekeeper!Remote Synchronisation}.
 
-To synchronise the directory \texttt{experiment1/results/} from the gatekeeper to the local machine use for example:
+To synchronise the directory \texttt{experiment1/results/} from the Gatekeeper to the local machine use for example:
 \begin{lstlisting}
 rsync -a -v -z --partial --progress --delete \
- ola@gatekeeper.nntb.so:experiment1/results/ experiment1/results/
+ ola@gatekeeper.nntb.no:experiment1/results/ experiment1/results/
 \end{lstlisting}
 The following options are of interest:
 \begin{itemize}
@@ -380,26 +388,11 @@ The following options are of interest:
  \item ``--delete'': deletes files that are not existing any more in the source directory. Warning: this option can be disastrous when providing the wrong destination (e.g.\ the user's home directory). Use this option with care!
 \end{itemize}
 
-Similarly, data can be synchronised from the local machine to the gatekeeper:
+Similarly, data can be synchronised from the local machine to the Gatekeeper:
 \begin{lstlisting}
 rsync -a -v -z --partial --progress experiment1/ \
- ola@gatekeeper.nntb.so:experiment1/
+ ola@gatekeeper.nntb.no:experiment1/
 \end{lstlisting}
-
-
-% ---------------------------------------------------------------------------
-\subsubsection{Tunnelling TCP Connections}
-% ---------------------------------------------------------------------------
-
-tunnel
-
-
-
-% ---------------------------------------------------------------------------
-\subsubsection{Changing the Password}
-% ---------------------------------------------------------------------------
-
-Once logged in the the gatekeeper server, the user can change the password\index{Password}\index{Gatekeeper!Password Change} with the \texttt{passwd} command. It asks for the old password and twice for the new one. If both inputs of the new password are equal, the password is updated. The user is required to chose a ``good'' password for the gatekeeper, since it is exposed to the outside Internet.
 
 
 % ---------------------------------------------------------------------------
@@ -407,7 +400,7 @@ Once logged in the the gatekeeper server, the user can change the password\index
 \label{subsub:Key-Based-Authentication}
 % ---------------------------------------------------------------------------
 
-Instead of typing the password each time for login, the user can also create a SSH public/private key pair on the local machine (i.e.\ the machine used to access the gatekeeper server). By storing the public key in \texttt{.ssh/authorized\_keys} on the gatekeeper server, the user can use his private key to authenticate to the gatekeeper instead of using the password. This is particularly useful when using script-based login.
+Instead of typing the password each time for login, the user can also create a SSH public/private key pair on the local machine (i.e.\ the machine used to access the Gatekeeper server). By storing the public key in \texttt{.ssh/authorized\_keys} on the Gatekeeper server, the user can use his private key to authenticate to the Gatekeeper instead of using the password. This is particularly useful when using script-based login.
 
 % 
 % To create a public/private key pair, the following commands ca
@@ -417,6 +410,37 @@ Instead of typing the password each time for login, the user can also create a S
 % ssh-keygen -f ~/.ssh/gatekeeper
 % cat ~/.ssh/gatekeeper.pub
 % \end{lstlisting}
+
+
+% ---------------------------------------------------------------------------
+\subsubsection{Tunnelling TCP Connections}
+% ---------------------------------------------------------------------------
+
+SSH provides the feature of tunnelling TCP connections via an SSH session. That is, for a given TCP port on the local machine, SSH tunnels the traffic to the remote SSH endpoint (here: the Gatekeeper). From there, it is forwarded to the given destination.  For \noun{NorNet Core}, this is particularly useful to get access to the PLC (to be explained in Section~\ref{sec:The-PLC}) and the Monitor server (to be explained in Section~\ref{sec:Kontrollsenteret}):
+\begin{lstlisting}
+ssh ola@gatekeeper.nntb.no \
+ -L 2000:plc.simula.nornet:443 \
+ -L 2001:monitor.simula.nornet:80
+\end{lstlisting}
+This code example does the following:
+\begin{itemize}
+ \item An SSH connection is established to the Gatekeeper server (see Subsubsection~\ref{subsub:Gatekeeper-Using-SSH}).
+ 
+ \item TCP port~2000 of the local machine (i.e.\ the machine running this command) is forwarded via the Gatekeeper to port~443 of the PLC \href{https://plc.simula.nornet}{plc.simula.nornet}\index{plc.simula.nornet}. Note, that \href{https://plc.simula.nornet}{plc.simula.nornet}\index{plc.simula.nornet} is the DNS name of the PLC. Since the Gatekeeper uses the \noun{NorNet Core} DNS service, it can resolve this \noun{NorNet}-internal name (see Subsubsection~\ref{subsub:Tunnelbox-Name-Resolution}).
+ 
+ \item Similarly, TCP port~2001 of the local machine is forwarded to port~80 of the Monitor server \href{http://monitor.simula.nornet}{monitor.simula.nornet}.
+\end{itemize}
+By establishing a TCP connection to port~2000 or port~2001 of the local machine, the user can now access the \noun{NorNet}-internal services of PLC or Monitor server.
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{algorithm}
+\lstinputlisting{CodeSnippets/Gatekeeper.sh}
+\caption{Gatekeeper Access Script Example}
+\label{lst:Gatekeeper-Access-Script-Example}
+\end{algorithm}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Since the establishment of the port forwarding above is a recurring task for almost all \noun{NorNet Core} users, it is strongly recommended to write a small script to do this task. An example is provided in Listing~\ref{lst:Gatekeeper-Access-Script-Example}.
 
 
 
@@ -438,16 +462,7 @@ Dynamic configuration is intended for short-term usage. For long-term usage of d
 \label{sub:The-VPN-Access}
 % ===========================================================================
 
-An access via Virtual Private Network\nomenclature{VPN}{Virtual Private Network}\index{Virtual Private Network}~(VPN\index{VPN|see{Virtual Private Network}}) is planned but not yet implemented.
-
-
-
-% ###########################################################################
-\section{Kontrollsenteret}
-\label{sec:Kontrollsenteret}
-% ###########################################################################
-
-...
+An access to the \noun{NorNet Core} network via Virtual Private Network\nomenclature{VPN}{Virtual Private Network}\index{Virtual Private Network}~(VPN\index{VPN|see{Virtual Private Network}}) is planned but not yet implemented.
 
 
 
@@ -594,6 +609,15 @@ key
 \subsection{Slices and Slivers}
 \label{sub:Slices-and-Slivers}
 % ===========================================================================
+
+...
+
+
+
+% ###########################################################################
+\section{Kontrollsenteret}
+\label{sec:Kontrollsenteret}
+% ###########################################################################
 
 ...
 
