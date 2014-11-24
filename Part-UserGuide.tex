@@ -68,7 +68,7 @@ In the following, we describe the implementation of the fixed-line \noun{NorNet 
 \label{sub:The-Testbed-Management}
 % ===========================================================================
 
-\noun{NorNet Core} intends to reuse the \noun{PlanetLab}~\cite{PBF+05} software whenever possible. This software is available in a couple of distributions, most notably the original \noun{PlanetLab} software itself as well as \noun{OneLab}\footnote{\noun{OneLab}: \url{http://www.onelab.eu/}.}. All variants have in common that there is a central administration component, denoted as \emph{PlanetLab Central\nomenclature{PLC}{PlanetLab Central}\index{PlanetLab Central}}~(PLC\index{see{PlanetLab Central}}, \cite{Hua06}). The PLC manages a database with the configurations of sites, nodes, users and slices. Also, it provides a web-based administration interface as well as an XMLRPC-based API -- called PLCAPI~\cite{PLCAPI} -- for software-based access to the configuration database. A particularly useful feature of the PLC software is to allow for custom extensions by adding so-called \emph{tags} to the database. Tags are additional information to be managed, like e.g.\ testbed-specific configuration parameters.
+\noun{NorNet Core} intends to reuse the \noun{PlanetLab}~\cite{PBF+05} software whenever possible. This software is available in a couple of distributions, most notably the original \noun{PlanetLab} software itself as well as \noun{OneLab}\footnote{\noun{OneLab}: \url{http://www.onelab.eu/}.}. All variants have in common that there is a central administration component, denoted as \emph{PlanetLab Central\nomenclature{PLC}{PlanetLab Central}\index{PlanetLab Central}}~(PLC\index{PLC|see{PlanetLab Central}}, \cite{Hua06}). The PLC manages a database with the configurations of sites, nodes, users and slices. Also, it provides a web-based administration interface as well as an XMLRPC-based API -- called PLCAPI~\cite{PLCAPI} -- for software-based access to the configuration database. A particularly useful feature of the PLC software is to allow for custom extensions by adding so-called \emph{tags} to the database. Tags are additional information to be managed, like e.g.\ testbed-specific configuration parameters.
 
 For \noun{NorNet Core}, it has been straightforward to reuse the PLC as a basis. Custom, \noun{NorNet}-specific configuration is simply realised by appropriate tags. In particular, tags are used to store additional information about the tunnelbox configurations (ISPs, addresses, etc.) and provider networks available at each site. The PLCAPI allows the \noun{NorNet} components -- which will be introduced later -- to access their configuration information and apply it as needed.
 
@@ -319,7 +319,7 @@ The following examples give a short overview of what is possible with SSH. Note,
 \label{subsub:Gatekeeper-Using-SSH}
 % ---------------------------------------------------------------------------
 
-An SSH remote shell connection to the Gatekeeper server\index{Gatekeeper!Secure Shell} can be established e.g.\ by the \texttt{ssh}\index{\texttt{ssh}} command:
+An SSH remote shell connection to the Gatekeeper server\index{Gatekeeper!Secure Shell} can be established e.g.\ by the \texttt{ssh}\index{ssh} command:
 \begin{lstlisting}
 ssh ola@gatekeeper.nntb.no
 \end{lstlisting}
@@ -337,13 +337,13 @@ Once logged in the the Gatekeeper server, the user can change the password\index
 \subsubsection{Using Secure Copy}
 % ---------------------------------------------------------------------------
 
-Secure Copy\nomenclature{SCP}{Secure Copy}\index{Secure Copy}~(SCP\index{SCP|see{Secure Copy}}) uses SSH to transfer files between machines, i.e.\ it is possible to copy files from the local machine to the Gatekeeper\index{Gatekeeper!Secure Copy} and vice versa. The corresponding command is named \texttt{scp}\index{\texttt{scp}}.
+Secure Copy\nomenclature{SCP}{Secure Copy}\index{Secure Copy}~(SCP\index{SCP|see{Secure Copy}}) uses SSH to transfer files between machines, i.e.\ it is possible to copy files from the local machine to the Gatekeeper\index{Gatekeeper!Secure Copy} and vice versa. The corresponding command is named \texttt{scp}\index{scp}.
 
 To copy a file \texttt{test.data} from the local machine to the Gatekeeper server, use for example:
 \begin{lstlisting}
 scp test.data ola@gatekeeper.nntb.no:
 \end{lstlisting}
-Note the colon (i.e.\ ``:'')! Without this colon, ssh would behave like a local file copy (i.e.\ \texttt{cp}\index{\texttt{cp}}) and just create a local copy of \texttt{test.data} with name \text{ola@gatekeeper.nntb.no}. \texttt{scp} will store the file in the home directory (the default place) of the Gatekeeper server. A different directory can be specified after the colon, e.g.\ \texttt{directory/subdirectory} (note, that these directories must exist):
+Note the colon (i.e.\ ``:'')! Without this colon, ssh would behave like a local file copy (i.e.\ \texttt{cp}\index{cp}) and just create a local copy of \texttt{test.data} with name \text{ola@gatekeeper.nntb.no}. \texttt{scp} will store the file in the home directory (the default place) of the Gatekeeper server. A different directory can be specified after the colon, e.g.\ \texttt{directory/subdirectory} (note, that these directories must exist):
 \begin{lstlisting}
 scp test.data ola@gatekeeper.nntb.no:directory/subdirectory/
 \end{lstlisting}
@@ -371,7 +371,7 @@ For further possibilities, also see the manual page of \texttt{scp}\footnote{\te
 \subsubsection{Using Remote File Synchronisation}
 % ---------------------------------------------------------------------------
 
-SCP only copies files and directories. When working with \noun{NorNet Core} experiment results, it becomes handy to synchronise files and directories, i.e.\ to just transfer data that needs to be transferred. This functionality is provided by the texttt{rsync}\index{\texttt{rsync}} command\index{Gatekeeper!Remote Synchronisation}. See also the manual page of \texttt{rsync}\footnote{\texttt{rsync} Manual Page: \texttt{\href{man:rsync}{man rsync}}.} for details.
+SCP only copies files and directories. When working with \noun{NorNet Core} experiment results, it becomes handy to synchronise files and directories, i.e.\ to just transfer data that needs to be transferred. This functionality is provided by the texttt{rsync}\index{rsync} command\index{Gatekeeper!Remote Synchronisation}. See also the manual page of \texttt{rsync}\footnote{\texttt{rsync} Manual Page: \texttt{\href{man:rsync}{man rsync}}.} for details.
 
 In order to synchronise the directory \texttt{experiment1/results/} from the Gatekeeper to the local machine, use for example:
 \begin{lstlisting}
@@ -402,7 +402,7 @@ rsync -a -v -z --partial --progress experiment1/ \
 
 Instead of typing the password for login each time, the user can also create a SSH public/private key pair on the local machine (i.e.\ the machine used to access the Gatekeeper server). By storing the public key on the Gatekeeper server in \texttt{.ssh/authorized\_keys}, the user can use his private key to authenticate to the Gatekeeper instead of using his password. This is particularly useful when using SSH in scripts.
 
-To create a public/private key pair, the command \texttt{ssh-keygen}\index{\texttt{ssh-keygen}} is used:
+To create a public/private key pair, the command \texttt{ssh-keygen}\index{ssh-keygen} is used:
 \begin{lstlisting}
 ssh-keygen -P "" -f ~/.ssh/gatekeeper
 \end{lstlisting}
@@ -421,10 +421,10 @@ cat ~/.ssh/gatekeeper.pub
 It should be something like ``ssh-rsa <characters and numbers> <user@host>''.
 
 To use this public key for authentication, log into the Gatekeeper and append the key line to the file \texttt{\textasciitilde/.ssh/authorized\_keys}. This can e.g.\ by done by an arbitrary text editor that is available on the Gatekeeper, e.g.\
-\texttt{emacs}\index{\texttt{emacs}},
-\texttt{joe}\index{\texttt{joe}},
-\texttt{nano}\index{\texttt{nano}} or
-\texttt{vi}\index{\texttt{vi}}. If the file \texttt{\textasciitilde/.ssh/authorized\_keys} does not yet exist, it can just be created. After creating the file, it is necessary to check the access permissions with \texttt{chmod}\index{\texttt{chmod}}:
+\texttt{emacs}\index{emacs},
+\texttt{joe}\index{joe},
+\texttt{nano}\index{nano} or
+\texttt{vi}\index{vi}. If the file \texttt{\textasciitilde/.ssh/authorized\_keys} does not yet exist, it can just be created. After creating the file, it is necessary to check the access permissions with \texttt{chmod}\index{chmod}:
 \begin{lstlisting}
 chmod 600 ~/.ssh/authorized_keys
 \end{lstlisting}
@@ -641,11 +641,17 @@ key
 \subsection{Mailing Lists}
 % ===========================================================================
 
-\url{https://sympa.uio.no/ifi.uio.no/modindex/nornet-announcements}
+There are currently two mailing lists\index{Mailing Lists} for \noun{NorNet}-related postings:
 
-\url{https://sympa.uio.no/ifi.uio.no/modindex/nornet-users}
+\begin{itemize}
+ \item \noun{NorNet}~Announcements\index{Mailing Lists!\noun{NorNet} Announcements}:
+ A list with general announcements about \noun{NorNet}, e.g.\ workshops, conferences, etc..
+ The registration to this list can be managed at \url{https://sympa.uio.no/ifi.uio.no/modindex/nornet-announcements}.
 
-...
+ \item \noun{NorNet}~Users\index{Mailing Lists!\noun{NorNet} Users\index}:
+ A list with announcements for \noun{NorNet} users, e.g.\ maintenance, changes of the infrastructure, etc.. It is assumed that all \noun{NorNet} users are subscribed to this list.
+ The registration to this list can be managed at \url{https://sympa.uio.no/ifi.uio.no/modindex/nornet-users}.
+\end{itemize}
 
 
 % ===========================================================================
