@@ -536,7 +536,7 @@ These tasks will be explained in the following subsections.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.90\columnwidth]{Images/PDF/Screenshot-PLC-Account-Details1.pdf}
+\includegraphics[width=0.95\columnwidth]{Images/PDF/Screenshot-PLC-Account-Details1.pdf}
 \end{center}
 \caption{The PLC: My Account $\rightarrow$ Details}
 \label{cap:PLC-Account-Details-User}
@@ -548,18 +548,18 @@ The own account is managed under ``My Account''. Figure~\ref{cap:PLC-Account-Det
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.90\columnwidth]{Images/PDF/Screenshot-PLC-Account-Details2.pdf}
+\includegraphics[width=0.95\columnwidth]{Images/PDF/Screenshot-PLC-Account-Details2.pdf}
 \end{center}
 \caption{My Account $\rightarrow$ Slices, Key and Roles}
 \label{cap:PLC-Account-Details-Key-and-Roles}
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Further information under ``My Account'' provides mappings of the user to one or more \noun{NorNet Core} sites, mappings to slices and user roles. Since these functionalities are equal to \noun{PlanetLab}~\cite{PR06}, they are not introduced in detail here. Crucial for the access to \noun{NorNet Core} slivers is of course to provide an own SSH public key to the PLC. Like for using the Gatekeeper server with private/public key-based authentication (as introduced in Subsubsection~\ref{subsub:Key-Based-Authentication}), key-based authentication is used for accessing slivers. That is, the PLC provides the users' public keys to research nodes. The research nodes configure \texttt{authorized\_keys} with these keys for the slivers of the users. Then, the users can use their private key to authenticate to their slivers.
+Further information under ``My Account'' provides mappings of the user to one or more \noun{NorNet Core} sites, mappings to slices and user roles. Since these functionalities are equal to \noun{PlanetLab}~\cite{PR06}, they are not introduced in detail here. Crucial for the access to \noun{NorNet Core} slivers is of course to provide an own SSH public key to the PLC. Like for using the Gatekeeper server with private/public key-based authentication (as introduced in Subsubsection~\ref{subsub:Key-Based-Authentication}), key-based authentication is used for accessing slivers. That is, the PLC provides the users' public keys to research nodes. The research nodes configure \texttt{authorized\_keys} with these keys for the slivers of the users. Then, the users can use their private key to authenticate to their slivers on the research nodes.
 
-The own SSH public can be uploaded in the ``Key'' section of the ``My Account'' view, as shown in Figure~\ref{cap:PLC-Account-Details-Key-and-Roles}. Note, that multiple keys can be provided here. However, the PLC user interface currently only supports a single key for authentication. Therefore, only the first key will be used. The PLC does not print a warning when having uploaded multiple keys! It is therefore strongly recommended to not have more than one key in the interface. A further pitfall for new users is trying to upload the private key here. The PLC will in this case complain about the key length, but not about using a private key.
+The own SSH public key can be uploaded in the ``Key'' tab of the ``My Account'' section, as shown in Figure~\ref{cap:PLC-Account-Details-Key-and-Roles}. Note, that multiple keys can be provided here. The PLC user interface currently only supports a single key for authentication. Therefore, only the first key will be used. However, the PLC does not display any warning when having uploaded multiple keys! It is therefore strongly recommended to not have more than one key in the interface. A further pitfall for new users is trying to upload their private key here. The PLC will in this case complain about the key length, but not about using a private key.
 
-After upload of the public key, it may take up to about 1~hour until the new key gets distributed to all \noun{NorNet Core} research nodes. Key updates are made by the nodes in random intervals, i.e.\ changes made in the PLC web interface are not applied immediately!
+After upload of the public key, it may take up to about 1~hour until the new key gets distributed to all \noun{NorNet Core} research nodes. Key updates are made by the nodes in random intervals (by the Node Manager -- to be described in Section~\ref{sec:Node-Manager}), i.e.\ changes made in the PLC web interface are not applied immediately!
 
 
 % ===========================================================================
@@ -570,7 +570,7 @@ After upload of the public key, it may take up to about 1~hour until the new key
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.90\columnwidth]{%
+\includegraphics[width=0.95\columnwidth]{%
    Images/PDF/Screenshot-PLC-Sites.pdf}
 \end{center}
 \caption{Sites}
@@ -578,12 +578,12 @@ After upload of the public key, it may take up to about 1~hour until the new key
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Information about the available \noun{NorNet Core} sites are provided under the ``Sites'' section, as shown in Figure~\ref{cap:PLC-Sites}. The overview table just contains the sites' full names (e.g.\ Simula Research Laboratory) and abbreviation (e.g.\ SRL). Details on a site can be found by clicking on a site's label.
+Information about the available \noun{NorNet Core} sites is provided in the ``Sites'' section, as shown in Figure~\ref{cap:PLC-Sites}. The overview table just contains the sites' full names (e.g.\ Simula Research Laboratory) and abbreviation (e.g.\ SRL). Details on a site can be found by clicking on a site's label.
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.90\columnwidth]{%
+\includegraphics[width=0.95\columnwidth]{%
    Images/PDF/Screenshot-PLC-Sites-HU.pdf}
 \end{center}
 \caption{Sites $\rightarrow$ Hainan University~(HU)}
@@ -591,7 +591,7 @@ Information about the available \noun{NorNet Core} sites are provided under the 
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for the Hainan University\index{Hainan University} site. Particularly, it contains data such as the site's URL, the location, the research nodes and the users at at site. \noun{NorNet}-specific information is stored in custom tags.
+Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for the Hainan University\index{Hainan University} site. Particularly, it contains data such as the site's URL, the location, the research nodes and the users at the site. \noun{NorNet}-specific information is stored in custom tags.
 
 
 % ===========================================================================
@@ -602,7 +602,7 @@ Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for th
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.90\columnwidth]{%
+\includegraphics[width=0.95\columnwidth]{%
    Images/PDF/Screenshot-PLC-Nodes.pdf}
 \end{center}
 \caption{Nodes}
@@ -613,7 +613,7 @@ Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for th
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.90\columnwidth]{%
+\includegraphics[width=0.95\columnwidth]{%
    Images/PDF/Screenshot-PLC-Node-julenisse.pdf}
 \end{center}
 \caption{Nodes $\rightarrow$ Node julenisse.uia.nornet}
@@ -624,7 +624,7 @@ Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for th
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.90\columnwidth]{%
+\includegraphics[width=0.95\columnwidth]{%
    Images/PDF/Screenshot-PLC-Node-julenisse-Interface.pdf}
 \end{center}
 \caption{Nodes $\rightarrow$ Node julenisse.uia.nornet $\rightarrow$ Interface~10.1.7.100}
