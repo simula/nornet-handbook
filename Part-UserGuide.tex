@@ -319,7 +319,7 @@ The following examples give a short overview of what is possible with SSH. Note,
 \subsubsection{Using Secure Shell}
 % ---------------------------------------------------------------------------
 
-An SSH remote shell connection to the gatekeeper server\index{Gatekeeper!Secure Shell} can be established e.g.\ by:
+An SSH remote shell connection to the gatekeeper server\index{Gatekeeper!Secure Shell} can be established e.g.\ by the \texttt{ssh}\index{\texttt{ssh}} command:
 \begin{lstlisting}
 ssh ola@gatekeeper.nntb.so
 \end{lstlisting}
@@ -330,7 +330,7 @@ for user ``ola''. For login, the password is required. Key-based authentication 
 \subsubsection{Using Secure Copy}
 % ---------------------------------------------------------------------------
 
-Secure Copy\nomenclature{SCP}{Secure Copy}\index{Secure Copy}~(SCP\index{SCP|see{Secure Copy}}) uses SSH to transfer files between machines, i.e.\ it is possible to copy files from the local machine to the gatekeeper\index{Gatekeeper!Secure Copy} and vice versa.
+Secure Copy\nomenclature{SCP}{Secure Copy}\index{Secure Copy}~(SCP\index{SCP|see{Secure Copy}}) uses SSH to transfer files between machines, i.e.\ it is possible to copy files from the local machine to the gatekeeper\index{Gatekeeper!Secure Copy} and vice versa. The corresponding command is named \texttt{scp}\index{\texttt{scp}}.
 
 To copy a file \texttt{test.data} from the local machine to the gatekeeper server, use for example:
 \begin{lstlisting}
@@ -363,13 +363,36 @@ Of course, copying from a remote to another remote machine would work as well.
 \subsubsection{Using Remote Synchronisation}
 % ---------------------------------------------------------------------------
 
-\index{Gatekeeper!Remote Synchronisation}
+SCP only copies files and directories. When working with \noun{NorNet Core} experiment results, it becomes handy to synchronise files and directories, i.e.\ only copy data when it has actually been updated. This functionality is provided by the texttt{rsync}\index{\texttt{rsync}} command\index{Gatekeeper!Remote Synchronisation}.
 
-rsync
+To synchronise the directory \texttt{experiment1/results/} from the gatekeeper to the local machine use for example:
+\begin{lstlisting}
+rsync -a -v -z --partial --progress --delete \
+ ola@gatekeeper.nntb.so:experiment1/results/ experiment1/results/
+\end{lstlisting}
+The following options are of interest:
+\begin{itemize}
+ \item ``-a'': recursive synchronisation.
+ \item ``-v'': verbose output.
+ \item ``-z'': use compression for improve transfer speed over slow connections. However, it comes of course at the cost of increased CPU utilisation.
+ \item ``--partial'': allow to resume file transfer after interruption. For example, having transferred 99\% of 1~GiB just needs the transfer the remaining 1\% after aborting and restarting \texttt{rsync}. Otherwise, the transfer of this file will restart from scratch.
+ \item ``--progress': shows the progress of the transfer.
+ \item ``--delete'': deletes files that are not existing any more in the source directory. Warning: this option can be disastrous when providing the wrong destination (e.g.\ the user's home directory). Use this option with care!
+\end{itemize}
+
+Similarly, data can be synchronised from the local machine to the gatekeeper:
+\begin{lstlisting}
+rsync -a -v -z --partial --progress experiment1/ \
+ ola@gatekeeper.nntb.so:experiment1/
+\end{lstlisting}
+
+
+% ---------------------------------------------------------------------------
+\subsubsection{Tunnelling TCP Connections}
+% ---------------------------------------------------------------------------
 
 tunnel
 
-examples
 
 
 % ---------------------------------------------------------------------------
