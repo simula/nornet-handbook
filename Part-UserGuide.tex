@@ -312,20 +312,56 @@ A \noun{NorNet Core} user needs access into the \noun{NorNet Core} network. The 
 
 The gatekeeper server\index{Gatekeeper} provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
 
+The following examples give a short overview of what is possible with SSH. Note, that they are not meant to be complete. Refer to the manual page of \texttt{ssh}\footnote{SSH manual page: \texttt{\href{man:ssh}{man ssh}}.} and various SSH tutorials in the Internet for further information.
 
+
+% ---------------------------------------------------------------------------
 \subsubsection{Using Secure Shell}
+% ---------------------------------------------------------------------------
 
-\index{Gatekeeper!Secure Shell}
+An SSH remote shell connection to the gatekeeper server\index{Gatekeeper!Secure Shell} can be established e.g.\ by:
+\begin{lstlisting}
+ssh ola@gatekeeper.nntb.so
+\end{lstlisting}
+for user ``ola''. For login, the password is required. Key-based authentication will be explained in Subsubsection~\ref{subsub:Key-Based-Authentication}.
 
-OpenSSH
 
-
+% ---------------------------------------------------------------------------
 \subsubsection{Using Secure Copy}
+% ---------------------------------------------------------------------------
 
-\index{Gatekeeper!Secure Copy}
+Secure Copy\nomenclature{SCP}{Secure Copy}\index{Secure Copy}~(SCP\index{SCP|see{Secure Copy}}) uses SSH to transfer files between machines, i.e.\ it is possible to copy files from the local machine to the gatekeeper\index{Gatekeeper!Secure Copy} and vice versa.
+
+To copy a file \texttt{test.data} from the local machine to the gatekeeper server, use for example:
+\begin{lstlisting}
+ssh test.data ola@gatekeeper.nntb.so:
+\end{lstlisting}
+Note the colon (i.e.\ ``:''!). Without this colon, ssh will behave like a local file copy (i.e.\ \texttt{cp}) and just create a local copy of \texttt{test.data} with name \text{ola@gatekeeper.nntb.so}. SCP will store the file in the home directory (the default place) of the gatekeeper server. A different directory can be specified after the colon, e.g.\ \texttt{directory/subdirectory} (note, that these directories must exist):
+\begin{lstlisting}
+ssh test.data ola@gatekeeper.nntb.so:directory/subdirectory/
+\end{lstlisting}
+It is also possible to provide a file name for the destination (e.g.\ \texttt{my-first-test.data}):
+\begin{lstlisting}
+ssh test.data ola@gatekeeper.nntb.so:directory/my-first_test.data
+\end{lstlisting}
+SCP can also copy complete directories, using the ``-r'' option for recursive copy:
+\begin{lstlisting}
+ssh -r test-directory ola@gatekeeper.nntb.so:
+\end{lstlisting}
+This will copy the whole directory \texttt{test-directory} to the gatekeeper.
+
+Similarly, the reverse direction -- i.e.\ from the gatekeeper to the local machine -- can be used:
+\begin{lstlisting}
+ssh ola@gatekeeper.nntb.so:test.data .
+ssh ola@gatekeeper.nntb.so:test.data some-local-directory/
+ssh -r ola@gatekeeper.nntb.so:my-test-directory/ .
+\end{lstlisting}
+Of course, copying from a remote to another remote machine would work as well.
 
 
+% ---------------------------------------------------------------------------
 \subsubsection{Using Remote Synchronisation}
+% ---------------------------------------------------------------------------
 
 \index{Gatekeeper!Remote Synchronisation}
 
@@ -336,9 +372,28 @@ tunnel
 examples
 
 
+% ---------------------------------------------------------------------------
 \subsubsection{Changing the Password}
+% ---------------------------------------------------------------------------
 
 Once logged in the the gatekeeper server, the user can change the password\index{Password}\index{Gatekeeper!Password Change} with the \texttt{passwd} command. It asks for the old password and twice for the new one. If both inputs of the new password are equal, the password is updated. The user is required to chose a ``good'' password for the gatekeeper, since it is exposed to the outside Internet.
+
+
+% ---------------------------------------------------------------------------
+\subsubsection{Key-Based Authentication}
+\label{subsub:Key-Based-Authentication}
+% ---------------------------------------------------------------------------
+
+Instead of typing the password each time for login, the user can also create a SSH public/private key pair on the local machine (i.e.\ the machine used to access the gatekeeper server). By storing the public key in \texttt{.ssh/authorized\_keys} on the gatekeeper server, the user can use his private key to authenticate to the gatekeeper instead of using the password. This is particularly useful when using script-based login.
+
+% 
+% To create a public/private key pair, the following commands ca
+% 
+% The following example can be used to configure key-based authentication. It is supposed to run on the user's machine:
+% \begin{lstlisting}
+% ssh-keygen -f ~/.ssh/gatekeeper
+% cat ~/.ssh/gatekeeper.pub
+% \end{lstlisting}
 
 
 
