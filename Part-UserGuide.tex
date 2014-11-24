@@ -402,14 +402,37 @@ rsync -a -v -z --partial --progress experiment1/ \
 
 Instead of typing the password each time for login, the user can also create a SSH public/private key pair on the local machine (i.e.\ the machine used to access the Gatekeeper server). By storing the public key in \texttt{.ssh/authorized\_keys} on the Gatekeeper server, the user can use his private key to authenticate to the Gatekeeper instead of using the password. This is particularly useful when using script-based login.
 
-% 
-% To create a public/private key pair, the following commands ca
-% 
-% The following example can be used to configure key-based authentication. It is supposed to run on the user's machine:
-% \begin{lstlisting}
-% ssh-keygen -f ~/.ssh/gatekeeper
-% cat ~/.ssh/gatekeeper.pub
-% \end{lstlisting}
+To create a public/private key pair, the command \texttt{ssh-keygen}\index{\texttt{ssh-keygen}}\footnote{See also \href{man:ssh-keygen}{\texttt{man ssh-keygen}}.} is used:
+\begin{lstlisting}
+ssh-keygen -P "" -f ~/.ssh/gatekeeper
+\end{lstlisting}
+The following options are of interest:
+\begin{itemize}
+ \item ``-P'': specifies the passphrase for the private key. "" sets no passphrase; this is necessary to use the key later in scripts.
+ \item ``-f'': provides the output file prefix. In this case, the private key will be stored in \texttt{~/.ssh/gatekeeper} and the corresponding public key in \texttt{~/.ssh/gatekeeper.pub}.
+\end{itemize}
+
+The public key (in this example: \texttt{~/.ssh/gatekeeper.pub}) is just a text file with one long line. It can be displayed e.g.\ with:
+\begin{lstlisting}
+cat ~/.ssh/gatekeeper.pub
+\end{lstlisting}
+It should be something like ``ssh-rsa <characters and numbers> <user@host>''.
+
+To use this public key for authentication, log into the Gatekeeper and append the key line to the file \texttt{~/.ssh/authorized\_keys}. This can e.g.\ by done by an arbitrary text editor that is available on the Gatekeeper, e.g.\
+\texttt{emacs}\index{\texttt{emacs}},
+\texttt{joe}\index{\texttt{joe}},
+\texttt{nano}\index{\texttt{nano}} or
+\texttt{vi}\index{\texttt{vi}}. If the file \texttt{~/.ssh/authorized\_keys}, it can just be created. After creating the file, it is necessary to check the access permissions:
+\begin{lstlisting}
+chmod 600 ~/.ssh/authorized_keys
+\end{lstlisting}
+This ensures that only the owner (and root, of course) can read or modify it. 
+
+The Gatekeeper should now be ready for public/private key-based authentication. From the local machine, now use
+\begin{lstlisting}
+ssh -i ~/.ssh/gatekeeper ola@gatekeeper.nntb.no:
+\end{lstlisting}
+to log into the Gatekeeper. ``-i'' specifies the private key that SSH should use for authentication. If everything is working, \texttt{ssh} should log into the Gatekeeper without need for entering the password. Note, that SSH may not complain if the private key is not found. Instead, it will try password-based authentication. If this is the case, check the provided file name of the private key.
 
 
 % ---------------------------------------------------------------------------
