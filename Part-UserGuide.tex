@@ -272,12 +272,12 @@ In this chapter, the user part of accessing and using \noun{NorNet Core} is desc
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}
 \begin{center}
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|l||l|l|}
  \hline
  Server             & User Name  & Password \\ \hline
  \hline
- gatekeeper.nntb.no (Gatekeeper) & ola                                                               & some-secret-password \\ \hline
- plc.simula.nornet  (PLC)        & \href{mailto:ola.nordmann@example.com}{ola.nordmann@example.com}  & some-secret-password \\ \hline 
+ \href{ssh://gatekeeper.nntb.no}{gatekeeper.nntb.no}\index{gatekeeper.nntb.no}~(Gatekeeper) & ola                                                               & some-secret-password \\ \hline
+ \href{https://plc.simula.nornet}{plc.simula.nornet}\index{plc.simula.nornet}~(PLC)         & \href{mailto:ola.nordmann@example.com}{ola.nordmann@example.com}  & another-password     \\ \hline
 \end{tabular}
 \end{center}
 \caption{An Example Accounts Table}
@@ -287,12 +287,11 @@ In this chapter, the user part of accessing and using \noun{NorNet Core} is desc
 
 A new \noun{NorNet Core} user will at least receive the following accounts:
 \begin{itemize}
- \item Gatekeeper Account providing access to a Linux machine that is connected to \noun{NorNet Core} and the outside Internet.
- \item PLC Account providing access to the PLC (see Subsection~\ref{sub:The-Testbed-Management}). Note, that the PLC user name \emph{must} be a valid e-mail address of the user.
+ \item The Gatekeeper account providing access to a Linux machine that is connected to \noun{NorNet Core} and the outside Internet.
+ \item The PLC account providing access to the PLC (see Subsection~\ref{sub:The-Testbed-Management}). Note, that the PLC user name \emph{must} be a valid e-mail address of the user.
 \end{itemize}
-Possibly, further accounts will be provided, e.g.\ for web server, Wiki servers, etc.. Such accounts are optional and only provided when needed.
-Table~\ref{tbl:An-Example-Accounts-Table} provides an example for the user Ola Nordmann.
-
+Possibly, further accounts will be provided, e.g.\ for web server, wiki server, etc.. Such accounts are optional and only provided when needed.
+Table~\ref{tbl:An-Example-Accounts-Table} shows an example for the user Ola Nordmann.
 Note, that users are \emph{required} to change their initial passwords as soon as possible!
 
 
@@ -310,9 +309,9 @@ A \noun{NorNet Core} user needs access into the \noun{NorNet Core} network. The 
 \label{sub:The-Gatekeeper}
 % ===========================================================================
 
-The Gatekeeper server\index{Gatekeeper} provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the Gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
+The Gatekeeper server\index{Gatekeeper} \texttt{gatekeeper.nntb.no}\index{gatekeeper.nntb.no} provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the Gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
 
-The following examples give a short overview of what is possible with SSH. Note, that they are not meant to be complete. Refer to the manual page of \texttt{ssh}\footnote{SSH manual page: \texttt{\href{man:ssh}{man ssh}}.} and various SSH tutorials in the Internet for further information.
+The following examples give a short overview of what is possible with SSH. Note, that they are not meant to be complete. Refer to the manual page of \texttt{ssh}\footnote{\texttt{ssh} Manual Page: \texttt{\href{man:ssh}{man ssh}}.} and various SSH tutorials in the Internet for further information.
 
 
 % ---------------------------------------------------------------------------
@@ -324,7 +323,7 @@ An SSH remote shell connection to the Gatekeeper server\index{Gatekeeper!Secure 
 \begin{lstlisting}
 ssh ola@gatekeeper.nntb.no
 \end{lstlisting}
-for user ``ola''. For login, the password is required. Key-based authentication will be explained in Subsubsection~\ref{subsub:Key-Based-Authentication}.
+for user ``ola''. Of course, the user has to set his own Gatekeeper username here. For login, the corresponding  is required. Key-based authentication will be explained in Subsubsection~\ref{subsub:Key-Based-Authentication}.
 
 
 % ---------------------------------------------------------------------------
@@ -342,38 +341,39 @@ Secure Copy\nomenclature{SCP}{Secure Copy}\index{Secure Copy}~(SCP\index{SCP|see
 
 To copy a file \texttt{test.data} from the local machine to the Gatekeeper server, use for example:
 \begin{lstlisting}
-ssh test.data ola@gatekeeper.nntb.no:
+scp test.data ola@gatekeeper.nntb.no:
 \end{lstlisting}
-Note the colon (i.e.\ ``:''!). Without this colon, ssh will behave like a local file copy (i.e.\ \texttt{cp}) and just create a local copy of \texttt{test.data} with name \text{ola@gatekeeper.nntb.no}. SCP will store the file in the home directory (the default place) of the Gatekeeper server. A different directory can be specified after the colon, e.g.\ \texttt{directory/subdirectory} (note, that these directories must exist):
+Note the colon (i.e.\ ``:'')! Without this colon, ssh would behave like a local file copy (i.e.\ \texttt{cp}\index{\texttt{cp}}) and just create a local copy of \texttt{test.data} with name \text{ola@gatekeeper.nntb.no}. \texttt{scp} will store the file in the home directory (the default place) of the Gatekeeper server. A different directory can be specified after the colon, e.g.\ \texttt{directory/subdirectory} (note, that these directories must exist):
 \begin{lstlisting}
-ssh test.data ola@gatekeeper.nntb.no:directory/subdirectory/
+scp test.data ola@gatekeeper.nntb.no:directory/subdirectory/
 \end{lstlisting}
-It is also possible to provide a file name for the destination (e.g.\ \texttt{my-first-test.data}):
+It is furthermore possible to provide a file name for the destination (e.g.\ \texttt{my-first-test.data}):
 \begin{lstlisting}
-ssh test.data ola@gatekeeper.nntb.no:directory/my-first_test.data
+scp test.data ola@gatekeeper.nntb.no:directory/my-first_test.data
 \end{lstlisting}
-SCP can also copy complete directories, using the ``-r'' option for recursive copy:
+\texttt{scp} can also copy complete directories, by using the ``-r'' option for a recursive copy:
 \begin{lstlisting}
-ssh -r test-directory ola@gatekeeper.nntb.no:
+scp -r test-directory ola@gatekeeper.nntb.no:
 \end{lstlisting}
-This will copy the whole directory \texttt{test-directory} to the Gatekeeper.
+This will copy the whole directory \texttt{test-directory}, including all of its subdirectories, to the Gatekeeper.
 
-Similarly, the reverse direction -- i.e.\ from the Gatekeeper to the local machine -- can be used:
+Similarly, the reverse direction -- i.e.\ from the Gatekeeper to the local machine -- can be handled as well:
 \begin{lstlisting}
-ssh ola@gatekeeper.nntb.no:test.data .
-ssh ola@gatekeeper.nntb.no:test.data some-local-directory/
-ssh -r ola@gatekeeper.nntb.no:my-test-directory/ .
+scp ola@gatekeeper.nntb.no:test.data .
+scp ola@gatekeeper.nntb.no:test.data some-local-directory/
+scp -r ola@gatekeeper.nntb.no:my-test-directory/ .
 \end{lstlisting}
 Of course, copying from a remote to another remote machine would work as well.
+For further possibilities, also see the manual page of \texttt{scp}\footnote{\texttt{scp} Manual Page: \texttt{\href{man:scp}{man scp}}.}.
 
 
 % ---------------------------------------------------------------------------
-\subsubsection{Using Remote Synchronisation}
+\subsubsection{Using Remote File Synchronisation}
 % ---------------------------------------------------------------------------
 
-SCP only copies files and directories. When working with \noun{NorNet Core} experiment results, it becomes handy to synchronise files and directories, i.e.\ only copy data when it has actually been updated. This functionality is provided by the texttt{rsync}\index{\texttt{rsync}} command\index{Gatekeeper!Remote Synchronisation}.
+SCP only copies files and directories. When working with \noun{NorNet Core} experiment results, it becomes handy to synchronise files and directories, i.e.\ to just transfer data that needs to be transferred. This functionality is provided by the texttt{rsync}\index{\texttt{rsync}} command\index{Gatekeeper!Remote Synchronisation}. See also the manual page of \texttt{rsync}\footnote{\texttt{rsync} Manual Page: \texttt{\href{man:rsync}{man rsync}}.} for details.
 
-To synchronise the directory \texttt{experiment1/results/} from the Gatekeeper to the local machine use for example:
+In order to synchronise the directory \texttt{experiment1/results/} from the Gatekeeper to the local machine, use for example:
 \begin{lstlisting}
 rsync -a -v -z --partial --progress --delete \
  ola@gatekeeper.nntb.no:experiment1/results/ experiment1/results/
@@ -382,10 +382,10 @@ The following options are of interest:
 \begin{itemize}
  \item ``-a'': recursive synchronisation.
  \item ``-v'': verbose output.
- \item ``-z'': use compression for improve transfer speed over slow connections. However, it comes of course at the cost of increased CPU utilisation.
- \item ``--partial'': allow to resume file transfer after interruption. For example, having transferred 99\% of 1~GiB just needs the transfer the remaining 1\% after aborting and restarting \texttt{rsync}. Otherwise, the transfer of this file will restart from scratch.
- \item ``--progress': shows the progress of the transfer.
- \item ``--delete'': deletes files that are not existing any more in the source directory. Warning: this option can be disastrous when providing the wrong destination (e.g.\ the user's home directory). Use this option with care!
+ \item ``-z'': use compression for improving the transfer speed over slow connections. However, it comes of course at the cost of increased CPU utilisation.
+ \item ``-\--partial'': allow to resume a file transfer after interruption. For example, having transferred 99\% of 1~GiB just needs the transfer the remaining 1\% after aborting and restarting \texttt{rsync}. Otherwise, the transfer of this file would restart from scratch.
+ \item ``-\--progress': shows the progress of the transfer.
+ \item ``-\--delete'': deletes files that are not existing any more in the source directory. Warning: this option may be disastrous when mistakenly providing the wrong destination (e.g.\ the user's home directory). Use this option with care!
 \end{itemize}
 
 Similarly, data can be synchronised from the local machine to the Gatekeeper:
@@ -396,37 +396,39 @@ rsync -a -v -z --partial --progress experiment1/ \
 
 
 % ---------------------------------------------------------------------------
-\subsubsection{Key-Based Authentication}
+\subsubsection{Configuring Key-Based Authentication}
 \label{subsub:Key-Based-Authentication}
 % ---------------------------------------------------------------------------
 
-Instead of typing the password each time for login, the user can also create a SSH public/private key pair on the local machine (i.e.\ the machine used to access the Gatekeeper server). By storing the public key in \texttt{.ssh/authorized\_keys} on the Gatekeeper server, the user can use his private key to authenticate to the Gatekeeper instead of using the password. This is particularly useful when using script-based login.
+Instead of typing the password for login each time, the user can also create a SSH public/private key pair on the local machine (i.e.\ the machine used to access the Gatekeeper server). By storing the public key on the Gatekeeper server in \texttt{.ssh/authorized\_keys}, the user can use his private key to authenticate to the Gatekeeper instead of using his password. This is particularly useful when using SSH in scripts.
 
-To create a public/private key pair, the command \texttt{ssh-keygen}\index{\texttt{ssh-keygen}}\footnote{See also \href{man:ssh-keygen}{\texttt{man ssh-keygen}}.} is used:
+To create a public/private key pair, the command \texttt{ssh-keygen}\index{\texttt{ssh-keygen}} is used:
 \begin{lstlisting}
 ssh-keygen -P "" -f ~/.ssh/gatekeeper
 \end{lstlisting}
 The following options are of interest:
 \begin{itemize}
- \item ``-P'': specifies the passphrase for the private key. "" sets no passphrase; this is necessary to use the key later in scripts.
- \item ``-f'': provides the output file prefix. In this case, the private key will be stored in \texttt{~/.ssh/gatekeeper} and the corresponding public key in \texttt{~/.ssh/gatekeeper.pub}.
+ \item ``-P'': specifies the passphrase for the private key. "" sets no passphrase; this is necessary to use the key in scripts later.
+ \item ``-f'': provides the output file prefix. In this case, the private key will be stored in \texttt{\textasciitilde/.ssh/gatekeeper} and the corresponding public key in \texttt{\textasciitilde/.ssh/gatekeeper.pub}.
 \end{itemize}
+Also see the manual page\footnote{\texttt{ssh-keygen} Manual Page \href{man:ssh-keygen}{\texttt{man ssh-keygen}}.} of \texttt{ssh-keygen} for further options.
 
-The public key (in this example: \texttt{~/.ssh/gatekeeper.pub}) is just a text file with one long line. It can be displayed e.g.\ with:
+
+The public key (in this example: \texttt{\textasciitilde/.ssh/gatekeeper.pub}) is just a text file with one long line. It can be displayed e.g.\ with:
 \begin{lstlisting}
 cat ~/.ssh/gatekeeper.pub
 \end{lstlisting}
 It should be something like ``ssh-rsa <characters and numbers> <user@host>''.
 
-To use this public key for authentication, log into the Gatekeeper and append the key line to the file \texttt{~/.ssh/authorized\_keys}. This can e.g.\ by done by an arbitrary text editor that is available on the Gatekeeper, e.g.\
+To use this public key for authentication, log into the Gatekeeper and append the key line to the file \texttt{\textasciitilde/.ssh/authorized\_keys}. This can e.g.\ by done by an arbitrary text editor that is available on the Gatekeeper, e.g.\
 \texttt{emacs}\index{\texttt{emacs}},
 \texttt{joe}\index{\texttt{joe}},
 \texttt{nano}\index{\texttt{nano}} or
-\texttt{vi}\index{\texttt{vi}}. If the file \texttt{~/.ssh/authorized\_keys}, it can just be created. After creating the file, it is necessary to check the access permissions:
+\texttt{vi}\index{\texttt{vi}}. If the file \texttt{\textasciitilde/.ssh/authorized\_keys} does not yet exist, it can just be created. After creating the file, it is necessary to check the access permissions with \texttt{chmod}\index{\texttt{chmod}}:
 \begin{lstlisting}
 chmod 600 ~/.ssh/authorized_keys
 \end{lstlisting}
-This ensures that only the owner (and root, of course) can read or modify it. 
+This ensures that only the owner (and root, of course) can read or modify it. See also the manual page\footnote{\texttt{chmod} Manual Page \href{man:chmod}{\texttt{man chmod}}.} of \texttt{chmood}. Note, that without secure access permissions, the SSH daemon will refuse to apply the key configuration!
 
 The Gatekeeper should now be ready for public/private key-based authentication. From the local machine, now use
 \begin{lstlisting}
@@ -447,23 +449,23 @@ ssh ola@gatekeeper.nntb.no \
 \end{lstlisting}
 This code example does the following:
 \begin{itemize}
- \item An SSH connection is established to the Gatekeeper server (see Subsubsection~\ref{subsub:Gatekeeper-Using-SSH}).
+ \item An SSH connection is established to the Gatekeeper server \href{ssh://gatekeeper.nntb.no}{gatekeeper.nntb.no}\index{gatekeeper.nntb.no}, as explained in Subsubsection~\ref{subsub:Gatekeeper-Using-SSH}.
  
- \item TCP port~2000 of the local machine (i.e.\ the machine running this command) is forwarded via the Gatekeeper to port~443 of the PLC \href{https://plc.simula.nornet}{plc.simula.nornet}\index{plc.simula.nornet}. Note, that \href{https://plc.simula.nornet}{plc.simula.nornet}\index{plc.simula.nornet} is the DNS name of the PLC. Since the Gatekeeper uses the \noun{NorNet Core} DNS service, it can resolve this \noun{NorNet}-internal name (see Subsubsection~\ref{subsub:Tunnelbox-Name-Resolution}).
+ \item TCP port~2000 of the local machine (i.e.\ the machine running this command) is forwarded via the Gatekeeper to port~443 of the PLC server \href{https://plc.simula.nornet}{plc.simula.nornet}\index{plc.simula.nornet}. Note, that \href{https://plc.simula.nornet}{plc.simula.nornet}\index{plc.simula.nornet} is the DNS name of the PLC. Since the Gatekeeper uses the \noun{NorNet Core} DNS service, it can resolve this \noun{NorNet}-internal name (see Subsubsection~\ref{subsub:Tunnelbox-Name-Resolution}).
  
- \item Similarly, TCP port~2001 of the local machine is forwarded to port~80 of the Monitor server \href{http://monitor.simula.nornet}{monitor.simula.nornet}.
+ \item Similarly, TCP port~2001 of the local machine is forwarded to port~80 of the Monitor server \href{http://monitor.simula.nornet}{monitor.simula.nornet}\index{monitor.simula.nornet}.
 \end{itemize}
-By establishing a TCP connection to port~2000 or port~2001 of the local machine, the user can now access the \noun{NorNet}-internal services of PLC or Monitor server.
+By establishing a TCP connection to port~2000 or port~2001 of the local machine, the user can now access the \noun{NorNet}-internal services of the PLC or the Monitor server (to be explained later in Section~\ref{sec:The-PLC} and Section~\ref{sec:Kontrollsenteret}).
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{algorithm}
 \lstinputlisting{CodeSnippets/Gatekeeper.sh}
-\caption{Gatekeeper Access Script Example}
+\caption{A Gatekeeper Access Script Example}
 \label{lst:Gatekeeper-Access-Script-Example}
 \end{algorithm}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Since the establishment of the port forwarding above is a recurring task for almost all \noun{NorNet Core} users, it is strongly recommended to write a small script to do this task. An example is provided in Listing~\ref{lst:Gatekeeper-Access-Script-Example}.
+Since the establishment of the port forwarding above is a recurring task for almost all \noun{NorNet Core} users, it is strongly recommended to write a small script to perform this task. An example is provided in Listing~\ref{lst:Gatekeeper-Access-Script-Example}.
 
 
 
@@ -486,31 +488,6 @@ Dynamic configuration is intended for short-term usage. For long-term usage of d
 % ===========================================================================
 
 An access to the \noun{NorNet Core} network via Virtual Private Network\nomenclature{VPN}{Virtual Private Network}\index{Virtual Private Network}~(VPN\index{VPN|see{Virtual Private Network}}) is planned but not yet implemented.
-
-
-
-% ###########################################################################
-\section{Further Resources}
-% ###########################################################################
-
-% ===========================================================================
-\subsection{Mailing Lists}
-% ===========================================================================
-
-\url{https://sympa.uio.no/ifi.uio.no/modindex/nornet-announcements}
-
-\url{https://sympa.uio.no/ifi.uio.no/modindex/nornet-users}
-
-...
-
-
-% ===========================================================================
-\subsection{Sites Overview}
-% ===========================================================================
-
-\url{https://www.nntb.no/pub/nornet-configuration/NorNetCore-Sites.html}
-
-...
 
 
 
@@ -650,6 +627,31 @@ key
 \section{Graphite, etc.}
 \label{sec:...}
 % ###########################################################################
+
+...
+
+
+
+% ###########################################################################
+\section{Further Resources}
+% ###########################################################################
+
+% ===========================================================================
+\subsection{Mailing Lists}
+% ===========================================================================
+
+\url{https://sympa.uio.no/ifi.uio.no/modindex/nornet-announcements}
+
+\url{https://sympa.uio.no/ifi.uio.no/modindex/nornet-users}
+
+...
+
+
+% ===========================================================================
+\subsection{Sites Overview}
+% ===========================================================================
+
+\url{https://www.nntb.no/pub/nornet-configuration/NorNetCore-Sites.html}
 
 ...
 
