@@ -231,7 +231,7 @@ In order to achieve the testbed availability described in Section~\ref{sec:Desig
 
 While the web interface presents a very detailed and fine-grained view of \noun{NorNet Core}, a more illustrative view was intended to give a quick overview of the site statuses for both administrators and users of the testbed (i.e.\ the researchers). Therefore, we -- as a first step -- applied the \noun{NagMap}\footnote{\noun{NagMap}: \url{https://github.com/hecko/nagmap/}.} plug-in for \noun{Nagios}, which provided a map view of the \noun{NorNet Core} testbed. However, \noun{NagMap} just produced a quite simple projection of the sites and their connections (i.e.\ the tunnels) to a \noun{Google Maps}\footnote{\noun{Google Maps}: \url{https://maps.google.no/}.} satellite map. Particularly due to the fully-connected mesh topology of the tunnels (see Section~\ref{sec:Design}), the link view, however, became relatively confusing. Therefore, we have developed our own plug-in named \noun{NorNet-Kontrollsenter}.
 
-\noun{NorNet-Kontrollsenter} uses \noun{Apache}/PHP~\cite{ApacheDoc} to access the recorded \noun{Nagios} status information. It then provides an HTML page with the results. That is, the plug-in runs on the monitoring system itself. The results can then be accessed from a web server running on the same system, while a web browser on another machine can display the corresponding webpage (as shown in Figure~\ref{cap:Kontrollsenteret}). The returned web page with the results makes use of JavaScript, AJAX (Asynchronous JavaScript and XML) as well as SVG (Scalable Vector Graphics) with JavaScript to provide dynamic updates without having to reload the whole page. Furthermore, instead of tying the map display to a certain map service, we apply \noun{OpenLayers}~\cite{OpenLayersDoc}. It provides a service-independent mapping and layering library in JavaScript; the display can dynamically change between map services (currently, we apply 
+\noun{NorNet-Kontrollsenter}\index{Kontrollsenteret}\index{NorNet-Kontrollsenter} uses \noun{Apache}/PHP~\cite{ApacheDoc} to access the recorded \noun{Nagios} status information. It then provides an HTML page with the results. That is, the plug-in runs on the monitoring system itself. The results can then be accessed from a web server running on the same system, while a web browser on another machine can display the corresponding webpage (as shown in Figure~\ref{cap:Kontrollsenteret}). The returned web page with the results makes use of JavaScript, AJAX (Asynchronous JavaScript and XML) as well as SVG (Scalable Vector Graphics) with JavaScript to provide dynamic updates without having to reload the whole page. Furthermore, instead of tying the map display to a certain map service, we apply \noun{OpenLayers}~\cite{OpenLayersDoc}. It provides a service-independent mapping and layering library in JavaScript; the display can dynamically change between map services (currently, we apply 
 \noun{Open Street Map}\footnote{\noun{Open Street Map}: \url{http://www.openstreetmap.org/}.},
 \noun{Google Maps} and
 \noun{Bing Maps}\footnote{\noun{Bing Maps}: \url{http://www.bing.com/maps/}.}). Furthermore, overlaying functionality is provided. That is, overlays like the \noun{Open Weather Map}\footnote{\noun{Open Weather Map}: \url{http://www.openweathermap.org/}.} overlay can add additional information to the map (in Figure~\ref{cap:Kontrollsenteret}: the current weather as well as clouds and precipitation forecasts). In the future, we plan to use this feature for more detailed network status information. Map services and the visibility of overlays can be changed interactively.
@@ -593,7 +593,7 @@ Information about the available \noun{NorNet Core} sites\index{Sites} are provid
 
 Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for the Hainan University\index{Hainan University} site. Particularly, it contains data such as the site's URL\nomenclature{URL}{Uniform Resource Locator}\index{Uniform Resource Locator}\index{URL|see{Uniform Resource Locator}}, the location, the research nodes and the users at at site. \noun{NorNet}-specific information is stored in custom tags. Some important tags are:
 \begin{itemize}
- \item ``nornet\_is\_managed\_site''\index{nornet\_is\_managed\_site}: Denoted whether the site is a \noun{NorNet Core}-managed site~(1) or not~(0). \noun{NorNet Core}-managed sites are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the sites should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+ \item ``nornet\_is\_managed\_site''\index{nornet\_is\_managed\_site}: Denotes whether the site is a \noun{NorNet Core}-managed site~(1) or not~(0). \noun{NorNet Core}-managed sites are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the sites should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
 
  \item ``nornet\_site\_utf8''\index{nornet\_site\_utf8}: The site name in UTF-8\footnote{Universal Character Set Transformation Format -- 8-bit, see also~\cite{RFC3629}.}\nomenclature{UTF-8}{Universal Character Set Transformation Format -- 8-bit}\index{UTF-8} encoding, e.g.\ \foreignlanguage{norsk}{Universitetet i Tromsø\index{Universitetet i Tromsø}} or \foreignlanguage{german}{Universität Kaiserslautern\index{Universität Kaiserslautern}}. For compatibility reasons with \noun{PlanetLab}, the site name in the site configuration must be ASCII\footnote{American Standard Code for Information Interchange, see also~\cite{Fis00}.}\nomenclature{ASCII}{American Standard Code for Information Interchange}\index{ASCII}. Therefore, names with special characters (e.g.\ Norwegian, German, etc.) can be stored in this tag.
  
@@ -661,9 +661,9 @@ The ``Nodes''\index{Nodes} section, as depicted in Figure~\ref{cap:PLC-Nodes}, p
 
 Particularly important is the Status column of the nodes table. It displays the status of each research node, according to its communication with the PLC. The following status values are important:
 \begin{itemize}
- \item ``boot''\index{boot}: The node is booted and should be up and running. This is, hopefully, the status of all nodes in the list.
- \item ``failboot''\index{failboot}: Booting has failed for some reason. The node is not usable and the \noun{NorNet Core} staff should check the node's status.
- \item ``reinstall''\index{reinstall}: The node is most likely unusable. When it boots the next time, it will run a complete reinstall. This is also the status of newly added nodes.
+ \item ``boot''\index{boot}\index{Boot State!boot}: The node is booted and should be up and running. This is, hopefully, the status of all nodes in the list.
+ \item ``failboot''\index{failboot}\index{Boot State!failboot}: Booting has failed for some reason. The node is not usable and the \noun{NorNet Core} staff should check the node's status.
+ \item ``reinstall''\index{reinstall}\index{Boot State!reinstall}: The node is most likely unusable. When it boots the next time, it will run a complete reinstall. This is also the status of newly added nodes.
 \end{itemize}
 
 
@@ -680,23 +680,23 @@ Particularly important is the Status column of the nodes table. It displays the 
 
 Clicking on a research node displays details about the node itself, as shown in Figure~\ref{cap:PLC-Node-Details} for the node julenisse.uia.nornet\index{julenisse.uia.nornet}. \noun{NorNet Core}-specific configuration settings are stored in custom tags in the PLC database, together with some ``standard'' PLC tags. Some important tags to be noted here are:
 \begin{itemize}
- \item ``arch''\index{arch}: The architecture of the system. It is currently always x86\_64 (i386 or other CPU types are not supported).
+ \item ``arch''\index{arch}\index{Tag!arch}: The architecture of the system. It is currently always x86\_64 (i386 or other CPU types are not supported).
 
- \item ``fcdistro''\index{fcdistro}: The variant of \noun{Fedora Core Linux} that runs on the node, e.g.\ ``fc18'' for version~18.
+ \item ``fcdistro''\index{fcdistro}\index{Tag!fcdistro}: The variant of \noun{Fedora Core Linux} that runs on the node, e.g.\ ``fc18'' for version~18.
 
- \item ``pldistro''\index{pldistro}: The software distribution that is installed on the research nodes. Possible values are currently ``lxc'' (stock \noun{PlanetLab}-LXC software) and ``nornet'' (the \noun{NorNet} distribution, to be introduced in Chapter~\ref{cha:Distribution}).
+ \item ``pldistro''\index{pldistro}\index{Tag!pldistro}: The software distribution that is installed on the research nodes. Possible values are currently ``lxc'' (stock \noun{PlanetLab}-LXC software) and ``nornet'' (the \noun{NorNet} distribution, to be introduced in Chapter~\ref{cha:Distribution}).
  
- \item ``nornet\_is\_managed\_node''\index{nornet\_is\_managed\_node}: Denoted whether the research node is a \noun{NorNet Core}-managed node~(1) or not~(0). \noun{NorNet Core}-managed nodes are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the nodes should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+ \item ``nornet\_is\_managed\_node''\index{nornet\_is\_managed\_node}\index{Tag!nornet\_is\_managed\_node}: Denotes whether the research node is a \noun{NorNet Core}-managed node~(1) or not~(0). \noun{NorNet Core}-managed nodes are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the nodes should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
 
- \item ``nornet\_node\_utf8''\index{nornet\_node\_utf8}: The node name in UTF-8 representation. All node names must use ASCII names in the PLC configuration. However, this tag allows to use special characters (like ``vækerø.simula.nornet''\index{vækerø.simula.nornet}); the DNS configuration can then generate appropriate Internationalised Domain Names\index{Internationalised Domain Names}\nomenclature{IDN}{Internationalised Domain Names}~(IDN\index{IDN|see{Internationalised Domain Names}}, \cite{RFC3492}) references to the ASCII version (e.g.\ ``vækerø.simula.nornet'' $\rightarrow$ ``vaekeroe.simula.nornet''\index{vaekeroe.simula.nornet}) as well.
+ \item ``nornet\_node\_utf8''\index{nornet\_node\_utf8}\index{Tag!nornet\_node\_utf8}: The node name in UTF-8 representation. All node names must use ASCII names in the PLC configuration. However, this tag allows to use special characters (like ``vækerø.simula.nornet''\index{vækerø.simula.nornet}); the DNS configuration can then generate appropriate Internationalised Domain Names\index{Internationalised Domain Names}\nomenclature{IDN}{Internationalised Domain Names}~(IDN\index{IDN|see{Internationalised Domain Names}}, \cite{RFC3492}) references to the ASCII version (e.g.\ ``vækerø.simula.nornet'' $\rightarrow$ ``vaekeroe.simula.nornet''\index{vaekeroe.simula.nornet}) as well.
  
- \item ``nornet\_node\_index''\index{nornet\_node\_index}: The node index of the node (root context).
+ \item ``nornet\_node\_index''\index{nornet\_node\_index}\index{Tag!nornet\_node\_index}: The node index of the node (root context).
  
- \item ``nornet\_node\_interface''\index{nornet\_node\_interface}: The name of the \noun{NorNet Core} network interface (usually: ``eth0'').
+ \item ``nornet\_node\_interface''\index{nornet\_node\_interface}\index{Tag!nornet\_node\_interface}: The name of the \noun{NorNet Core} network interface (usually: ``eth0'').
  
- \item ``nornet\_node\_machine\_host''\index{nornet\_node\_machine\_host}: If the research node is a virtual machine, the name of the physical host can be specified here.
+ \item ``nornet\_node\_machine\_host''\index{nornet\_node\_machine\_host}:\index{Tag!nornet\_node\_machine\_host} If the research node is a virtual machine, the name of the physical host can be specified here.
  
- \item ``nornet\_node\_machine\_display''\index{nornet\_node\_machine\_display}: If available, a URL to remotely access the display of the node can be specified here.
+ \item ``nornet\_node\_machine\_display''\index{nornet\_node\_machine\_display}\index{Tag!nornet\_node\_machine\_display}: If available, a URL to remotely access the display of the node can be specified here.
 
  \end{itemize}
 
@@ -716,25 +716,25 @@ The node details page also contains the list of network interfaces. \noun{NorNet
 
 The current version of the PLC web interface supports neither multi-homing nor IPv6. Therefore, only the IPv4 configuration of the primary ISP is found directly in this view. IPv6 configuration as well as the configuration for additional ISPs is completely stored in PLC tags:
 \begin{itemize}
- \item ``ipaddr$N$''\index{ipaddr$N$}: The IPv4 adddress of the $N+1$-th ISP. Note, that the IPv4 address of the primary interface is stored directly in the configuration, not in the tags.
+ \item ``ipaddr$N$''\index{ipaddr$N$}\index{Tag!ipaddr$N$}: The IPv4 adddress of the $N+1$-th ISP. Note, that the IPv4 address of the primary interface is stored directly in the configuration, not in the tags.
  
- \item ``netmask$N$''\index{netmask$N$}: The IPv4 network mask of the $N+1$-th ISP.
+ \item ``netmask$N$''\index{netmask$N$}\index{Tag!netmask$N$}: The IPv4 network mask of the $N+1$-th ISP.
 
- \item ``ipv6addr''\index{ipv6addr}: The IPv6 network address (i.e.\ address/prefix) of the primary ISP.
+ \item ``ipv6addr''\index{ipv6addr}\index{Tag!ipv6addr}: The IPv6 network address (i.e.\ address/prefix) of the primary ISP.
   
- \item ``ipv6\_defaultgw''\index{ipv6\_defaultgw}: The IPv6 default gateway of the primary ISP.
+ \item ``ipv6\_defaultgw''\index{ipv6\_defaultgw}\index{Tag!ipv6\_defaultgw}: The IPv6 default gateway of the primary ISP.
 
- \item ``ipv6addr\_secondaries''\index{ipv6addr\_secondaries}: A space-separated list of all other ISPs IPv6 network addresses (i.e.\ address/prefix).
+ \item ``ipv6addr\_secondaries''\index{ipv6addr\_secondaries}\index{Tag!ipv6addr\_secondaries}: A space-separated list of all other ISPs IPv6 network addresses (i.e.\ address/prefix).
  
- \item ``ipv6\_autoconf''\index{ipv6\_autoconf}: Enables (``on'') or disables (``off'') IPv6 auto-configuration. It must be turned off for \noun{NorNet Core} interfaces.
+ \item ``ipv6\_autoconf''\index{ipv6\_autoconf}\index{Tag!ipv6\_autoconf}: Enables (``on'') or disables (``off'') IPv6 auto-configuration. It must be turned off for \noun{NorNet Core} interfaces.
 
- \item ``nornet\_ifprovider\_index''\index{nornet\_ifprovider\_index}: The provider index (see Chapter~\ref{cha:Providers}) of the primary ISP.
+ \item ``nornet\_ifprovider\_index''\index{nornet\_ifprovider\_index}\index{Tag!nornet\_ifprovider\_index}: The provider index (see Chapter~\ref{cha:Providers}) of the primary ISP.
 
- \item ``nornet\_is\_managed\_interface'': Denoted whether the interface is a \noun{NorNet Core}-managed interface~(1) or not~(0). \noun{NorNet Core}-managed interfaces are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the interfaces should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+ \item ``nornet\_is\_managed\_interface''\index{nornet\_is\_managed\_interface}\index{Tag!nornet\_is\_managed\_interface}: Denotes whether the interface is a \noun{NorNet Core}-managed interface~(1) or not~(0). \noun{NorNet Core}-managed interfaces are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the interfaces should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
 
- \item ``ovs\_bridge''\index{ovs\_bridge}: This is the research nodes's network interface, as provided by \noun{Open vSwitch}\index{Open vSwitch}. It should be ``public0''.
+ \item ``ovs\_bridge''\index{ovs\_bridge}\index{Tag!ovs\_bridge}: This is the research nodes's network interface, as provided by \noun{Open vSwitch}\index{Open vSwitch}. It should be ``public0''.
 
- \item ``ifname''\index{ifname}: This is the physical interface that will be managed by \noun{Open vSwitch}\index{Open vSwitch}. It should be ``eth0''.
+ \item ``ifname''\index{ifname}\index{Tag!ifname}: This is the physical interface that will be managed by \noun{Open vSwitch}\index{Open vSwitch}. It should be ``eth0''.
 \end{itemize}
 
 Details on the research nodes, i.e.\ particularly their IP~addresses for all ISPs, can be found in Chapter~\ref{cha:Site-Details}.
@@ -745,7 +745,47 @@ Details on the research nodes, i.e.\ particularly their IP~addresses for all ISP
 \label{sub:Slices-and-Slivers}
 % ===========================================================================
 
-...
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.90\columnwidth]{%
+   Images/PDF/Screenshot-PLC-Slices.pdf}
+\end{center}
+\caption{The List of All Slices}
+\label{cap:PLC-Slices}
+\end{figure*}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.90\columnwidth]{%
+   Images/PDF/Screenshot-PLC-Slices.pdf}
+\end{center}
+\caption{My Slices $\rightarrow$ hu\_multipath}
+\label{cap:PLC-Slice-hu-multipath}
+\end{figure*}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+The slices associated with a user are listed under ``My Slices'', as shown in Figure~\ref{cap:PLC-Slices}. Note that the list contains \emph{all} slices in \noun{NorNet Core}, not just the slices of the user itself! It is possible to use the search field to filter for a certain users' slices. Details about a slice can be obtained by clicking on the slice. This will open the slice details view.
+
+An example for the slice details can be found in Figure~\ref{cap:PLC-Slice-hu-multipath} for the slice ``hu\_multipath''. Particularly, for the users associated with a slice, it allows to edit the slice description as well as a public URL. The users of \noun{NorNet Core} slices are \emph{required} to keep their slice descriptions and URLs up-to-date, in order to inform people about what is going on in their slice! This can help debugging problems when something goes wrong or causes unusual behaviour.
+
+The slice details page also allows to add/remove nodes from/to the slice.
+\\
+\textbf{Adding nodes does not work at the moment! Ask \noun{NorNet Core} staff to do this via script. Otherwise, the slivers will get no IP~configuration!}
+
+\noun{NorNet}-specific slice information is stored in the following PLC tags:
+\begin{itemize}
+ \item ``nornet\_is\_managed\_slice''\index{nornet\_is\_managed\_slice}\index{Tag!nornet\_is\_managed\_slice}: Denotes whether the research slice is a \noun{NorNet Core}-managed slice~(1) or not~(0). \noun{NorNet Core}-managed slices are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the slices should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+
+ \item ``nornet\_slice\_own\_addresses''\index{nornet\_slice\_own\_addresses}\index{Tag!nornet\_slice\_own\_addresses}: If set to ``1'', the sliver gets its own IP~addresses. This is the normal behaviour for \noun{NorNet Core} slivers that intend to use multi-homing. With ``0'', the behaviour is like for \noun{PlanetLab}, i.e.\ addresses are shared among slivers.
+
+ \item ``nornet\_slice\_node\_index''\index{nornet\_slice\_node\_index}\index{Tag!nornet\_slice\_node\_index}: This tag is a node-specific tag. That is, for each node associated with the slice, there may be a separate nornet\_slice\_node\_index tag. The tag defines the node index of the sliver. It is then used to systematically allocate the IP~addresses in case of using own IP~addresses for the sliver.
+ 
+ \item ``interface''\index{interface}\index{Tag!interface}: This node-specific tag contains the contents of a \noun{Fedora Core Linux} network interface configuration file (like \texttt{/etc/sysconfig/network-scripts/ifcfg-eth0}), as string representation of a Python dictionary. This tag is generated by the management script on the PLC, according to a site's ISP configuration and the value of the nornet\_slice\_node\_index tag. It is used by the Node Manager (to be introduced in Section~\ref{sec:Node-Manager}) to generate the corresponding network configuration for the sliver.
+\end{itemize}
 
 Details on the research nodes, i.e.\ particularly their slivers and all IP~addresses, can be found in Chapter~\ref{cha:Site-Details}.
 
@@ -755,6 +795,30 @@ Details on the research nodes, i.e.\ particularly their slivers and all IP~addre
 \section{Kontrollsenteret}
 \label{sec:Kontrollsenteret}
 % ###########################################################################
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.98\columnwidth]{%
+   Images/PDF/Kontrollsenteret-24Nov2014.pdf}
+\end{center}
+\caption{``NorNet-Kontrollsenter'' with Overlay Settings}
+\label{cap:Kontrollsenteret-Overlay}
+\end{figure*}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.98\columnwidth]{%
+   Images/PDF/Kontrollsenteret-Simula-24Nov2014.pdf}
+\end{center}
+\caption{``NorNet-Kontrollsenter'' with Site Information}
+\label{cap:Kontrollsenteret-Site-Information}
+\end{figure*}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Kontrollsenteret\index{Kontrollsenteret}\index{NorNet-Kontrollsenter}
 
 ...
 
