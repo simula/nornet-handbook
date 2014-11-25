@@ -591,8 +591,53 @@ Information about the available \noun{NorNet Core} sites\index{Sites} are provid
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for the Hainan University\index{Hainan University} site. Particularly, it contains data such as the site's URL, the location, the research nodes and the users at at site. \noun{NorNet}-specific information is stored in custom tags.
+Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for the Hainan University\index{Hainan University} site. Particularly, it contains data such as the site's URL, the location, the research nodes and the users at at site. \noun{NorNet}-specific information is stored in custom tags. Some important tags are:
+\begin{itemize}
+ \item ``nornet\_is\_managed\_site''\index{nornet\_is\_managed\_site}: Denoted whether the site is a \noun{NorNet Core}-managed site~(1) or not~(0). \noun{NorNet Core}-managed sites are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the sites should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
 
+ \item ``nornet\_site\_utf8''\index{nornet\_site\_utf8}: The site name in UTF-8 encoding, e.g.\ \foreignlanguage{norsk}{Universitetet i Tromsø\index{Universitetet i Tromsø}} or \foreignlanguage{german}{Universität Kaiserslautern\index{Universität Kaiserslautern}}. For compatibility reasons with \noun{PlanetLab}, the site name in the site configuration must be ASCII. Therefore, names with special characters (e.g.\ Norwegian, German, etc.) can be stored in this tag.
+ 
+ \item ``nornet\_site\_index''\index{nornet\_site\_index}: The \noun{NorNet Core} site index (see Chapter~\ref{cha:Sites}).
+ 
+ \item ``nornet\_site\_domain''\index{nornet\_site\_domain}: The \noun{NorNet Core}-internal domain name (e.g.\ ``hu.nornet'' for the site at Hainan University\index{Hainan University}).
+ 
+ \item ``nornet\_site\_city''\index{nornet\_site\_city}: The city of the site (e.g.\ Tromsø\index{Tromsø}), in UTF-8.
+ 
+ \item ``nornet\_site\_province''\index{nornet\_site\_province}: The province of the site (e.g.\ Troms\index{Troms}), in UTF-8.
+ 
+ \item ``nornet\_site\_country''\index{nornet\_site\_country}: The full country name of the site (e.g.\ Norge), in UTF-8.
+ 
+ \item ``nornet\_site\_country\_code''\index{nornet\_site\_country\_code}: The country code of the site, e.g.\ NO.
+ 
+ \item ``nornet\_site\_altitude''\index{nornet\_site\_altitude}: The site's altitude, in meters.
+ 
+ \item ``nornet\_site\_contact$N$''\index{nornet\_site\_contact$N$}: Site site's $N$-th technical contact, given as ``Family Name, Given Name: e-mail@domain.tld'', in UTF-8.
+ 
+ \item ``nornet\_site\_default\_provider\_index''\index{nornet\_site\_default\_provider\_index}: The provider index of the primary ISP (see Chapter~\ref{cha:Providers}).
+ 
+ \item ``nornet\_site\_tb\_internal\_interface''\index{nornet\_site\_tb\_internal\_interface}: The tunnelbox's interface name of the primary ISP (should be ``eth0'').
+
+ 
+ \item ``nornet\_site\_tbp$N$\_index''\index{nornet\_site\_tbp$N$\_index}: The provider index of the $N$-th ISP (see Chapter~\ref{cha:Providers}).
+ 
+ \item ``nornet\_site\_tbp$N$\_interface''\index{nornet\_site\_tbp$N$\_interface}: The interface name of the $N$-th ISP (usually: ``eth$N+1$').
+
+ \item ``nornet\_site\_tbp$N$\_address\_ipv4''\index{nornet\_site\_tbp$N$\_address\_ipv4}: The IPv4 network (i.e.\ address/prefix) of the $N$-th ISP. ``0.0.0.0/0'' means no IPv4 support.
+ 
+ \item ``nornet\_site\_tbp$N$\_gateway\_ipv4''\index{nornet\_site\_tbp$N$\_gateway\_ipv4}: The IPv4 gateway of the $N$-th ISP; ``0.0.0.0'' in case of no IPv4 support.
+ 
+ \item ``nornet\_site\_tbp$N$\_address\_ipv6''\index{nornet\_site\_tbp$N$\_address\_ipv6}: The IPv6 network (i.e.\ address/prefix) of the $N$-th ISP. ``::/0'' means no IPv6 support.
+ 
+ \item ``nornet\_site\_tbp$N$\_gateway\_ipv6''\index{nornet\_site\_tbp$N$\_gateway\_ipv6}: The IPv6 gateway of the $N$-th ISP; ``::'' in case of no IPv6 support.
+ 
+ \item ``nornet\_site\_tbp$N$\_type''\index{nornet\_site\_tbp$N$\_type}: a description for the interface type of the $N$-th ISP, e.g.\ ``ADSL'', ``Fibre'', ``WLAN'', ``Avian Carrier'', \ldots.
+
+ \item ``nornet\_site\_tbp$N$\_downstream''\index{nornet\_site\_tbp$N$\_downstream}: an estimation for the maximum downstream bandwidth of the $N$-th ISP in Kbit/s (``0'' for undefined).
+ 
+ \item ``nornet\_site\_tbp$N$\_upstream''\index{nornet\_site\_tbp$N$\_upstream}: an estimation for the maximum upstream bandwidth of the $N$-th ISP in Kbit/s (``0'' for undefined).
+
+\end{itemize}
+ 
 An overview of all \noun{NorNet Core} sites can also be found in Chapter~\ref{cha:Sites}, with details on the used ISPs in Chapter~\ref{cha:Providers}.
 
 
