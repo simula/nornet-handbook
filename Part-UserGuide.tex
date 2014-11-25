@@ -97,10 +97,10 @@ For \noun{NorNet Core}, it has been straightforward to reuse the PLC as a basis.
 \end{figure}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Each \noun{NorNet Core} site needs appropriate hardware to realise routing (i.e.\ the tunnelbox functionality) as well as to provide resources for researchers. Therefore, we have decided to deploy the setup depicted in Figure~\ref{cap:The-Site-Setup} at each site; Subfigure~\ref{subcap:Setup-Schema} shows a schematic illustration of a site, while subfigure~\ref{subcap:Setup-Real} shows a picture of a real setup\footnote{Setup at Universitetet i Tromsø~(UiT), Troms/Nord-Norge.}.
-A site physically consists of one managed switch and four HP~DL320 servers. All servers have an identical configuration (4-core x86\_64-CPU, 8~GiB RAM, ca.\ 500~GiB harddisk, and two 1000BaseT Ethernet interfaces). Since server~1 (figure~\ref{subcap:Setup-Schema}) is intended to work as a tunnelbox, it also contains an additional network interface card with four 1000BaseT Ethernet ports. The first of these ports is connected to \noun{Uninett}; the other ports are used for further providers (not yet connected in the depicted setup). The switch connects the first built-in Ethernet port of the servers~1 to~4. This Ethernet hosts the \noun{NorNet}-internal, provider-specific networks (which are realised by Ethernet VLANs).
+Each \noun{NorNet Core} site needs appropriate hardware to realise routing (i.e.\ the tunnelbox functionality) as well as to provide resources for researchers. Therefore, we have decided to deploy the setup depicted in Figure~\ref{cap:The-Site-Setup} at each site; Subfigure~\ref{subcap:Setup-Schema} shows a schematic illustration of a site, while subfigure~\ref{subcap:Setup-Real} shows a picture of a real setup\footnote{Setup at \foreignlanguage{norsk}{Universitetet i Tromsø\index{Universitetet i Tromsø}~(UiT)}, Troms\index{Troms}/Nord-Norge.}.
+A site physically consists of one managed switch and four HP~DL320 servers. All servers have an identical configuration (4-core x86\_64-CPU\nomenclature{CPU}{Central Processing Unit}\index{Central Processing Unit}\index{CPU|see{Central Processing Unit}}, 8~GiB RAM, ca.\ 500~GiB harddisk, and two 1000BaseT Ethernet\index{Ethernet} interfaces). Since server~1 (figure~\ref{subcap:Setup-Schema}) is intended to work as a tunnelbox, it also contains an additional network interface card with four 1000BaseT\index{1000BaseT} Ethernet ports. The first of these ports is connected to \noun{Uninett}; the other ports are used for further providers (not yet connected in the depicted setup). The switch connects the first built-in Ethernet port of the servers~1 to~4. This Ethernet hosts the \noun{NorNet}-internal, provider-specific networks (which are realised by Ethernet VLANs\nomenclature{VLAN}{Virtual LAN}\nomenclature{LAN}{Local Area Network}\index{Virtual LAN}\index{VLAN|see{Virtual LAN}}).
 
-The operating system installed on the servers is \noun{Ubuntu Linux}\footnote{\noun{Ubuntu Linux}: \url{http://www.ubuntu.com/}.} 12.04~LTS, a version with five years support, realised as a quite minimal server installation (to be explained in more detail in Subsection~\ref{sub:The-Software}). The purpose of this installation is to allow for basic configuration tasks, remote login by using \emph{Secure Shell}\nomenclature{SSH}{Secure Shell}\index{Secure Shell}~(SSH\index{SSH|see{Secure Shell}})~\cite{RFC4254} as well as to run \noun{VirtualBox}~\cite{VirtualBoxUserManual} to host virtual machines for all further tasks. Particularly, this means that the tunnelbox, a control system (allowing remote debugging and configuration tasks) and all research systems are realised as virtual machines. This allows for a good utilisation of the available hardware resources, and it is furthermore possible to add and remove systems on demand (e.g.\ for testing, for special kernel-based experiments not being possible with the \noun{PlanetLab} software, etc.). Also, it allows to easily backup and restore the virtual systems, without requiring physical access to the hardware itself. This should make it possible to resolve most problems \emph{quickly}, in order to achieve minimal downtime for the testbed users.
+The operating system installed on the servers is \noun{Ubuntu Linux}\footnote{\noun{Ubuntu Linux}: \url{http://www.ubuntu.com/}.}\index{Ubuntu}\index{Linux!Ubuntu} 12.04~LTS\nomenclature{LTS}{Long Term Support}\index{Long Term Support}\index{LTS|see{Long Term Support}}, a version with five years support, realised as a quite minimal server installation (to be explained in more detail in Subsection~\ref{sub:The-Software}). The purpose of this installation is to allow for basic configuration tasks, remote login by using \emph{Secure Shell}\nomenclature{SSH}{Secure Shell}\index{Secure Shell}~(SSH\index{SSH|see{Secure Shell}})~\cite{RFC4254} as well as to run \noun{VirtualBox}~\cite{VirtualBoxUserManual} to host virtual machines for all further tasks. Particularly, this means that the tunnelbox, a control system (allowing remote debugging and configuration tasks) and all research systems are realised as virtual machines. This allows for a good utilisation of the available hardware resources, and it is furthermore possible to add and remove systems on demand (e.g.\ for testing, for special kernel-based experiments not being possible with the \noun{PlanetLab} software, etc.). Also, it allows to easily backup and restore the virtual systems, without requiring physical access to the hardware itself. This should make it possible to resolve most problems \emph{quickly}, in order to achieve minimal downtime for the testbed users.
 
 To provide access to a site even when server 1 (hosting the tunnelbox and therefore handling routing to other \noun{NorNet Core} sites and the Internet) is not working properly, the control system on the fourth server is also equipped with a global IP~address in the \noun{Uninett} network (not yet connected in Subfigure~\ref{subcap:Setup-Real}).
 
@@ -179,7 +179,7 @@ The first part of the tunnel setup obviously consists of configuring the tunnels
 After setting up the tunnels, appropriate routing has to be configured. By default, routing is based on the longest prefix match for the destination address as well as on the routing metric. For multi-homed systems, however, this is not sufficient. That is, all packets for the same destination IP~address would take the same route (via the same ISP, of course). To support multi-homing, routing also needs to consider the source address. For example, if a packet has a source IP address of the ISP \noun{Uninett}, the packet should go over the interface to \noun{Uninett}. On the other hand, a packet having a source IP from the ISP \noun{Telenor} should be sent out via \noun{Telenor}. This functionality is realised by applying IP-rules~\cite{IPLayerNetworkAdministrationWithLinux}: an own routing table is configured for each ISP. Then, IP rules select the routing table for a packet based on its source address.
 
 In order to give the researcher even more control over the outgoing interface, IP~rules realise another feature: by setting the \emph{Type of Service}~(TOS) field of IPv4 packets/Traffic Class of IPv6 packets to certain values, the sender can ``override'' the outgoing ISP. That is, even if a packet has a source address in the \noun{Telenor} network, the researcher can decide to send it via the \noun{Uninett} interface. Due to a limitation in the TOS/Traffic Class handling within the Linux kernel, it is only possible to use seven combinations of values. For the ISP selection based on TOS/Traffic Class, this limits the number of outgoing ISPs per site to seven. This is assumed to be sufficient, and -- with a patched kernel -- it could also be increased to~63, if really needed.
-An alternative approach for realising the routing could be to apply \noun{OpenFlow}~\cite{OpenFlowSpecification1.2}, in form of the \noun{Open vSwitch}~\cite{PGP+10} extension for Linux.
+An alternative approach for realising the routing could be to apply \noun{OpenFlow}~\cite{OpenFlowSpecification1.2}, in form of the \noun{Open vSwitch}\index{Open vSwitch}~\cite{PGP+10} extension for Linux.
 
 % ---------------------------------------------------------------------------
 \subsubsection{Time Synchronisation}
@@ -204,7 +204,7 @@ A further feature of the \noun{NorNet Core} DNS service is that it provides LOC 
 
 The research systems are the virtual machines that researchers use for their experiments. Clearly, they are the purpose \noun{NorNet Core} has been built for. In many cases, it is -- with extensions to make use of multi-homing -- just sufficient to use \noun{PlanetLab}-based virtual systems here. Systems based on this software~\cite{PBF+05} obtain their configurations from the PLC and install automatically. It is just sufficient to obtain a bootstrap CD-ROM image (from the PLC) and boot a virtual \noun{PlanetLab}-based research system with this image.
 
-A system based on the \noun{PlanetLab} software runs slivers (i.e.\ virtual machines) for the experiments. Originally, the \noun{PlanetLab} software -- as well as the different variants of it -- have applied \noun{Linux VServer}\footnote{\noun{Linux VServer}: \url{http://linux-vserver.org/}.} for this purpose. However, \noun{Linux VServer} is not in the mainline kernel, which makes kernel updates difficult. Particularly, this has been the reason why the stable \noun{PlanetLab} distributions are based on quite out-of-date variants of \noun{Fedora Core Linux} (e.g.\ version~14 for \noun{OneLab}; version~12 for original \noun{PlanetLab}). The currently ongoing development direction of the \noun{PlanetLab} software is therefore to replace \noun{Linux VServer} with \noun{Linux Containers}\footnote{\noun{Linux Containers}: \url{http://lxc.sourceforge.net/}.}~(LXC). Particularly, LXC is fully included in the mainline Linux kernel, making it easy to deploy state-of-the-art kernels as well as underlying Linux distributions.
+A system based on the \noun{PlanetLab}\index{PlanetLab} software runs slivers (i.e.\ virtual machines) for the experiments. Originally, the \noun{PlanetLab} software -- as well as the different variants of it -- have applied \noun{Linux VServer}\footnote{\noun{Linux VServer}: \url{http://linux-vserver.org/}.} for this purpose. However, \noun{Linux VServer} is not in the mainline kernel, which makes kernel updates difficult. Particularly, this has been the reason why the stable \noun{PlanetLab} distributions are based on quite out-of-date variants of \noun{Fedora Core Linux}\index{Fedora Core}\index{Linux!Fedora Core} (e.g.\ version~14 for \noun{OneLab}\index{OneLab}; version~12 for original \noun{PlanetLab}). The currently ongoing development direction of the \noun{PlanetLab} software is therefore to replace \noun{Linux VServer} with \noun{Linux Containers}\footnote{\noun{Linux Containers}: \url{http://lxc.sourceforge.net/}.}~(LXC). Particularly, LXC is fully included in the mainline Linux kernel, making it easy to deploy state-of-the-art kernels as well as underlying Linux distributions.
 
 At the moment, there are already experimental builds of the LXC-based \noun{PlanetLab} software available\footnote{LXC-based \noun{PlanetLab} build: \url{http://build.onelab.eu/lxc/}.}. Besides the fact that it will support to assign an own IPv4 address per sliver (which avoids complicated separation of flows among slivers), it will also support IPv6. Due to these advantages, in combination with the very active development, we are intending to base \noun{NorNet Core} on the LXC-based software. Also, we are actively involved within the development community, by contributing tests of and improvements to the new software.
 
@@ -578,7 +578,7 @@ After upload of the public key, it may take up to about 1~hour until the new key
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Information about the available \noun{NorNet Core} sites are provided under the ``Sites'' section, as shown in Figure~\ref{cap:PLC-Sites}. The overview table just contains the sites' full names (e.g.\ Simula Research Laboratory) and abbreviation (e.g.\ SRL). Details on a site can be found by clicking on a site's label.
+Information about the available \noun{NorNet Core} sites\index{Sites} are provided under the ``Sites'' section, as shown in Figure~\ref{cap:PLC-Sites}. The overview table just contains the sites' full names (e.g.\ Simula Research Laboratory\index{Simula Research Laboratory}) and abbreviation (e.g.\ SRL). Details on a site can be found by clicking on a site's label.
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
@@ -592,6 +592,8 @@ Information about the available \noun{NorNet Core} sites are provided under the 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for the Hainan University\index{Hainan University} site. Particularly, it contains data such as the site's URL, the location, the research nodes and the users at at site. \noun{NorNet}-specific information is stored in custom tags.
+
+An overview of all \noun{NorNet Core} sites can also be found in Chapter~\ref{cha:Sites}, with details on the used ISPs in Chapter~\ref{cha:Providers}.
 
 
 % ===========================================================================
@@ -610,6 +612,16 @@ Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for th
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+The ``Nodes''\index{Nodes} section, as depicted in Figure~\ref{cap:PLC-Nodes}, presents a list of all research nodes in the testbed. The search field allows for filtering, e.g.\ by entering parts of the DNS names. That is, using e.g.\ ``.uia.nornet'' will filter for all nodes at the .uia.nornet site at \foreignlanguage{norsk}{Universitetet i Agder\index{Universitetet i Agder}~(UiA)}.
+
+Particularly important is the Status column of the nodes table. It displays the status of each research node, according to its communication with the PLC. The following status values are important:
+\begin{itemize}
+ \item ``boot''\index{boot}: The node is booted and should be up and running. This is, hopefully, the status of all nodes in the list.
+ \item ``failboot''\index{failboot}: Booting has failed for some reason. The node is not usable and the \noun{NorNet Core} staff should check the node's status.
+ \item ``reinstall''\index{reinstall}: The node is most likely unusable. When it boots the next time, it will run a complete reinstall. This is also the status of newly added nodes.
+\end{itemize}
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
@@ -620,6 +632,18 @@ Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for th
 \label{cap:PLC-Node-Details}
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Clicking on a research node displays details about the node itself, as shown in Figure~\ref{cap:PLC-Node-Details} for the node julenisse.uia.nornet\index{julenisse.uia.nornet}. \noun{NorNet Core}-specific configuration settings are stored in custom tags in the PLC database, together with some ``standard'' PLC tags. Some important tags to be noted here are:
+\begin{itemize}
+ \item ``arch''\index{arch}: The architecture of the system. It is currently always x86\_64 (i386 or other CPU types are not supported).
+
+ \item ``fcdistro''\index{fcdistro}: The variant of \noun{Fedora Core Linux} that runs on the node, e.g.\ ``fc18'' for version~18.
+
+ \item ``pldistro''\index{pldistro}: The software distribution that is installed on the research nodes. Possible values are currently ``lxc'' (stock \noun{PlanetLab}-LXC software) and ``nornet'' (the \noun{NorNet} distribution, to be introduced in Chapter~\ref{cha:Distribution}).
+ 
+ \item ``nornet\_is\_managed\_node'': Denoted whether the research node is a \noun{NorNet Core}-managed node~(1) or not~(0). \noun{NorNet Core}-managed nodes are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the nodes should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+\end{itemize}
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
@@ -632,8 +656,32 @@ Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for th
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+The node details page also contains the list of network interfaces. \noun{NorNet Core} nodes usually have only one interface, configured with multiple logical networks (i.e.\ one for each ISP) as well as IPv4 and IPv6. Clicking on this interface will present the interface details, as shown in Figure~\ref{PLC-Node-Interface-Details} for the interface 10.1.10.104 of the research node julenisse.uia.nornet\index{julenisse.uia.nornet}.
 
-...
+The current version of the PLC web interface supports neither multi-homing nor IPv6. Therefore, only the IPv4 configuration of the primary ISP is found directly in this view. IPv6 configuration as well as the configuration for additional ISPs is completely stored in PLC tags:
+\begin{itemize}
+ \item ``ipaddr$N$''\index{ipaddr$N$}: The IPv4 adddress of the $N+1$-th ISP. Note, that the IPv4 address of the primary interface is stored directly in the configuration, not in the tags.
+ 
+ \item ``netmask$N$''\index{netmask$N$}: The IPv4 network mask of the $N+1$-th ISP.
+
+ \item ``ipv6addr''\index{ipv6addr}: The IPv6 network address (i.e.\ address/prefix) of the primary ISP.
+  
+ \item ``ipv6\_defaultgw''\index{ipv6\_defaultgw}: The IPv6 default gateway of the primary ISP.
+
+ \item ``ipv6addr\_secondaries''\index{ipv6addr\_secondaries}: A space-separated list of all other ISPs IPv6 network addresses (i.e.\ address/prefix).
+ 
+ \item ``ipv6\_autoconf''\index{ipv6\_autoconf}: Enables (``on'') or disables (``off'') IPv6 auto-configuration. It must be turned off for \noun{NorNet Core} interfaces.
+
+ \item ``nornet\_ifprovider\_index''\index{nornet\_ifprovider\_index}: The provider index (see Chapter~\ref{cha:Providers}) of the primary ISP.
+
+ \item ``nornet\_is\_managed\_interface'': Denoted whether the interface is a \noun{NorNet Core}-managed interface~(1) or not~(0). \noun{NorNet Core}-managed interfaces are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the interfaces should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+
+ \item ``ovs\_bridge''\index{ovs\_bridge}: This is the research nodes's network interface, as provided by \noun{Open vSwitch}\index{Open vSwitch}. It should be ``public0''.
+
+ \item ``ifname''\index{ifname}: This is the physical interface that will be managed by \noun{Open vSwitch}\index{Open vSwitch}. It should be ``eth0''.
+\end{itemize}
+
+Details on the research nodes, i.e.\ particularly their IP~addresses for all ISPs, can be found in Chapter~\ref{cha:Site-Details}.
 
 
 % ===========================================================================
@@ -642,6 +690,8 @@ Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for th
 % ===========================================================================
 
 ...
+
+Details on the research nodes, i.e.\ particularly their slivers and all IP~addresses, can be found in Chapter~\ref{cha:Site-Details}.
 
 
 
