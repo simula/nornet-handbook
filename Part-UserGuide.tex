@@ -591,9 +591,9 @@ Information about the available \noun{NorNet Core} sites\index{Sites} are provid
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for the Hainan University\index{Hainan University} site. Particularly, it contains data such as the site's URL\nomenclature{URL}{Uniform Resource Locator}\index{Uniform Resource Locator}\index{URL|see{Uniform Resource Locator}}, the location, the research nodes and the users at at site. \noun{NorNet}-specific information is stored in custom tags. Some important tags are:
+Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for the Hainan University\index{Hainan University} site. Particularly, it contains data such as the site's URL\nomenclature{URL}{Uniform Resource Locator}\index{Uniform Resource Locator}\index{URL|see{Uniform Resource Locator}}, the location, the research nodes and the users at a site. \noun{NorNet}-specific information is stored in custom tags:
 \begin{itemize}
- \item ``nornet\_is\_managed\_site''\index{nornet\_is\_managed\_site}: Denotes whether the site is a \noun{NorNet Core}-managed site~(1) or not~(0). \noun{NorNet Core}-managed sites are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the sites should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+ \item ``nornet\_is\_managed\_site''\index{nornet\_is\_managed\_site}: Denotes whether the site is a \noun{NorNet Core}-managed site~(1) or not~(0). \noun{NorNet Core}-managed sites are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff) only. Therefore, the configuration of the sites should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
 
  \item ``nornet\_site\_utf8''\index{nornet\_site\_utf8}: The site name in UTF-8\footnote{Universal Character Set Transformation Format -- 8-bit, see also~\cite{RFC3629}.}\nomenclature{UTF-8}{Universal Character Set Transformation Format -- 8-bit}\index{UTF-8} encoding, e.g.\ \foreignlanguage{norsk}{Universitetet i Tromsø\index{Universitetet i Tromsø}} or \foreignlanguage{german}{Universität Kaiserslautern\index{Universität Kaiserslautern}}. For compatibility reasons with \noun{PlanetLab}, the site name in the site configuration must be ASCII\footnote{American Standard Code for Information Interchange, see also~\cite{Fis00}.}\nomenclature{ASCII}{American Standard Code for Information Interchange}\index{ASCII}. Therefore, names with special characters (e.g.\ Norwegian, German, etc.) can be stored in this tag.
  
@@ -611,12 +611,11 @@ Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for th
  
  \item ``nornet\_site\_altitude''\index{nornet\_site\_altitude}: The site's altitude, in meters.
  
- \item ``nornet\_site\_contact$N$''\index{nornet\_site\_contact$N$}: Site site's $N$-th technical contact, given as ``Family Name, Given Name: e-mail@domain.tld'', in UTF-8.
+ \item ``nornet\_site\_contact$N$''\index{nornet\_site\_contact$N$}: The site's $N$-th technical contact, given as ``Family Name, Given Name: e-mail@domain.tld'', in UTF-8.
  
  \item ``nornet\_site\_default\_provider\_index''\index{nornet\_site\_default\_provider\_index}: The provider index of the primary ISP (see Chapter~\ref{cha:Providers}).
  
- \item ``nornet\_site\_tb\_internal\_interface''\index{nornet\_site\_tb\_internal\_interface}: The tunnelbox's interface name of the primary ISP (should be ``eth0'').
-
+ \item ``nornet\_site\_tb\_internal\_interface''\index{nornet\_site\_tb\_internal\_interface}: The tunnelbox's interface name for the site's \noun{NorNet Core} network, i.e.\ the network connecting to the switch as described in Section~\ref{sec:Design}. It should be ``eth0'' in most cases.
  
  \item ``nornet\_site\_tbp$N$\_index''\index{nornet\_site\_tbp$N$\_index}: The provider index of the $N$-th ISP (see Chapter~\ref{cha:Providers}).
  
@@ -630,7 +629,7 @@ Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for th
  
  \item ``nornet\_site\_tbp$N$\_gateway\_ipv6''\index{nornet\_site\_tbp$N$\_gateway\_ipv6}: The IPv6 gateway of the $N$-th ISP; ``::'' in case of no IPv6 support.
  
- \item ``nornet\_site\_tbp$N$\_type''\index{nornet\_site\_tbp$N$\_type}: a description for the interface type of the $N$-th ISP, e.g.\ ``ADSL'', ``Fibre'', ``WLAN'', ``Avian Carrier'', \ldots.
+ \item ``nornet\_site\_tbp$N$\_type''\index{nornet\_site\_tbp$N$\_type}: a description for the interface type of the $N$-th ISP, e.g.\ ``ADSL'', ``fibre'', ``WLAN'', ``avian carrier'', \ldots.
 
  \item ``nornet\_site\_tbp$N$\_downstream''\index{nornet\_site\_tbp$N$\_downstream}: an estimation for the maximum downstream bandwidth of the $N$-th ISP in Kbit/s (``0'' for undefined).
  
@@ -659,11 +658,11 @@ An overview of all \noun{NorNet Core} sites can also be found in Chapter~\ref{ch
 
 The ``Nodes''\index{Nodes} section, as depicted in Figure~\ref{cap:PLC-Nodes}, presents a list of all research nodes in the testbed. The search field allows for filtering, e.g.\ by entering parts of the DNS names. That is, using e.g.\ ``.uia.nornet'' will filter for all nodes at the .uia.nornet site at \foreignlanguage{norsk}{Universitetet i Agder\index{Universitetet i Agder}~(UiA)}.
 
-Particularly important is the Status column of the nodes table. It displays the status of each research node, according to its communication with the PLC. The following status values are important:
+Particularly important is the ``Status'' column of the nodes table. It displays the status of each research node, according to its communication with the PLC. The following status values are important:
 \begin{itemize}
  \item ``boot''\index{boot}\index{Boot State!boot}: The node is booted and should be up and running. This is, hopefully, the status of all nodes in the list.
  \item ``failboot''\index{failboot}\index{Boot State!failboot}: Booting has failed for some reason. The node is not usable and the \noun{NorNet Core} staff should check the node's status.
- \item ``reinstall''\index{reinstall}\index{Boot State!reinstall}: The node is most likely unusable. When it boots the next time, it will run a complete reinstall. This is also the status of newly added nodes.
+ \item ``reinstall''\index{reinstall}\index{Boot State!reinstall}: The node is most likely unusable. When it boots the next time, it will perform a complete reinstall. This is also the status of newly added nodes.
 \end{itemize}
 
 
@@ -686,9 +685,9 @@ Clicking on a research node displays details about the node itself, as shown in 
 
  \item ``pldistro''\index{pldistro}\index{Tag!pldistro}: The software distribution that is installed on the research nodes. Possible values are currently ``lxc'' (stock \noun{PlanetLab}-LXC software) and ``nornet'' (the \noun{NorNet} distribution, to be introduced in Chapter~\ref{cha:Distribution}).
  
- \item ``nornet\_is\_managed\_node''\index{nornet\_is\_managed\_node}\index{Tag!nornet\_is\_managed\_node}: Denotes whether the research node is a \noun{NorNet Core}-managed node~(1) or not~(0). \noun{NorNet Core}-managed nodes are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the nodes should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+ \item ``nornet\_is\_managed\_node''\index{nornet\_is\_managed\_node}\index{Tag!nornet\_is\_managed\_node}: Denotes whether the research node is a \noun{NorNet Core}-managed node~(1) or not~(0). \noun{NorNet Core}-managed nodes are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff) only. Therefore, the configuration of the nodes should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
 
- \item ``nornet\_node\_utf8''\index{nornet\_node\_utf8}\index{Tag!nornet\_node\_utf8}: The node name in UTF-8 representation. All node names must use ASCII names in the PLC configuration. However, this tag allows to use special characters (like ``vækerø.simula.nornet''\index{vækerø.simula.nornet}); the DNS configuration can then generate appropriate Internationalised Domain Names\index{Internationalised Domain Names}\nomenclature{IDN}{Internationalised Domain Names}~(IDN\index{IDN|see{Internationalised Domain Names}}, \cite{RFC3492}) references to the ASCII version (e.g.\ ``vækerø.simula.nornet'' $\rightarrow$ ``vaekeroe.simula.nornet''\index{vaekeroe.simula.nornet}) as well.
+ \item ``nornet\_node\_utf8''\index{nornet\_node\_utf8}\index{Tag!nornet\_node\_utf8}: The node name in UTF-8 representation. All node names must use ASCII names in the PLC configuration. However, this tag allows to use special characters (like ``vækerø.simula.nornet''\index{vækerø.simula.nornet}); the DNS configuration can then generate appropriate Internationalised Domain Names\index{Internationalised Domain Names}\nomenclature{IDN}{Internationalised Domain Name}~(IDN\index{IDN|see{Internationalised Domain Names}}, \cite{RFC3492}) references to the ASCII version (e.g.\ ``vækerø.simula.nornet'' $\rightarrow$ ``vaekeroe.simula.nornet''\index{vaekeroe.simula.nornet}) as well.
  
  \item ``nornet\_node\_index''\index{nornet\_node\_index}\index{Tag!nornet\_node\_index}: The node index of the node (root context).
  
@@ -730,7 +729,7 @@ The current version of the PLC web interface supports neither multi-homing nor I
 
  \item ``nornet\_ifprovider\_index''\index{nornet\_ifprovider\_index}\index{Tag!nornet\_ifprovider\_index}: The provider index (see Chapter~\ref{cha:Providers}) of the primary ISP.
 
- \item ``nornet\_is\_managed\_interface''\index{nornet\_is\_managed\_interface}\index{Tag!nornet\_is\_managed\_interface}: Denotes whether the interface is a \noun{NorNet Core}-managed interface~(1) or not~(0). \noun{NorNet Core}-managed interfaces are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the interfaces should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+ \item ``nornet\_is\_managed\_interface''\index{nornet\_is\_managed\_interface}\index{Tag!nornet\_is\_managed\_interface}: Denotes whether the interface is a \noun{NorNet Core}-managed interface~(1) or not~(0). \noun{NorNet Core}-managed interfaces are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff) only. Therefore, the configuration of the interfaces should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
 
  \item ``ovs\_bridge''\index{ovs\_bridge}\index{Tag!ovs\_bridge}: This is the research nodes's network interface, as provided by \noun{Open vSwitch}\index{Open vSwitch}. It should be ``public0''.
 
@@ -778,7 +777,7 @@ The slice details page also allows to add/remove nodes from/to the slice.
 
 \noun{NorNet}-specific slice information is stored in the following PLC tags:
 \begin{itemize}
- \item ``nornet\_is\_managed\_slice''\index{nornet\_is\_managed\_slice}\index{Tag!nornet\_is\_managed\_slice}: Denotes whether the research slice is a \noun{NorNet Core}-managed slice~(1) or not~(0). \noun{NorNet Core}-managed slices are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the slices should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+ \item ``nornet\_is\_managed\_slice''\index{nornet\_is\_managed\_slice}\index{Tag!nornet\_is\_managed\_slice}: Denotes whether the research slice is a \noun{NorNet Core}-managed slice~(1) or not~(0). \noun{NorNet Core}-managed slices are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff) only. Therefore, the configuration of the slices should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
 
  \item ``nornet\_slice\_own\_addresses''\index{nornet\_slice\_own\_addresses}\index{Tag!nornet\_slice\_own\_addresses}: If set to ``1'', the sliver gets its own IP~addresses. This is the normal behaviour for \noun{NorNet Core} slivers that intend to use multi-homing. With ``0'', the behaviour is like for \noun{PlanetLab}, i.e.\ addresses are shared among slivers.
 
