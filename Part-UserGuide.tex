@@ -591,11 +591,11 @@ Information about the available \noun{NorNet Core} sites\index{Sites} are provid
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for the Hainan University\index{Hainan University} site. Particularly, it contains data such as the site's URL, the location, the research nodes and the users at at site. \noun{NorNet}-specific information is stored in custom tags. Some important tags are:
+Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for the Hainan University\index{Hainan University} site. Particularly, it contains data such as the site's URL\nomenclature{URL}{Uniform Resource Locator}\index{Uniform Resource Locator}\index{URL|see{Uniform Resource Locator}}, the location, the research nodes and the users at at site. \noun{NorNet}-specific information is stored in custom tags. Some important tags are:
 \begin{itemize}
  \item ``nornet\_is\_managed\_site''\index{nornet\_is\_managed\_site}: Denoted whether the site is a \noun{NorNet Core}-managed site~(1) or not~(0). \noun{NorNet Core}-managed sites are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the sites should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
 
- \item ``nornet\_site\_utf8''\index{nornet\_site\_utf8}: The site name in UTF-8 encoding, e.g.\ \foreignlanguage{norsk}{Universitetet i Tromsø\index{Universitetet i Tromsø}} or \foreignlanguage{german}{Universität Kaiserslautern\index{Universität Kaiserslautern}}. For compatibility reasons with \noun{PlanetLab}, the site name in the site configuration must be ASCII. Therefore, names with special characters (e.g.\ Norwegian, German, etc.) can be stored in this tag.
+ \item ``nornet\_site\_utf8''\index{nornet\_site\_utf8}: The site name in UTF-8\footnote{Universal Character Set Transformation Format -- 8-bit, see also~\cite{RFC3629}.}\nomenclature{UTF-8}{Universal Character Set Transformation Format -- 8-bit}\index{UTF-8} encoding, e.g.\ \foreignlanguage{norsk}{Universitetet i Tromsø\index{Universitetet i Tromsø}} or \foreignlanguage{german}{Universität Kaiserslautern\index{Universität Kaiserslautern}}. For compatibility reasons with \noun{PlanetLab}, the site name in the site configuration must be ASCII\footnote{American Standard Code for Information Interchange, see also~\cite{Fis00}.}\nomenclature{ASCII}{American Standard Code for Information Interchange}\index{ASCII}. Therefore, names with special characters (e.g.\ Norwegian, German, etc.) can be stored in this tag.
  
  \item ``nornet\_site\_index''\index{nornet\_site\_index}: The \noun{NorNet Core} site index (see Chapter~\ref{cha:Sites}).
  
@@ -620,7 +620,7 @@ Figure~\ref{cap:PLC-Sites-HU} presents the detailed site information view for th
  
  \item ``nornet\_site\_tbp$N$\_index''\index{nornet\_site\_tbp$N$\_index}: The provider index of the $N$-th ISP (see Chapter~\ref{cha:Providers}).
  
- \item ``nornet\_site\_tbp$N$\_interface''\index{nornet\_site\_tbp$N$\_interface}: The interface name of the $N$-th ISP (usually: ``eth$N+1$').
+ \item ``nornet\_site\_tbp$N$\_interface''\index{nornet\_site\_tbp$N$\_interface}: The interface name of the $N$-th ISP. It is ``eth$N+1$' in most cases.
 
  \item ``nornet\_site\_tbp$N$\_address\_ipv4''\index{nornet\_site\_tbp$N$\_address\_ipv4}: The IPv4 network (i.e.\ address/prefix) of the $N$-th ISP. ``0.0.0.0/0'' means no IPv4 support.
  
@@ -686,8 +686,19 @@ Clicking on a research node displays details about the node itself, as shown in 
 
  \item ``pldistro''\index{pldistro}: The software distribution that is installed on the research nodes. Possible values are currently ``lxc'' (stock \noun{PlanetLab}-LXC software) and ``nornet'' (the \noun{NorNet} distribution, to be introduced in Chapter~\ref{cha:Distribution}).
  
- \item ``nornet\_is\_managed\_node'': Denoted whether the research node is a \noun{NorNet Core}-managed node~(1) or not~(0). \noun{NorNet Core}-managed nodes are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the nodes should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
-\end{itemize}
+ \item ``nornet\_is\_managed\_node''\index{nornet\_is\_managed\_node}: Denoted whether the research node is a \noun{NorNet Core}-managed node~(1) or not~(0). \noun{NorNet Core}-managed nodes are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff). Therefore, configuration of the nodes should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
+
+ \item ``nornet\_node\_utf8''\index{nornet\_node\_utf8}: The node name in UTF-8 representation. All node names must use ASCII names in the PLC configuration. However, this tag allows to use special characters (like ``vækerø.simula.nornet''\index{vækerø.simula.nornet}); the DNS configuration can then generate appropriate Internationalised Domain Names\index{Internationalised Domain Names}\nomenclature{IDN}{Internationalised Domain Names}~(IDN\index{IDN|see{Internationalised Domain Names}}, \cite{RFC3492}) references to the ASCII version (e.g.\ ``vækerø.simula.nornet'' $\rightarrow$ ``vaekeroe.simula.nornet''\index{vaekeroe.simula.nornet}) as well.
+ 
+ \item ``nornet\_node\_index''\index{nornet\_node\_index}: The node index of the node (root context).
+ 
+ \item ``nornet\_node\_interface''\index{nornet\_node\_interface}: The name of the \noun{NorNet Core} network interface (usually: ``eth0'').
+ 
+ \item ``nornet\_node\_machine\_host''\index{nornet\_node\_machine\_host}: If the research node is a virtual machine, the name of the physical host can be specified here.
+ 
+ \item ``nornet\_node\_machine\_display''\index{nornet\_node\_machine\_display}: If available, a URL to remotely access the display of the node can be specified here.
+
+ \end{itemize}
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
