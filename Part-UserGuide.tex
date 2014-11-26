@@ -231,7 +231,7 @@ In order to achieve the testbed availability described in Section~\ref{sec:Desig
 
 While the web interface presents a very detailed and fine-grained view of \noun{NorNet Core}, a more illustrative view was intended to give a quick overview of the site statuses for both administrators and users of the testbed (i.e.\ the researchers). Therefore, we -- as a first step -- applied the \noun{NagMap}\footnote{\noun{NagMap}: \url{https://github.com/hecko/nagmap/}.} plug-in for \noun{Nagios}, which provided a map view of the \noun{NorNet Core} testbed. However, \noun{NagMap} just produced a quite simple projection of the sites and their connections (i.e.\ the tunnels) to a \noun{Google Maps}\footnote{\noun{Google Maps}: \url{https://maps.google.no/}.} satellite map. Particularly due to the fully-connected mesh topology of the tunnels (see Section~\ref{sec:Design}), the link view, however, became relatively confusing. Therefore, we have developed our own plug-in named \noun{NorNet-Kontrollsenter}.
 
-\noun{NorNet-Kontrollsenter}\index{Kontrollsenteret}\index{NorNet-Kontrollsenter} uses \noun{Apache}/PHP~\cite{ApacheDoc} to access the recorded \noun{Nagios} status information. It then provides an HTML page with the results. That is, the plug-in runs on the monitoring system itself. The results can then be accessed from a web server running on the same system, while a web browser on another machine can display the corresponding webpage (as shown in Figure~\ref{cap:Kontrollsenteret}). The returned web page with the results makes use of JavaScript, AJAX (Asynchronous JavaScript and XML) as well as SVG (Scalable Vector Graphics) with JavaScript to provide dynamic updates without having to reload the whole page. Furthermore, instead of tying the map display to a certain map service, we apply \noun{OpenLayers}~\cite{OpenLayersDoc}. It provides a service-independent mapping and layering library in JavaScript; the display can dynamically change between map services (currently, we apply 
+\noun{NorNet-Kontrollsenter}\index{Kontrollsenteret}\index{NorNet-Kontrollsenter} uses \noun{Apache}/PHP~\cite{ApacheDoc} to access the recorded \noun{Nagios} status information. It then provides an HyperText Markup Language\nomenclature{HTML}{HyperText Markup Language}\index{HyperText Markup Language}~(HTML\index{HTML|see{HyperText Markup Language}}) page with the results. That is, the plug-in runs on the monitoring system itself. The results can then be accessed from a web server running on the same system, while a web browser on another machine can display the corresponding webpage (as shown in Figure~\ref{cap:Kontrollsenteret}). The returned web page with the results makes use of JavaScript, AJAX (Asynchronous JavaScript and XML) as well as SVG (Scalable Vector Graphics) with JavaScript to provide dynamic updates without having to reload the whole page. Furthermore, instead of tying the map display to a certain map service, we apply \noun{OpenLayers}~\cite{OpenLayersDoc}. It provides a service-independent mapping and layering library in JavaScript; the display can dynamically change between map services (currently, we apply 
 \noun{Open Street Map}\footnote{\noun{Open Street Map}: \url{http://www.openstreetmap.org/}.},
 \noun{Google Maps} and
 \noun{Bing Maps}\footnote{\noun{Bing Maps}: \url{http://www.bing.com/maps/}.}). Furthermore, overlaying functionality is provided. That is, overlays like the \noun{Open Weather Map}\footnote{\noun{Open Weather Map}: \url{http://www.openweathermap.org/}.} overlay can add additional information to the map (in Figure~\ref{cap:Kontrollsenteret}: the current weather as well as clouds and precipitation forecasts). In the future, we plan to use this feature for more detailed network status information. Map services and the visibility of overlays can be changed interactively.
@@ -442,11 +442,12 @@ to log into the Gatekeeper. ``-i'' specifies the private key that SSH should use
 \label{subsub:Tunnelling-TCP-Connections}
 % ---------------------------------------------------------------------------
 
-SSH provides the feature of tunnelling TCP connections via an SSH session. That is, for a given TCP port on the local machine, SSH tunnels the traffic to the remote SSH endpoint (here: the Gatekeeper). From there, it is forwarded to the given destination.  For \noun{NorNet Core}, this is particularly useful to get access to the PLC (to be explained in Section~\ref{sec:The-PLC}) and the Monitor server (to be explained in Section~\ref{sec:Kontrollsenteret}):
+SSH provides the feature of tunnelling TCP connections via an SSH session. That is, for a given TCP port on the local machine, SSH tunnels the traffic to the remote SSH endpoint (here: the Gatekeeper). From there, it is forwarded to the given destination.  For \noun{NorNet Core}, this is particularly useful to get access to the PLC (to be explained in Section~\ref{sec:The-PLC}), the Monitor server (to be explained in Section~\ref{sec:Kontrollsenteret}) and the Performance Server (to be explained in Section~\ref{sec:PerfMon}):
 \begin{lstlisting}
 ssh ola@gatekeeper.nntb.no \
  -L 2000:plc.simula.nornet:443 \
- -L 2001:monitor.simula.nornet:80
+ -L 2001:monitor.simula.nornet:80 \
+ -L 2002:perfmon1.simula.nornet:80
 \end{lstlisting}
 This code example does the following:
 \begin{itemize}
@@ -455,8 +456,10 @@ This code example does the following:
  \item TCP port~2000 of the local machine (i.e.\ the machine running this command) is forwarded via the Gatekeeper to port~443 of the PLC server \href{https://plc.simula.nornet}{plc.simula.nornet}\index{plc.simula.nornet}. Note, that \href{https://plc.simula.nornet}{plc.simula.nornet}\index{plc.simula.nornet} is the DNS name of the PLC. Since the Gatekeeper uses the \noun{NorNet Core} DNS service, it can resolve this \noun{NorNet}-internal name (see Subsubsection~\ref{subsub:Tunnelbox-Name-Resolution}).
  
  \item Similarly, TCP port~2001 of the local machine is forwarded to port~80 of the Monitor server \href{http://monitor.simula.nornet}{monitor.simula.nornet}\index{monitor.simula.nornet}.
+
+ \item Finally, TCP port~2002 of the local machine is forwarded to port~80 of the Performance server \href{http://perfmon1.simula.nornet}{perfmon1.simula.nornet}\index{perfmon1.simula.nornet}.
 \end{itemize}
-By establishing a TCP connection to port~2000 or port~2001 of the local machine, the user can now access the \noun{NorNet}-internal services of the PLC or the Monitor server (to be explained later in Section~\ref{sec:The-PLC} and Section~\ref{sec:Kontrollsenteret}).
+By establishing a TCP connection to port~2000, port~2001 or port~2002 of the local machine, the user can now access the \noun{NorNet}-internal services of the PLC, the Monitor server or Performance server (to be explained later in Section~\ref{sec:The-PLC}, Section~\ref{sec:Kontrollsenteret} and Section~\ref{sec:PerfMon}).
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{algorithm}
@@ -747,7 +750,7 @@ Details on the research nodes, i.e.\ particularly their IP~addresses for all ISP
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.90\columnwidth]{%
+\includegraphics[width=0.95\columnwidth]{%
    Images/PDF/Screenshot-PLC-Slices.pdf}
 \end{center}
 \caption{The List of All Slices}
@@ -758,7 +761,7 @@ Details on the research nodes, i.e.\ particularly their IP~addresses for all ISP
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
-\includegraphics[width=0.90\columnwidth]{%
+\includegraphics[width=0.95\columnwidth]{%
    Images/PDF/Screenshot-PLC-Slice-hu-multipath.pdf}
 \end{center}
 \caption{My Slices $\rightarrow$ hu\_multipath}
@@ -791,7 +794,7 @@ Details on the research nodes, i.e.\ particularly their slivers and all IP~addre
 
 
 % ###########################################################################
-\section{Kontrollsenteret}
+\section{``Kontrollsenteret'' -- The Control Center}
 \label{sec:Kontrollsenteret}
 % ###########################################################################
 
@@ -842,17 +845,67 @@ Another feature of the \noun{NorNet-Kontrollsenter} is to provide information ab
 
 
 % ###########################################################################
-\section{Graphite, etc.}
-\label{sec:...}
+\section{The Performance Monitor}
+\label{sec:PerfMon}
 % ###########################################################################
 
-...
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.95\columnwidth]{%
+   Images/PDF/Screenshot-PerfMon1.pdf}
+\end{center}
+\caption{Performance Visualisation with the Performance Monitor}
+\label{cap:PerfMon1}
+\end{figure*}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In order to get detailed performance data of tunnelboxes, tunnels and other \noun{NorNet Core} systems, the Performance Monitor service on the Performance server can be used via web browser. There are two possibilities to connect to this service:
+\begin{itemize}
+ \item \url{http://perfmon1.simula.nornet}:
+ In case of connection to the local \noun{NorNet Core} network including its DNS service, the web browser can directly connect to the Monitor server.
+ 
+ \item \url{http://localhost:2002}:
+ If access to the \noun{NorNet Core} network is only available via the Gatekeeper server, the SSH port forwarding -- as described in Subsubsection~\ref{subsub:Tunnelling-TCP-Connections} -- can be used. Then, if using the settings described there, the web browser connects to the local machine's port~2002. This port is forwarded, via SSH and the Gatekeeper server, to the Monitor server.
+\end{itemize}
+
+Figure~\ref{cap:PerfMon1} presents an example view from the Performance Monitor, visualising some Round-Trip Time\nomenclature{RTT}{Round-Trip Time}\index{Round-Trip Time}~(RTT\index{RTT|see{Round-Trip Time}}) measurements between two tunnelboxes.
 
 
 
 % ###########################################################################
 \section{Further Resources}
 % ###########################################################################
+
+% ===========================================================================
+\subsection{Sites Overview}
+% ===========================================================================
+
+The complete PLC configuration of the \noun{NorNet Core} testbed can be found as an up-to-date summary at \url{https://www.nntb.no/pub/nornet-configuration/NorNetCore-Sites.html}. This is mainly an automatically-updated online HTML version of the information in Part~\ref{prt:Configuration}. However, for security reasons, the online version does not contain any site contacts, the sliver information as well as IP~addresses.
+
+Note, that the site overview on the web page, as well as in Part~\ref{prt:Configuration}, are automatically exported from the PLC database by using the tool \texttt{Get-NorNet-Configuration}\index{Get-NorNet-Configuration}. It is installed on the Gatekeeper server. A manual page is provided as well\footnote{\texttt{Get-NorNet-Configuration} Manual Page: \texttt{\href{man:Get-NorNet-Configuration}{man Get-NorNet-Configuration}}.}. The program extracts the PLC database's contents to HTML as well as \LaTeX\index{\LaTeX} output:
+\begin{itemize}
+ \item HTML: Generating HTML output is as simple as:
+\begin{lstlisting}
+Get-NorNet-Overview -html >Overview.html
+\end{lstlisting}
+The resulting HTML page \texttt{Overview.html} can be viewed with any web browser (it is actually valid XHTML\index{XHTML}~1.1~\cite{recommendation-W3C-XHTML1.1} code).
+
+ \item \LaTeX: The \LaTeX{} output of course requires compiling the document to Portable Document Format\nomenclature{PDF}{Portable Document Format}\index{Portable Document Format}~(PDF\index{PDF|see{Portable Document Format}}) for viewing. The complete command sequence is therefore:
+\begin{lstlisting}
+Get-NorNet-Overview -latex >Overview.tex && \
+pdflatex Overview.tex && \
+makeindex Overview.nlo -s nomencl.ist -o Overview.nls && \
+makeindex Overview.idx && \
+pdflatex Overview.tex && \
+makeindex Overview.idx && \
+pdflatex Overview.tex 
+\end{lstlisting}
+The output PDF file is then named \texttt{Overview.pdf}.
+
+\end{itemize}
+
+
 
 % ===========================================================================
 \subsection{Mailing Lists}
@@ -872,12 +925,56 @@ There are currently two mailing lists\index{Mailing Lists} for \noun{NorNet}-rel
 
 
 % ===========================================================================
-\subsection{Sites Overview}
+\subsection{Web Server}
 % ===========================================================================
 
-\url{https://www.nntb.no/pub/nornet-configuration/NorNetCore-Sites.html}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+\begin{center}
+\subfigure[The News Section\label{subcap:WebServer-News}]{%
+   \includegraphics[width=0.825\columnwidth]{Images/PDF/Screenshot-WebServer1.pdf}}
+\subfigure[The Publications Section\label{subcap:WebServer-Publications}]{%
+   \includegraphics[width=0.825\columnwidth]{Images/PDF/Screenshot-WebServer2.pdf}}
+\end{center}
+\caption{The \noun{NorNet} Web Server at \url{https://www.nntb.no}}
+\label{cap:WebServer}
+\end{figure*}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-...
+The \noun{NorNet} web server\index{Web Server} at \url{https://www.nntb.no} contains all information about \noun{NorNet Core}. Example views are shown in Figure~\ref{cap:WebServer}. Particularly, it informs about important events such as workshops, new sites and other configuration changes (see Subfigure~\ref{subcap:WebServer-News}).
+
+The web server furthermore contains the complete publications list for \noun{NorNet}, as depicted in (see Subfigure~\ref{subcap:WebServer-Publications}). Particularly, it directly links to most publications and it contains maintained reference data in \BibTeX\index{\BibTeX} and Extensible Markup Language\nomenclature{XML}{Extensible Markup Language}\index{Extensible Markup Language}~(XML\index{XML|see{Extensible Markup Language}}) formats for citing \noun{NorNet}-related documents.
+The \noun{NorNet Core} users, of course, are invited to provide references to their own, \noun{NorNet}-related documents for inclusion into the publication list, by sending the corresponding \BibTeX{} information to the \noun{NorNet} staff.
+
+
+% ===========================================================================
+\subsection{Package Server}
+% ===========================================================================
+
+The Package Server\index{Package Server} at \url{http://packages.nntb.no} provides some \noun{NorNet}-related software packages for \noun{Fedora Core Linux}\index{Fedora Core}\index{Linux!Fedora Core} as package repositories. In order to use the packages with \texttt{yum}, it is necessary to create a configuration file \texttt{/etc/yum.repos.d/nornet.repo}:
+\begin{tiny}
+\begin{lstlisting}
+[NorNet-Applications]
+name=NorNet Applications
+baseurl=http://packages.nntb.no/nornet-applications/fedora/$releasever/$basearch
+enabled=1
+gpgcheck=1
+gpgkey=http://www.iem.uni-due.de/~dreibh/key.asc
+\end{lstlisting}
+\end{tiny}
+
+For \noun{Ubuntu Linux}\index{Ubuntu}\index{Linux!Ubuntu}, the corresponding packages are \emph{not} provided on the Package Server. Instead, they are hosted in a Personal Package Archive\nomenclature{PPA}{Personal Package Archive}\index{Personal Package Archive}~(PPA\index{PPA|see{Personal Package Archive}}) on \noun{Launchpad}\index{Launchpad}\footnote{\noun{Launchpad}: \url{https://launchpad.net}.} at \url{https://launchpad.net/~dreibh/+archive/ubuntu/ppa}. The repository can be added to a Ubuntu system by:
+\begin{lstlisting}
+sudo apt-add-repository ppa:dreibh/ppa
+sudo apt-get update
+\end{lstlisting}
+
+
+% ===========================================================================
+\subsection{Wiki Server}
+% ===========================================================================
+
+There is a \noun{NorNet} wiki\index{Wiki Server} at \url{https://wiki.nntb.no}. Currently, it is only used internally by the developers. In the future, it is intended to open this wiki service for \noun{NorNet} users as well.
 
 
 

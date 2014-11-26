@@ -151,6 +151,7 @@
 \definecolor{listingcommentcolor}{rgb}{0,0,1}
 \lstset{language=bash,
 numbers=left,
+breaklines=true,
 basicstyle=\small,
 backgroundcolor=\color{listingbackgroundcolor},
 keywordstyle=\color{listingkeywordcolor}\textbf,
@@ -169,6 +170,9 @@ numbersep=5pt
 
 %% Eigennamen
 \newcommand{\noun}[1]{\textsc{#1}}
+
+%% LaTeX-Name
+\usepackage{texnames}
 
 %% Multi-Column/Multi-Row-Tabellen
 \newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
@@ -298,6 +302,7 @@ numbersep=5pt
 \include{Part-DeveloperGuide}
 
 \part{\noun{NorNet Core} Configuration}
+\label{prt:Configuration}
 \include{Part-Configuration}
 %----------------------------------------------------------------------------
 
