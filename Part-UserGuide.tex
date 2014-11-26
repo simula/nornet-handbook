@@ -311,7 +311,7 @@ A \noun{NorNet Core} user needs access into the \noun{NorNet Core} network. The 
 
 The Gatekeeper server\index{Gatekeeper} \href{ssh://gatekeeper.nntb.no}{gatekeeper.nntb.no}\index{gatekeeper.nntb.no}\footnote{\href{ssh://gatekeeper.nntb.no}{gatekeeper.nntb.no}\index{gatekeeper.nntb.no} is actually an alias for the server \href{ssh://oesthorn.nntb.no}{oesthorn.nntb.no}\index{oesthorn.nntb.no}, to be explained in Section~\ref{sec:The-Gatekeeper}.} provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the Gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
 
-The following examples give a short overview of what is possible with SSH. Note, that they are not meant to be complete. Refer to the manual page of \texttt{ssh}\footnote{\texttt{ssh} Manual Page: \texttt{\href{man:ssh}{man ssh}}.} and various SSH tutorials in the Internet for further information.
+The following examples give a short overview of what is possible with SSH. Note, that they are not meant to be complete. Refer to the manual page of \texttt{ssh}\footnote{\texttt{ssh} manual page: \texttt{\href{man:ssh}{man ssh}}.} and various SSH tutorials in the Internet for further information.
 
 
 % ---------------------------------------------------------------------------
@@ -364,14 +364,14 @@ scp ola@gatekeeper.nntb.no:test.data some-local-directory/
 scp -r ola@gatekeeper.nntb.no:my-test-directory/ .
 \end{lstlisting}
 Of course, copying from a remote to another remote machine would work as well.
-For further possibilities, also see the manual page of \texttt{scp}\footnote{\texttt{scp} Manual Page: \texttt{\href{man:scp}{man scp}}.}.
+For further possibilities, also see the manual page of \texttt{scp}\footnote{\texttt{scp} manual page: \texttt{\href{man:scp}{man scp}}.}.
 
 
 % ---------------------------------------------------------------------------
 \subsubsection{Using Remote File Synchronisation}
 % ---------------------------------------------------------------------------
 
-SCP only copies files and directories. When working with \noun{NorNet Core} experiment results, it becomes handy to synchronise files and directories, i.e.\ to just transfer data that needs to be transferred. This functionality is provided by the texttt{rsync}\index{rsync} command\index{Gatekeeper!Remote Synchronisation}. See also the manual page of \texttt{rsync}\footnote{\texttt{rsync} Manual Page: \texttt{\href{man:rsync}{man rsync}}.} for details.
+SCP only copies files and directories. When working with \noun{NorNet Core} experiment results, it becomes handy to synchronise files and directories, i.e.\ to just transfer data that needs to be transferred. This functionality is provided by the texttt{rsync}\index{rsync} command\index{Gatekeeper!Remote Synchronisation}. See also the manual page of \texttt{rsync}\footnote{\texttt{rsync} manual page: \texttt{\href{man:rsync}{man rsync}}.} for details.
 
 In order to synchronise the directory \texttt{experiment1/results/} from the Gatekeeper to the local machine, use for example:
 \begin{lstlisting}
@@ -883,7 +883,7 @@ Figure~\ref{cap:PerfMon1} presents an example view from the Performance Monitor,
 
 The complete PLC configuration of the \noun{NorNet Core} testbed can be found as an up-to-date summary at \url{https://www.nntb.no/pub/nornet-configuration/NorNetCore-Sites.html}. This is mainly an automatically-updated online HTML version of the information in Part~\ref{prt:Configuration}. However, for security reasons, the online version does not contain any site contacts, the sliver information as well as IP~addresses.
 
-Note, that the site overview on the web page, as well as in Part~\ref{prt:Configuration}, are automatically exported from the PLC database by using the tool \texttt{Get-NorNet-Configuration}\index{Get-NorNet-Configuration}. It is installed on the Gatekeeper server. A manual page is provided as well\footnote{\texttt{Get-NorNet-Configuration} Manual Page: \texttt{\href{man:Get-NorNet-Configuration}{man Get-NorNet-Configuration}}.}. The program extracts the PLC database's contents to HTML as well as \LaTeX\index{\LaTeX} output:
+Note, that the site overview on the web page, as well as in Part~\ref{prt:Configuration}, are automatically exported from the PLC database by using the tool \texttt{Get-NorNet-Configuration}\index{Get-NorNet-Configuration}. It is installed on the Gatekeeper server. A manual page is provided as well\footnote{\texttt{Get-NorNet-Configuration} manual page: \texttt{\href{man:Get-NorNet-Configuration}{man Get-NorNet-Configuration}}.}. The program extracts the PLC database's contents to HTML as well as \LaTeX\index{\LaTeX} output:
 \begin{itemize}
  \item HTML: Generating HTML output is as simple as:
 \begin{lstlisting}
@@ -941,18 +941,17 @@ There are currently two mailing lists\index{Mailing Lists} for \noun{NorNet}-rel
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The \noun{NorNet} web server\index{Web Server} at \url{https://www.nntb.no} contains all information about \noun{NorNet Core}. Example views are shown in Figure~\ref{cap:WebServer}. Particularly, it informs about important events such as workshops, new sites and other configuration changes (see Subfigure~\ref{subcap:WebServer-News}).
+The \noun{NorNet} web server\index{Web Server} at \url{https://www.nntb.no}\footnote{\href{https://www.nntb.no}{www.nntb.no}\index{www.nntb.no} is actually an alias for the server \href{http://voksenkollen.simula.nornet}{voksenkollen.simula.nornet}\index{voksenkollen.simula.nornet}.} contains all information about \noun{NorNet Core}. Example views are shown in Figure~\ref{cap:WebServer}. Particularly, it informs about important events such as workshops, new sites and other configuration changes (see Subfigure~\ref{subcap:WebServer-News}).
 
 The web server furthermore contains the complete publications list for \noun{NorNet}, as depicted in (see Subfigure~\ref{subcap:WebServer-Publications}). Particularly, it directly links to most publications and it contains maintained reference data in \BibTeX\index{\BibTeX} and Extensible Markup Language\nomenclature{XML}{Extensible Markup Language}\index{Extensible Markup Language}~(XML\index{XML|see{Extensible Markup Language}}) formats for citing \noun{NorNet}-related documents.
 The \noun{NorNet Core} users, of course, are invited to provide references to their own, \noun{NorNet}-related documents for inclusion into the publication list, by sending the corresponding \BibTeX{} information to the \noun{NorNet} staff.
 
 
 % ===========================================================================
-\subsection{Package Server}
+\subsection{Package Server and \noun{Launchpad} PPA}
 % ===========================================================================
 
-The Package Server\index{Package Server} at \url{http://packages.nntb.no} provides some \noun{NorNet}-related software packages for \noun{Fedora Core Linux}\index{Fedora Core}\index{Linux!Fedora Core} as package repositories. In order to use the packages with \texttt{yum}, it is necessary to create a configuration file \texttt{/etc/yum.repos.d/nornet.repo}:
-\begin{tiny}
+The Package Server\index{Package Server} at \url{http://packages.nntb.no}\footnote{\href{https://packages.nntb.no}{packages.nntb.no}\index{packages.nntb.no} is actually an alias for the server \href{http://bjoernholt.simula.nornet}{bjoernholt.simula.nornet}\index{bjoernholt.simula.nornet}.} provides some \noun{NorNet}-related software packages for \noun{Fedora Core Linux}\index{Fedora Core}\index{Linux!Fedora Core} as package repositories. In order to use the packages with \texttt{yum}\footnote{\texttt{yum} manual page: \texttt{\href{man:yum}{man yum}}.}, it is necessary to create a configuration file \texttt{/etc/yum.repos.d/nornet.repo}:
 \begin{lstlisting}
 [NorNet-Applications]
 name=NorNet Applications
@@ -961,20 +960,20 @@ enabled=1
 gpgcheck=1
 gpgkey=http://www.iem.uni-due.de/~dreibh/key.asc
 \end{lstlisting}
-\end{tiny}
 
-For \noun{Ubuntu Linux}\index{Ubuntu}\index{Linux!Ubuntu}, the corresponding packages are \emph{not} provided on the Package Server. Instead, they are hosted in a Personal Package Archive\nomenclature{PPA}{Personal Package Archive}\index{Personal Package Archive}~(PPA\index{PPA|see{Personal Package Archive}}) on \noun{Launchpad}\index{Launchpad}\footnote{\noun{Launchpad}: \url{https://launchpad.net}.} at \url{https://launchpad.net/~dreibh/+archive/ubuntu/ppa}. The repository can be added to a Ubuntu system by:
+For \noun{Ubuntu Linux}\index{Ubuntu}\index{Linux!Ubuntu}, the corresponding packages are \emph{not} hosted on the Package Server. Instead, they are hosted in a Personal Package Archive\nomenclature{PPA}{Personal Package Archive}\index{Personal Package Archive}~(PPA\index{PPA|see{Personal Package Archive}}) on \noun{Launchpad}\index{Launchpad}\footnote{\noun{Launchpad}: \url{https://launchpad.net}.} at \url{https://launchpad.net/~dreibh/+archive/ubuntu/ppa}. The repository can be added to a \noun{Ubuntu} system by using \texttt{apt-add-repository}\footnote{\texttt{apt-add-repository} manual page: \texttt{\href{man:apt-add-repository}{man apt-add-repository}}.}:
 \begin{lstlisting}
 sudo apt-add-repository ppa:dreibh/ppa
 sudo apt-get update
 \end{lstlisting}
+After that, the packages can be used with \texttt{apt-get}\footnote{\texttt{apt-get} manual page: \texttt{\href{man:apt-get}{man apt-get}}.}.
 
 
 % ===========================================================================
 \subsection{Wiki Server}
 % ===========================================================================
 
-There is a \noun{NorNet} wiki\index{Wiki Server} at \url{https://wiki.nntb.no}. Currently, it is only used internally by the developers. In the future, it is intended to open this wiki service for \noun{NorNet} users as well.
+There is a \noun{NorNet} wiki\index{Wiki Server} at \url{https://wiki.nntb.no}\footnote{\href{https://wiki.nntb.no}{wiki.nntb.no}\index{wiki.nntb.no} is actually an alias for the server \href{http://tryvannshoegda.simula.nornet}{tryvannshoegda.simula.nornet}\index{tryvannshoegda.simula.nornet}.}. Currently, it is only used internally by the developers. In the future, it is intended to also open this wiki service for \noun{NorNet} users.
 
 
 
