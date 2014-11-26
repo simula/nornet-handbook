@@ -798,17 +798,46 @@ Details on the research nodes, i.e.\ particularly their slivers and all IP~addre
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}
 \begin{center}
-\subfigure[Weather Overlays]{\includegraphics[width=0.825\columnwidth]{Images/PDF/Kontrollsenteret-25Nov2014.pdf}}
-\subfigure[Site Information View]{\includegraphics[width=0.825\columnwidth]{Images/PDF/Kontrollsenteret-Simula-25Nov2014.pdf}}
+\subfigure[Weather Overlays\label{subcap:Kontrollsenteret-Overlays}]{%
+   \includegraphics[width=0.825\columnwidth]{Images/PDF/Kontrollsenteret-25Nov2014.pdf}}
+\subfigure[Site Information View\label{subcap:Kontrollsenteret-Site}]{%
+   \includegraphics[width=0.825\columnwidth]{Images/PDF/Kontrollsenteret-Simula-25Nov2014.pdf}}
 \end{center}
 \caption{``NorNet-Kontrollsenter'' with Open Street Map Base Layer}
 \label{cap:Kontrollsenteret-Site-Information}
 \end{figure*}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Kontrollsenteret\index{Kontrollsenteret}\index{NorNet-Kontrollsenter}
+In order to get a quick overview of the status of the sites and tunnels (i.e.\ the reachability and routing among the tunnelboxes), the \noun{NorNet-Kontrollsenter}\index{Kontrollsenteret}\index{NorNet-Kontrollsenter} service on the Monitor server can be used via web browser. There are two possibilities to connect to this service:
+\begin{itemize}
+ \item \url{http://monitor.simula.nornet}:
+ In case of connection to the local \noun{NorNet Core} network including its DNS service, the web browser can directly connect to the Monitor server.
+ 
+ \item \url{http://localhost:2001}:
+ If access to the \noun{NorNet Core} network is only available via the Gatekeeper server, the SSH port forwarding -- as described in Subsubsection~\ref{subsub:Tunnelling-TCP-Connections} -- can be used. Then, if using the settings described there, the web browser connects to the local machine's port~2001. This port is forwarded, via SSH and the Gatekeeper server, to the Monitor server.
+\end{itemize}
 
-...
+The \noun{NorNet-Kontrollsenter} displays the \noun{NorNet Core} sites on a map view, as described in Subsection~\ref{sub:The-Monitoring-Setup}, with the \noun{OpenLayers}~\cite{OpenLayersDoc} JavaScript library utilising map services in the Internet. Currently, \noun{Open Street Map}\footnote{\noun{Open Street Map}: \url{http://www.openstreetmap.org/}.}, \noun{Google Maps} and \noun{Bing Maps}\footnote{\noun{Bing Maps}: \url{http://www.bing.com/maps/}.}). Note, that due to access restrictions in some countries, some of the used map services may not be accessible (currently e.g.\ \noun{Google Maps} in China). Also, the JavaScript handling of map data is computation-intensive and requires a web browser with up-to-date features. \noun{NorNet-Kontrollsenter} is mainly tested and known to work with \noun{Firefox}.
+
+An example screenshot of the \noun{NorNet-Kontrollsenter} is shown in Figure~\ref{cap:Kontrollsenteret-Site-Information}: Subfigure~\ref{subcap:Kontrollsenteret-Overlays} presents a view on the European \noun{NorNet Core} sites, using an \noun{Open Street Map} base layer and some weather information overlays.
+
+The status of sites is displayed by site marker colours as follows:
+\begin{itemize}
+ \item green: The tunnelbox is reachable via all tunnels over all ISP combinations and all available IP~protocols (i.e.\ IPv4 and IPv6).
+ \item orange: Some of the the endpoint addresses of the tunnelbox are not reachable, but at least some addresses are reachable.
+ \item red: No address of the tunnelbox is reachable.
+ \item black: The site is set as inactive in the PLC configuration (e.g.\ a new site that is not yet fully installed).
+\end{itemize}
+Lines among the sites denote the status of tunnels:
+\begin{itemize}
+ \item green: A green line between a remote site and the Central Site at the Simula Research Laboratory denotes a fully-operational site. That is, all tunnels between the site and other sites are working properly. In order to simplify this ``normal'' case, the visualisation is therefore reduced to a single, green line.
+ 
+ \item red: A red line between two sites denotes a not-working tunnel.
+ 
+ \item grey: A dotted grey line between a site and the Central Site at the Simula Research Laboratory denotes the connection to an inactive site. For an inactive site, only a tunnel between the site's tunnelbox and the Central Site is configured for testing purposes.
+\end{itemize}
+
+Another feature of the \noun{NorNet-Kontrollsenter} is to provide information about sites by clicking on their markers. An example is provided in Subfigure~\ref{subcap:Kontrollsenteret-Site}. Currently, it only displays the site's location and an image of the site.
 
 
 
