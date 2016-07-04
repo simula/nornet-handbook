@@ -1,4 +1,4 @@
-% $Id: Referenzarchiv.bib 5621 2016-05-19 15:16:11Z dreibh $
+% $Id: Referenzarchiv.bib 5637 2016-07-03 09:57:34Z dreibh $
 
 % ====== Own Documents =====================================================
 
@@ -276,7 +276,7 @@ While availability is one main aspect of RSerPool, load distribution is another.
 	day = "15",
 	month = jun,
 	year = "2005",
-	address = "Zagreb/Croatia",
+	address = "Zagreb, Središnja Hrvatska/Croatia",
 	language = "english",
 	isbn = "953-184-081-4",
 	keywords = "Internet Applications, IPv6 Deployment and Applications, SS7, Server Pools",
@@ -621,11 +621,11 @@ The purpose of this paper is, after presenting an outline of the RSerPool framew
 	address = "Essen, Nordrhein-Westfalen/Germany",
 	language = "german",
 	keywords = "Reliable Server Pooling~(RSerPool), Hochverfügbarkeit, Redundanz, Überblick, Implementierung, RSPLIB",
-	abstract = "{Mit der ständig wachsenden Verbreitung von Internetzugängen nimmt auch die Anzahl an verfügbarkeits-kritischen Diensten im Netz zu. Ausfälle von z.B. VoIP-Vermittlungsanlagen zur Weiterleitung von Notrufen oder e-Commerce-Anwendungen sind nicht akzeptabel. Zur Sicherstellung der Verfügbarkeit von Diensten bei Geräte- und Netzwerkausfällen müssen diese Komponenten redundant ausgelegt sein. Spezialisierte Redundanzlösungen – insbesondere z.B. für Web-Server – gibt es zwar viele; eine einheitliche, für viele Dienste nutzbare Lösung fehlte jedoch noch. Reliable Server Pooling, abgekürzt RSerPool, ist ein Rahmenwerk zur Bereitstellung hochverfügbarer Anwendungen durch redundante Server; es befindet sich zur Zeit in der Standardisierung durch die IETF RSerPool-Arbeitsgruppe. Im RSerPool-Konzept werden Server, welche den gleichen Dienst anbieten, zu einem Pool zusammengefaßt. Neben der Hauptaufgabe – der Verfügbarkeit von Diensten – ist insbesondere auch die Lastverteilung ein wichtiges Anwendungsgebiet von RSerPool.
+	abstract = "{Mit der ständig wachsenden Verbreitung von Internetzugängen nimmt auch die Anzahl an verfügbarkeits-kritischen Diensten im Netz zu. Ausfälle von z.B. VoIP-Vermittlungsanlagen zur Weiterleitung von Notrufen oder e-Commerce-Anwendungen sind nicht akzeptabel. Zur Sicherstellung der Verfügbarkeit von Diensten bei Geräte- und Netzwerkausfällen müssen diese Komponenten redundant ausgelegt sein. Spezialisierte Redundanzlösungen – insbesondere z.B. für Web-Server – gibt es zwar viele, eine einheitliche, für viele Dienste nutzbare Lösung fehlte jedoch noch. Reliable Server Pooling, abgekürzt RSerPool, ist ein Rahmenwerk zur Bereitstellung hochverfügbarer Anwendungen durch redundante Server, es befindet sich zur Zeit in der Standardisierung durch die IETF RSerPool-Arbeitsgruppe. Im RSerPool-Konzept werden Server, welche den gleichen Dienst anbieten, zu einem Pool zusammengefaßt. Neben der Hauptaufgabe – der Verfügbarkeit von Diensten – ist insbesondere auch die Lastverteilung ein wichtiges Anwendungsgebiet von RSerPool.
 Im Rahmen eines Forschungsprojektes haben wir -- die Arbeitsgruppe Technik der Rechnernetze am Institut für Experimentelle Mathematik der Universität Duisburg-Essen -- im Jahre 2002 damit begonnen, einen plattformunabhängigen RSerPool-Prototypen als Open Source unter GPL-Lizenz zu entwickeln. Mittlerweile wird unser Projekt durch die Deutsche Forschungsgemeinschaft (DFG) gefördert. Unser System läuft zur Zeit unter Linux, FreeBSD, Darwin (MacOS X) und Solaris, wobei die Unterstützung für weitere Plattformen – insbesondere auch für Embedded-Systeme – geplant ist. Als einzige vollständige Implementierung des zukünftigen RSerPool-Standards sind wir Referenzimplementierung der IETF RSerPool-Arbeitsgruppe und wirken mit Tests und Forschungsarbeiten aktiv in der Standardisierung mit.
 In unserem Vortrag geben wir zunächst eine kurze Einführung zu RSerPool. Dabei wollen wir insbesondere auch die Merkmale verdeutlichen, die RSerPool von existierenden Lösungen – wie Linux Virtual Server (LVS) oder dem kommerziellen Cisco Distributed Director – unterscheiden. Außerdem wollen wir zeigen, welche speziellen Funktionalitäten RSerPool bietet um den Nutzen eines Serverpools sowohl für dessen Betreiber als auch für den Anwender zu optimieren: die Möglichkeit zur vollautomatischen Konfiguration von Komponenten und die Festlegung pool-spezifischer Serverauswahlregeln. Diese Funktionalitäten werden wir am Beispiel einer Anwendung von RSerPool für Real-Time Distributed Computing verdeutlichen.
 Im zweiten Teil unseres Vortrags werden wir auf unsere Open Source Implementierung rsplib eingehen. Neben dem Aufbau der einzelnen Komponenten werden wir insbesondere auch interessante Details der Implementierung vorstellen und beschreiben, wie wir auftretende Probleme erfolgreich lösen konnten. Insbesondere wollen wir dabei auch unsere gesammelten Erfahrungen beim Erstellen von auf unterschiedlichen Betriebssystemen (Linux, FreeBSD, MacOS X, Solaris) und Hardware (x86, x64, PPC) lauffähiger Software vorstellen. Im Anschluß daran zeigen wir, wie das RSerPool-API dazu genutzt werden kann, eigene Anwendungen hochverfügbar zu machen und die Möglichkeiten zur Lastverteilung im Pool verwendet werden können. Ein Schwerpunkt dieser Einführung wird dabei insbesondere die einfache und effiziente Realisierung des Failover-Mechanisms sein, d.h. des Verfahrens zur Wiederherstellung eines Sitzungszustandes auf einem neuen Server nach Ausfall des alten. Im Besonderen werden wir dabei zeigen, welche Fähigkeiten RSerPool und sein API mitbringen um dieses – teilweise recht komplexe Thema – in vielen Fällen übersichtlich und mit wenigen Zeilen Programmcode zu lösen: Hochverfügbarkeit für eigene Anwendungen muß nicht kompliziert sein!
-Zum Abschluß stellen wir noch unsere Beispielanwendung vor, ein System zum verteilten Berechnen von Fraktalgrafiken. Mit diesem System lassen sich die grundlegenden Eigenschaften von RSerPool – welche im Vortrag vorgestellt wurden – sehr anschaulich demonstrieren: die Verwaltung dynamischer Pools, Lastverteilung und Failover bei Serverausfall. Selbstverständlich werden wir unser Beispielsystem beim Vortrag auch in der Praxis demonstrieren; bei Vorhandensein eines Internetzugangs sogar mit einem Szenario aus weltweit verteilten Ressourcen.}",
+Zum Abschluß stellen wir noch unsere Beispielanwendung vor, ein System zum verteilten Berechnen von Fraktalgrafiken. Mit diesem System lassen sich die grundlegenden Eigenschaften von RSerPool – welche im Vortrag vorgestellt wurden – sehr anschaulich demonstrieren: die Verwaltung dynamischer Pools, Lastverteilung und Failover bei Serverausfall. Selbstverständlich werden wir unser Beispielsystem beim Vortrag auch in der Praxis demonstrieren, bei Vorhandensein eines Internetzugangs sogar mit einem Szenario aus weltweit verteilten Ressourcen.}",
 	url = "https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/ReliableServer/Publications/Linuxtage2007.pdf",
 	url.size = "7925544",
 	url.md5 = "7882ef3b335f592778b19b6d3f3c0796",
@@ -1004,7 +1004,7 @@ In this paper, we first illustrate the implications of registrar redundancy on t
 	day = "8",
 	month = jun,
 	year = "2009",
-	address = "Zagreb/Croatia",
+	address = "Zagreb, Središnja Hrvatska/Croatia",
 	language = "english",
 	isbn = "978-953-184-131-3",
 	keywords = "Reliable Server Pooling~(RSerPool), Security, Attacks, Denial of Service, Robustness, Performance Analysis",
@@ -1237,7 +1237,7 @@ In this paper, we propose our approach for breaking up the functionalities of th
 	isbn = "978-1-4244-5637-6",
 	doi = "10.1109/GLOCOM.2010.5683579",
 	keywords = "Concurrent Multipath Transfer, Resource Pooling, Asymmetric Paths, Buffer Handling, Performance Analysis",
-	abstract = "{With the deployment of more and more resilience-critical Internet applications, there is a rising demand for multi-homed network sites. This leads to the desire for simultaneously utilising all available access paths to improve application data throughput. This is commonly known as Concurrent Multipath Transfer~(CMT); approaches for several Transport Layer protocols have been proposed. Combined with Resource Pooling~(RP), CMT can also fairly coexist with concurrent non-CMT flows. Current approaches focus on symmetric paths (i.e.\ similar bandwidth, delay and error rate). However, asymmetric paths are much more likely -- particularly for realistic Internet setups -- and efficient CMT usage on such paths is therefore crucial.
+	abstract = "{With the deployment of more and more resilience-critical Internet applications, there is a rising demand for multi-homed network sites. This leads to the desire for simultaneously utilising all available access paths to improve application data throughput. This is commonly known as Concurrent Multipath Transfer~(CMT), approaches for several Transport Layer protocols have been proposed. Combined with Resource Pooling~(RP), CMT can also fairly coexist with concurrent non-CMT flows. Current approaches focus on symmetric paths (i.e.\ similar bandwidth, delay and error rate). However, asymmetric paths are much more likely -- particularly for realistic Internet setups -- and efficient CMT usage on such paths is therefore crucial.
 In this paper, we first show the challenges of plain as well as RP-aware CMT data transport over asymmetric paths. After that, we introduce mechanisms for efficient transport over such paths. Finally, we analyse the performance of our approaches by using simulations.}",
 	url = "https://www.wiwi.uni-due.de/fileadmin/fileupload/I-TDR/SCTP/Paper/Globecom2010.pdf",
 	url.size = "1060498",
@@ -1499,7 +1499,7 @@ Based on the idea of Resource Pooling~(RP), two approaches are currently discuss
 	day = "16",
 	month = sep,
 	year = "2011",
-	address = "Hvar/Croatia",
+	address = "Hvar, Dalmacija/Croatia",
 	language = "english",
 	isbn = "978-953-290-027-9",
 	keywords = "NetPerfMeter Tool-Chain, Concurrent Multipath Transfer, Congestion Control, Dissimilar Paths, Performance Analysis",
@@ -1921,7 +1921,7 @@ The intention of the NorNet project is to build up a realistic Internet testbed 
 	day = "26",
 	month = jun,
 	year = "2013",
-	address = "Zagreb/Croatia",
+	address = "Zagreb, Središnja Hrvatska/Croatia",
 	language = "english",
 	isbn = "978-953-184-175-7",
 	keywords = "Multi-Path Transfer, Multimedia Transport, Scheduling Strategies, Real-Time, Wireless",
@@ -2006,14 +2006,14 @@ In many cases, multimedia transport is also sensitive for delays and packet loss
 	month = oct,
 	year = "2013",
 	language = "english",
+	content-language = "chinese",
 	abstract = "{Achieving multipath transport by terminal’s multi-homed characteristics is a hot topic of Internet protocol application. MPTCP and CMT-SCTP are both more mature and key protocols for multipath transmission, but there is still a lot of performance analysis needed before large-scale application. This paper presents the behaviors of MPTCP and CMT-SCTP multipath transmission and compares the difference between both protocols on the local test-bed environment. Results show that both MPTCP and CMT-SCTP protocols can significantly increase throughput. Meanwhile the scheduling strategy for transmission is still not perfect and needs further improvement.}",
 	url = "https://web.archive.org/web/20160427132028/http://cea.ceaj.org/EN/article/downloadArticleFile.do?attachType=PDF&id=31123",
 	url.size = "541090",
 	url.md5 = "970ac5fc15743380fa13597889a3b260",
 	url.mime = "application/pdf",
 	url.pagesize = "629.291 x 875.905 pts",
-	url.checked = "2016-04-27 15:27:52 CEST",
-	content-language = "chinese"
+	url.checked = "2016-04-27 15:27:52 CEST"
 }
 
 @InProceedings{ Globecom2013,
@@ -2219,7 +2219,7 @@ NorNet Edge nodes that are connected to up to five different 3G ISPs (UMTS and C
 	isbn = "978-1-4799-2652-7",
 	doi = "10.1109/WAINA.2014.125",
 	keywords = "Multi-Path Transfer, Congestion Control, Background Traffic, CMT-SCTP, MPTCP",
-	abstract = "{The Internet is based on best effort communication, i.e.\ it tries to deliver packets but does not provide any guarantees. A transport protocol can make use of this best effort service to provide a suitable service to its applications. Also, its congestion control is responsible for a fair distribution of the resources within the Internet. However, background data transfer applications (like file sharing or update fetching) do not require "best effort"; they in fact could use a "lower-than-best-effort" service to leave resources to more important applications if needed. For this purpose, the Low Extra Delay Background Transport~(LEDBAT) algorithm has been standardized by the IETF.
+	abstract = "{The Internet is based on best effort communication, i.e.\ it tries to deliver packets but does not provide any guarantees. A transport protocol can make use of this best effort service to provide a suitable service to its applications. Also, its congestion control is responsible for a fair distribution of the resources within the Internet. However, background data transfer applications (like file sharing or update fetching) do not require "best effort", they in fact could use a "lower-than-best-effort" service to leave resources to more important applications if needed. For this purpose, the Low Extra Delay Background Transport~(LEDBAT) algorithm has been standardized by the IETF.
 Nowadays, multi-homing is becoming increasingly common in modern networks and several approaches to exploit this feature (e.g.\ CMT-SCTP, MPTCP) have evolved that are able to combine resources of multiple paths. For background traffic oriented algorithms like LEDBAT, this feature could be of great use, too, i.e.\ by increasing the overall bandwidth while shifting the transmission away from paths which are used by other flows. This could be particularly useful for non-critical bulk transfers in data centres. In this paper, we introduce our approach LEDBAT for Multi-Path -- denoted as LEDBAT-MP -- and analyze its performance by simulations. With this paper, we want to highlight some generic design questions and start a discussion on how a solid universal background multi-path congestion control strategy should behave.}",
 	url = "https://www.simula.no/file/simulasimula2512pdf/download",
 	url.size = "1258366",
@@ -2526,7 +2526,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	language = "english",
 	keywords = "NorNet, NorNet Core, NorNet Edge, Testbed, Multi-Homing, Multi-Path Transport, Overview",
 	abstract = "{Multi-homing denotes the simultaneous connection of endpoints (e.g.~cloud servers, smartphones, etc.) to multiple Internet Service Providers~(ISP). That is, the endpoints remain reachable even when some of the ISPs have problems (e.g.~malfunction of hardware or break of cables). Besides the redundancy aspect, multi-homing can also make load sharing by multi-path transport possible, i.e.~increasing the application throughput by utilising multiple paths simultaneously. Multi-path transport can e.g.~be realised by Concurrent Multi-Path Transfer for SCTP~(CMT-SCTP) and Multi-Path TCP~(MPTCP), two protocols that are currently under standardisation in the IETF.
-The growing need for and deployment of multi-homed applications makes large-scale testing and evaluation in realistic Internet setups necessary. For instance, different paths can have very different characteristics with regard to bandwidth, packet loss rate, congestion, delay and jitter. Therefore, the NorNet project of the Simula Research Laboratory is building up an open platform for such experiments: the NorNet testbed. It consists of two parts: the wired part NorNet Core as well as the wireless part NorNet Edge; both parts provide programmable nodes with multiple ISP connections. These nodes are distributed all over Norway as well as some international locations. This talk will give an overview over the NorNet testbed and how it can be utilised for research on multi-homed systems.}",
+The growing need for and deployment of multi-homed applications makes large-scale testing and evaluation in realistic Internet setups necessary. For instance, different paths can have very different characteristics with regard to bandwidth, packet loss rate, congestion, delay and jitter. Therefore, the NorNet project of the Simula Research Laboratory is building up an open platform for such experiments: the NorNet testbed. It consists of two parts: the wired part NorNet Core as well as the wireless part NorNet Edge, both parts provide programmable nodes with multiple ISP connections. These nodes are distributed all over Norway as well as some international locations. This talk will give an overview over the NorNet testbed and how it can be utilised for research on multi-homed systems.}",
 	url = "https://www.simula.no/file/simulasimula3008pdf/download",
 	url.size = "21559706",
 	url.md5 = "3a4da9d27f89a7e6fd722230116b4e55",
@@ -2749,6 +2749,7 @@ To provide such information to the researchers, we have designed and developed a
 	month = apr,
 	year = "2015",
 	language = "english",
+	content-language = "chinese",
 	issn = "1000-3428",
 	doi = "10.3969/j.issn.1000-3428.2015.04.022",
 	keywords = "Multi-Path Transfer, Congestion Control, Fairness, Resource Pooling (RP), Increase Factor, Aggressiveness Factor",
@@ -2759,7 +2760,6 @@ To provide such information to the researchers, we have designed and developed a
 	url.mime = "application/pdf",
 	url.pagesize = "708.606 x 935.273 pts",
 	url.checked = "2016-04-27 15:28:11 CEST",
-	content-language = "chinese",
 	note = "{ISSN} 1000-3428"
 }
 
@@ -3025,6 +3025,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	month = mar,
 	year = "2016",
 	language = "english",
+	content-language = "chinese",
 	issn = "1002-8331",
 	doi = "0.3778/j.issn.1002-8331.1508-0186",
 	keywords = "Multi-Path Transmission, Load Sharing, Path Management, Congestion Control, Buffer, Performance Analysis",
@@ -3035,7 +3036,6 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.mime = "application/pdf",
 	url.pagesize = "629.291 x 875.905 pts",
 	url.checked = "2016-04-27 15:28:12 CEST",
-	content-language = "chinese",
 	note = "{ISSN} 1002-8331"
 }
 
@@ -3094,19 +3094,114 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	isbn = "978-1-4673-9953-1",
 	keywords = "Multi-Path TCP~(MPTCP), Shared Bottleneck Detection, Congestion Control, Coupled Congestion Control",
 	abstract = "{Multipath TCP (MPTCP) enables the simultaneous usage of multiple links for bandwidth aggregation, better resource utilization and improved reliability. Its coupled congestion control intends to reap the increased bandwidth of multiple links, while avoiding to be more aggressive than regular TCP flows on every used link. We argue that this leads to a very conservative behavior when paths do not share a bottleneck. Therefore, in this paper, we first quantify the penalty of the coupled congestion control for the links that do not share a bottleneck. Then, in order to overcome this penalty, we design and implement a practical shared bottleneck detection (SBD) algorithm for MPTCP, namely MPTCP-SBD. Through extensive emulations, we show that MPTCP-SBD outperforms all currently deployed MPTCP coupled congestion controls by accurately detecting bottlenecks resulting in throughput gains of up to 30\% in the absence of shared bottlenecks while remaining fair to TCP in shared bottlenecks scenarios. We complement the emulation results with real-network experiments justifying it is safeness for deployment.}",
-	myurl = "https://www.simula.no/file/infocom2016-webpdf/download",
+	url = "https://www.simula.no/file/infocom2016-webpdf/download",
+	url.size = "1474548",
+	url.md5 = "f60e8b176a4f13b368211d222ddc1969",
+	url.mime = "application/pdf",
+	url.pagesize = "612 x 792 pts (letter)",
+	url.checked = "2016-05-31 09:05:00 CEST",
 	note = "{ISBN} 978-1-4673-9953-1"
 }
 
-@Unpublished{ ComNets2016-MultipathSurvey,
+@Article{ ComNets2016-MultipathSurvey,
 	author = "Kiran Venkata Yedugundla and Simone Ferlin and Thomas Dreibholz and Özgü Alay and Nicolas Kuhn and Per Hurtig and Anna Brunström",
 	title = "{Is Multi-Path Transport Suitable for Latency Sensitive Traffic?}",
 	journal = "{Computer Networks}",
+	volume = "105",
+	pages = "1--21",
+	numpages = "21",
+	day = "4",
+	month = aug,
 	year = "2016",
 	publisher = "Elsevier",
 	language = "english",
+	issn = "1389-1286",
+	doi = "10.1016/j.comnet.2016.05.008",
 	keywords = "Internet, Latency, Multi-Path Communication, Transport Protocols, MPTCP, CMT-SCTP",
-	abstract = "{This paper assesses whether multi-path communication can help latency-sensitive applications to satisfy the requirements of their users. We consider Concurrent Multi-path Transfer for SCTP~(CMT-SCTP) and Multi-path TCP~(MPTCP) and evaluate their proficiency in transporting video, gaming, and web traffic over combinations of WLAN and 3G interfaces. To ensure the validity of our evaluation, several experimental approaches were used including simulation, emulation and live experiments. When paths are symmetric in terms of capacity, delay and loss rate, we find that the experienced latency is significantly reduced, compared to using a single path. Using multiple asymmetric paths does not affect latency -- applications do not experience any increase or decrease, but might benefit from other advantages of multi-path communication. In the light of our conclusions, multi-path transport is suitable for latency-sensitive traffic and mature enough to be widely deployed.}"
+	abstract = "{This paper assesses whether multi-path communication can help latency-sensitive applications to satisfy the requirements of their users. We consider Concurrent Multi-path Transfer for SCTP~(CMT-SCTP) and Multi-Path TCP~(MPTCP) and evaluate their proficiency in transporting video, gaming, and web traffic over combinations of WLAN and 3G interfaces. To ensure the validity of our evaluation, several experimental approaches were used including simulation, emulation and live experiments. When paths are symmetric in terms of capacity, delay and loss rate, we find that the experienced latency is significantly reduced, compared to using a single path. Using multiple asymmetric paths does not affect latency -- applications do not experience any increase or decrease, but might benefit from other advantages of multi-path communication. In the light of our conclusions, multi-path transport is suitable for latency-sensitive traffic and mature enough to be widely deployed.}",
+	url = "https://www.simula.no/file/comnets2016-multipathsurveypdf/download",
+	url.size = "4632900",
+	url.md5 = "568dbefc09c209fa4d5598258d7f0831",
+	url.mime = "application/pdf",
+	url.pagesize = "595.245 x 793.92 pts",
+	url.checked = "2016-05-31 09:07:38 CEST",
+	note = "{ISSN} 1389-1286"
+}
+
+@Misc{ Haikou2016-Presentation,
+	author = "Thomas Dreibholz",
+	title = "{NorNet at Hainan University -- An Introduction to the NorNet Testbed}",
+	howpublished = "Invited Talk at Hainan University, College of Information Science and Technology~(CIST)",
+	numpages = "34",
+	day = "29",
+	month = may,
+	year = "2016",
+	address = "Haikou, Hainan/People's Republic of China",
+	language = "english",
+	keywords = "NorNet, NorNet Core, NorNet Edge, Testbed, Multi-Homing, Introduction, Status",
+	abstract = "{Multi-homing denotes the simultaneous connection of endpoints (e.g.~cloud servers, smartphones, etc.) to multiple Internet Service Providers~(ISP). That is, the endpoints remain reachable even when some of the ISPs have problems (e.g.~malfunction of hardware or break of cables). Besides the redundancy aspect, multi-homing can also make load sharing by multi-path transport possible, i.e.~increasing the application throughput by utilising multiple paths simultaneously. Multi-path transport can e.g.~be realised by Concurrent Multi-Path Transfer for SCTP~(CMT-SCTP) and Multi-Path TCP~(MPTCP), two protocols that are currently under standardisation in the IETF.
+The growing need for and deployment of multi-homed applications makes large-scale testing and evaluation in realistic Internet setups necessary. For instance, different paths can have very different characteristics with regard to bandwidth, packet loss rate, congestion, delay and jitter. Therefore, the NorNet project of the Simula Research Laboratory is building up an open platform for such experiments: the NorNet testbed. It provides programmable nodes with multiple ISP connections -- wired as well as wireless -- that are distributed all over Norway as well as some international locations. This talk will give an overview over NorNet. Particularly, it will also show how the NorNet testbed can be utilised for research at Hainan University.}",
+	url = "https://www.simula.no/file/haikou2016-hainanuniversity-presentationpdf/download",
+	url.size = "14159188",
+	url.md5 = "4b42984be60a62d83f35537c32b4313f",
+	url.mime = "application/pdf",
+	url.pagesize = "794 x 595 pts",
+	url.checked = "2016-06-07 17:43:50 CEST"
+}
+
+@Misc{ Haikou2016-Tutorial,
+	author = "Thomas Dreibholz",
+	title = "{An Experiment Tutorial for the NorNet Core Testbed at Hainan University}",
+	howpublished = "Tutorial at Hainan University, College of Information Science and Technology~(CIST)",
+	numpages = "27",
+	day = "29",
+	month = may,
+	year = "2016",
+	address = "Haikou, Hainan/People's Republic of China",
+	language = "english",
+	keywords = "NorNet, NorNet Core, Testbed, Multi-Homing, Multi-Path Transport, Tutorial",
+	abstract = "{This tutorial -- presented for students at the College of Information Science and Technology~(CIST) at Hainan University -- provides an introduction on how to get access to the NorNet Core testbed as well as how to run experiments in the testbed.}",
+	url = "https://www.simula.no/file/haikou2016-hainanuniversity-tutorialpdf-0/download",
+	url.size = "5174351",
+	url.md5 = "29995f8cc5514f8bcbb9725816ff2bde",
+	url.mime = "application/pdf",
+	url.pagesize = "794 x 595 pts",
+	url.checked = "2016-06-07 17:50:15 CEST"
+}
+
+@Misc{ HKC2016-Presentation,
+	author = "Thomas Dreibholz",
+	title = "{NorNet at the Haikou College of Economics -- An Introduction to the NorNet Testbed}",
+	howpublished = "Invited Talk at the Haikou College of Economics",
+	numpages = "28",
+	day = "6",
+	month = jun,
+	year = "2016",
+	address = "Guilinyang, Hainan/People's Republic of China",
+	language = "english",
+	keywords = "NorNet, NorNet Core, NorNet Edge, Testbed, Multi-Homing, Introduction, Status",
+	abstract = "{Multi-homing denotes the simultaneous connection of endpoints (e.g.~cloud servers, smartphones, etc.) to multiple Internet Service Providers~(ISP). That is, the endpoints remain reachable even when some of the ISPs have problems (e.g.~malfunction of hardware or break of cables). Besides the redundancy aspect, multi-homing can also make load sharing by multi-path transport possible, i.e.~increasing the application throughput by utilising multiple paths simultaneously. Multi-path transport can e.g.~be realised by Concurrent Multi-Path Transfer for SCTP~(CMT-SCTP) and Multi-Path TCP~(MPTCP), two protocols that are currently under standardisation in the IETF.
+The growing need for and deployment of multi-homed applications makes large-scale testing and evaluation in realistic Internet setups necessary. For instance, different paths can have very different characteristics with regard to bandwidth, packet loss rate, congestion, delay and jitter. Therefore, the NorNet project of the Simula Research Laboratory is building up an open platform for such experiments: the NorNet testbed. It provides programmable nodes with multiple ISP connections -- wired as well as wireless -- that are distributed all over Norway as well as some international locations. This talk will give an overview over NorNet. Particularly, it will also show how the NorNet testbed can be utilised for research at the Haikou College of Economics.}",
+	url = "https://www.simula.no/file/haikou2016-hkc-presentationpdf/download",
+	url.size = "10406054",
+	url.md5 = "2df3a5eec4fffe610a7ac773c8c2056c",
+	url.mime = "application/pdf",
+	url.pagesize = "794 x 595 pts",
+	url.checked = "2016-06-07 18:05:01 CEST"
+}
+
+@InProceedings{ MSN2016,
+	author = "Thomas Dreibholz",
+	title = "{NorNet -- The Internet Testbed for Multi-Homed Systems}",
+	booktitle = "{Proceedings of the Multi-Service Networks Conference~(MSN, Cosener's)}",
+	day = "8",
+	month = jul,
+	year = "2016",
+	address = "Abingdon, Oxfordshire/United Kingdom",
+	language = "english",
+	keywords = "NorNet, NorNet Core, NorNet Edge, Testbed, Multi-Homing, Introduction, Overview",
+	abstract = "{Multi-homing denotes the simultaneous connection of endpoints (e.g.~cloud servers, smartphones, etc.) to multiple Internet Service Providers~(ISP). That is, the endpoints remain reachable even when some of the ISPs have problems (e.g.~malfunction of hardware or break of cables). Besides the redundancy aspect, multi-homing can also make load sharing by multi-path transport possible, i.e.~increasing the application throughput by utilising multiple paths simultaneously. Multi-path transport can e.g.~be realised by Concurrent Multi-Path Transfer for SCTP~(CMT-SCTP) and Multi-Path TCP~(MPTCP), two protocols that are currently under standardisation in the IETF.
+The growing need for and deployment of multi-homed applications makes large-scale testing and evaluation in realistic Internet setups necessary. For instance, different paths can have very different characteristics with regard to bandwidth, packet loss rate, congestion, delay and jitter. Therefore, the NorNet project of the Simula Research Laboratory is building up an open platform for such experiments: the NorNet testbed. It provides programmable nodes with multiple ISP connections -- wired as well as wireless -- that are distributed all over Norway as well as some international locations. This talk will give an overview over NorNet.}"
 }
 
 % ====== Vorlesungen und Übungen ============================================
@@ -3265,7 +3360,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	address = "Anaheim California/USA",
 	issn = "1930-529X",
 	doi = "10.1109/GLOCOM.2012.6503517",
-	keywords = "Internet;computer networks;transport protocols;end-to-end delay;heterogeneous path;multipath transfer scheduler;multipath transport protocol;scheduling algorithm;sender queue size;MCTCP;multipath TCP;reordering;scheduler",
+	keywords = "Internet,computer networks,transport protocols,end-to-end delay,heterogeneous path,multipath transfer scheduler,multipath transport protocol,scheduling algorithm,sender queue size,MCTCP,multipath TCP,reordering,scheduler",
 	abstract = "{Multipath transport protocols such as Multipath TCP can concurrently use several subflows to transmit a TCP flow over potentially different paths. Since more than one subflow is used, an efficient multipath scheduling algorithm is needed at the sender. The objective of the scheduler is to identify the subflow over which the current data packet should be sent. This paper compares the most important types of schedulers for multipath transfers. We model their performance analytically and derive key metrics, most notably the resulting end-to-end delay over heterogeneous paths. Our results show that a scheduler minimizing the packet delivery delay yields the best overall performance, but it is complex to realize. An alternative scheduler based on the sender queue size is simpler and has sufficient performance for relatively small asymmetry between the multiple paths. Our model results are confirmed by measurements with a real multipath transport protocol.}",
 	url = "http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6503517&isnumber=",
 	url.size = "542253",
@@ -3809,7 +3904,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	address = "Darmstadt, Hessen/Germany",
 	language = "english",
 	doi = "10.1109/EWSDN.2012.28",
-	keywords = "cellular radio;mobility management (mobile radio);packet switching;protocols;software radio;SDN;base station resource management;cellular data network management;complex control plane protocol;header compression;line grained control;packet inspection;software defined cellular network;subscriber attribute;switch;vendor specific configuration interface;Base stations;Control systems;IP networks;Protocols;Quality of service;Real-time systems;Scalability;CellSDN;local control agent;software defined networks (SDN)",
+	keywords = "cellular radio,mobility management (mobile radio),packet switching,protocols,software radio,SDN,base station resource management,cellular data network management,complex control plane protocol,header compression,line grained control,packet inspection,software defined cellular network,subscriber attribute,switch,vendor specific configuration interface,Base stations,Control systems,IP networks,Protocols,Quality of service,Real-time systems,Scalability,CellSDN,local control agent,software defined networks (SDN)",
 	url = "https://www.cs.princeton.edu/~jrex/papers/ewsdn12.pdf",
 	url.size = "339998",
 	url.md5 = "f5974bf73b8f5de0d2b7303095250467",
@@ -4261,7 +4356,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	numpages = "9",
 	month = jun,
 	year = "2012",
-	keywords = "Antennas;Bit error rate;Demodulation;Downlink;ISO standards;Magnetic fields;Noise",
+	keywords = "Antennas,Bit error rate,Demodulation,Downlink,ISO standards,Magnetic fields,Noise",
 	url = "http://www.perisens.de/attachments/category/8/Systech2012.pdf",
 	url.size = "955016",
 	url.md5 = "84f4ae5645a01b9550721fe538f5bba8",
@@ -4318,7 +4413,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	language = "english",
 	issn = "0743-166X",
 	doi = "10.1109/INFOCOM.2006.286",
-	keywords = "Added delay;Delay effects;Disruption tolerant networking;Human factors;IP networks;Information science;Jitter;Network servers;Quality of service;Subscriptions",
+	keywords = "Added delay,Delay effects,Disruption tolerant networking,Human factors,IP networks,Information science,Jitter,Network servers,Quality of service,Subscriptions",
 	url = "http://nslab.ee.ntu.edu.tw/publication/conf/chen06_qos.pdf",
 	url.size = "845536",
 	url.md5 = "b2a1bf7b5931715b45fca7e9c4d0a8de",
@@ -4486,7 +4581,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	month = apr,
 	year = "2015",
 	language = "english",
-	abstract = "{This paper demonstrates that end-to-end active measurements can give invaluable insights into the nature and characteristics of packet loss in cellular networks. We conduct a large-scale measurement study of packet loss in four UMTS networks. The study is based on active measurements from hundreds of measurement nodes over a period of one year. We find that a significant fraction of loss occurs during pathological and normal Radio Resource Control (RRC) state transitions.\&nbsp;The remaining loss exhibits pronounced diurnal patterns and shows a relatively strong correlation between geographically diverse measurement nodes.\&nbsp;Our results indicate that the causes of a significant part of the remaining loss lie beyond the radio access network.}",
+	abstract = "{This paper demonstrates that end-to-end active measurements can give invaluable insights into the nature and characteristics of packet loss in cellular networks. We conduct a large-scale measurement study of packet loss in four UMTS networks. The study is based on active measurements from hundreds of measurement nodes over a period of one year. We find that a significant fraction of loss occurs during pathological and normal Radio Resource Control (RRC) state transitions.\&nbsp,The remaining loss exhibits pronounced diurnal patterns and shows a relatively strong correlation between geographically diverse measurement nodes.\&nbsp,Our results indicate that the causes of a significant part of the remaining loss lie beyond the radio access network.}",
 	url = "https://www.simula.no/file/nne-infocom-2015pdf/download",
 	url.size = "1889636",
 	url.md5 = "e1aa65d6b3f60f896d5ec802e27d2ee4",
@@ -4570,7 +4665,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	address = "Santa Barbara, California/U.S.A.",
 	isbn = "978-1-4503-2101-3",
 	doi = "10.1145/2535372.2535416",
-	abstract = "{In February 2011 the Internet Assigned Numbers Authority~(IANA) exhausted its free pool of IPv4 addresses, and the regional registries (RIRs) have started to run out of IPv4 addresses as well. As RIRs have started rationing allocations, IPv4 transfer markets have emerged as a new mechanism to acquire IPv4 addresses. Barring a few high-profile exceptions, IPv4 transfers have largely flown under the radar. In this work, we use the lists of transfers published by three RIRs to characterize the transfer market - the types of players involved, the sizes and characteristics of transferred address blocks, and visible effects on the routing table. Next, we take first steps toward detecting address transfers using BGP data from the Routeviews and RIPE repositories from 2004-2013. We identify reasons why legitimate changes in prefix origin could be confused as transfers, and implement a series of 10 filters that remove 86\% of candidate transfers. We find the remaining number of inferred transfers is increasing over time. We could confirm few (0.16\%) of these transfers using RIR-published transfer lists; while our inference methodology undoubtedly yields false positives, a black market for IPv4 transfers may exist as well.}",
+	abstract = "{In February 2011 the Internet Assigned Numbers Authority~(IANA) exhausted its free pool of IPv4 addresses, and the regional registries (RIRs) have started to run out of IPv4 addresses as well. As RIRs have started rationing allocations, IPv4 transfer markets have emerged as a new mechanism to acquire IPv4 addresses. Barring a few high-profile exceptions, IPv4 transfers have largely flown under the radar. In this work, we use the lists of transfers published by three RIRs to characterize the transfer market - the types of players involved, the sizes and characteristics of transferred address blocks, and visible effects on the routing table. Next, we take first steps toward detecting address transfers using BGP data from the Routeviews and RIPE repositories from 2004-2013. We identify reasons why legitimate changes in prefix origin could be confused as transfers, and implement a series of 10 filters that remove 86\% of candidate transfers. We find the remaining number of inferred transfers is increasing over time. We could confirm few (0.16\%) of these transfers using RIR-published transfer lists, while our inference methodology undoubtedly yields false positives, a black market for IPv4 transfers may exist as well.}",
 	url = "https://www.caida.org/publications/papers/2013/first_look_transfer_markets/first_look_transfer_markets.pdf",
 	url.size = "563148",
 	url.md5 = "9303a3a90b78ea8bf7e9d1053ab88de4",
@@ -5614,7 +5709,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	pages = "31--36",
 	numpages = "6",
 	year = "2012",
-	location = "Helsinki/Finland",
+	address = "Helsinki/Finland",
 	isbn = "978-1-4503-1475-6",
 	doi = "10.1145/2342468.2342476",
 	url = "http://inl.info.ucl.ac.be/system/files/cell06-paasch.pdf",
@@ -5694,7 +5789,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	numpages = "8",
 	month = jun,
 	year = "2005",
-	address = "Zagreb/Croatia",
+	address = "Zagreb, Središnja Hrvatska/Croatia",
 	language = "english",
 	isbn = "953-184-081-4",
 	doi = "10.1109/CONTEL.2005.185815",
@@ -5916,7 +6011,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	numpages = "8",
 	month = jul,
 	year = "2010",
-	location = "Chania, Crete/Greece",
+	address = "Chania, Crete/Greece",
 	language = "english",
 	isbn = "978-960-8878-59-4",
 	url = "http://robin-seggelmann.de/papers/dtls-sctp.pdf",
@@ -5935,7 +6030,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	numpages = "5",
 	month = sep,
 	year = "2010",
-	location = "Split/Croatia",
+	address = "Split, Dalmacija/Croatia",
 	language = "english",
 	isbn = "978-953-290-004-0",
 	url = "http://ieeexplore.ieee.org/iel5/5611454/5623609/05623661.pdf?arnumber=5623661&isnumber=",
@@ -6165,9 +6260,8 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	pages = "310--317",
 	numpages = "8",
 	year = "2001",
-	location = "Atlanta, Georgia/U.S.A.",
 	publisher = "ACM",
-	address = "New York/U.S.A.",
+	address = "Atlanta, Georgia/U.S.A.",
 	language = "english",
 	isbn = "1-58113-436-3",
 	url = "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.16.6889&rep=rep1&type=pdf",
@@ -7342,7 +7436,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	pages = "55--62",
 	numpages = "8",
 	year = "2006",
-	location = "Mikulov/Czech Republic",
+	address = "Mikulov/Czech Republic",
 	language = "english",
 	isbn = "80-214-3287-X",
 	url = "http://www.fit.vutbr.cz/~smrcka/pub/fmcrc-MEMICS06.pdf",
@@ -7398,7 +7492,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	numpages = "11",
 	month = apr,
 	year = "2006",
-	location = "Le Morne/Mauritius",
+	address = "Le Morne/Mauritius",
 	language = "english",
 	isbn = "0-7695-2552-0",
 	doi = "10.1109/ICNICONSMCL.2006.131",
@@ -7708,7 +7802,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	pages = "328--341",
 	numpages = "14",
 	year = "2011",
-	location = "Valencia/Spain",
+	address = "Valencia/Spain",
 	isbn = "978-3-642-20797-6",
 	url = "http://caia.swin.edu.au/cv/dahayes/content/networking2011-cdg-preprint.pdf",
 	url.size = "564179",
@@ -7745,7 +7839,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	pages = "342--355",
 	numpages = "14",
 	year = "2011",
-	location = "Valencia/Spain",
+	address = "Valencia/Spain",
 	isbn = "978-3-642-20797-6",
 	url = "http://dl.acm.org/citation.cfm?id=2008826.2008859",
 	url.size = "43481",
@@ -7763,7 +7857,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	numpages = "12",
 	month = apr,
 	year = "2006",
-	location = "Barcelona/Spain",
+	address = "Barcelona/Spain",
 	issn = "0743-166X",
 	url = "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.331.8916&rep=rep1&type=pdf",
 	url.size = "194294",
@@ -7862,7 +7956,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	numpages = "6",
 	month = aug,
 	year = "2012",
-	location = "Helsinki/Finland",
+	address = "Helsinki/Finland",
 	isbn = "978-1-4503-1475-6",
 	doi = "10.1145/2342468.2342470",
 	url = "http://conferences.sigcomm.org/sigcomm/2012/paper/cellnet/p1.pdf",
@@ -8099,9 +8193,8 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	pages = "29--34",
 	numpages = "6",
 	year = "2013",
-	location = "Miami, Florida/U.S.A.",
 	publisher = "ACM",
-	address = "New York/U.S.A.",
+	address = "Miami, Florida/U.S.A.",
 	isbn = "978-1-4503-2366-6",
 	doi = "10.1145/2505906.2505911",
 	url = "http://doi.acm.org/10.1145/2505906.2505911",
@@ -8271,6 +8364,29 @@ The growing need for and deployment of multi-homed applications makes large-scal
 }
 
 % ====== Articles ==========================================================
+
+@Article{ InterentOnlyJustWorks2006,
+	author = "Mark Handley",
+	title = "{Why the Interent Only Just Works}",
+	journal = "{BT Techology Journal}",
+	volume = "24",
+	volume = "24",
+	number = "3",
+	pages = "119--129",
+	numpages = "11",
+	month = jul,
+	year = "2006",
+	year = "0",
+	issn = "1358-3948",
+	doi = "10.1007/s10550-006-0084-z",
+	url = "http://www0.cs.ucl.ac.uk/staff/M.Handley/papers/only-just-works.pdf",
+	url.size = "204718",
+	url.md5 = "b943f1ec6373bf87d4a95ca2bce49dfa",
+	url.mime = "application/pdf",
+	url.pagesize = "595 x 842 pts (A4)",
+	url.checked = "2016-07-03 11:56:54 CEST",
+	note = "{ISSN} 1358-3948"
+}
 
 @Article{ Bu2002,
 	author = "Tian Bu and Nick Duffield and Francesco Lo Presti and Don Towsley",
@@ -8450,6 +8566,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	month = nov,
 	year = "2013",
 	language = "english",
+	content-language = "chinese",
 	issn = "1002-8331",
 	doi = "10.3778/j.issn.1002-8331.1306-0218",
 	url = "https://web.archive.org/web/20150728182812/http://cea.ceaj.org/CN/article/downloadArticleFile.do?attachType=PDF&id=31123",
@@ -8458,7 +8575,6 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.mime = "application/pdf",
 	url.pagesize = "629.291 x 875.905 pts",
 	url.checked = "2016-04-27 15:28:13 CEST",
-	content-language = "chinese",
 	note = "{ISSN} 1002-8331"
 }
 
@@ -8628,6 +8744,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	month = feb,
 	year = "2013",
 	language = "english",
+	content-language = "chinese",
 	issn = "1001-3695",
 	url = "http://workroom.arocmag.com/arocmag/ch/reader/download_new_edit_content.aspx?file_no=201205090000031&journal_id=arocmag",
 	url.size = "684436",
@@ -8635,7 +8752,6 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.mime = "application/pdf",
 	url.pagesize = "515.7 x 784.26 pts",
 	url.checked = "2015-08-09 00:11:04 CEST",
-	content-language = "chinese",
 	note = "{ISSN} 1001-3695"
 }
 
@@ -9939,12 +10055,12 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	language = "english",
 	issn = "1063-6692",
 	doi = "10.1109/TNET.2006.882843",
-	url = "http://www.fandm.edu/jiyengar/papers/cmt-ton2006.pdf",
-	url.size = "678828",
-	url.md5 = "6e417657af38762604d6ecc986bb1ac3",
+	url = "https://www.eecis.udel.edu/~amer/PEL/poc/pdf/ToN2006-CMT-over-Independent-Paths-Iyengar.pdf",
+	url.size = "666114",
+	url.md5 = "3481a24b4572b8a8472f6cb73630f6fd",
 	url.mime = "application/pdf",
 	url.pagesize = "594 x 792 pts",
-	url.checked = "2014-04-02 17:20:11 CEST",
+	url.checked = "2016-05-26 14:01:52 CEST",
 	note = "{ISSN} 1063-6692"
 }
 
@@ -10804,7 +10920,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	year = "2002",
 	issn = "0163-5980",
 	doi = "10.1145/844128.844159",
-	url = "https://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=E27EDE3E1B0DD63AED532ABBA7659734?doi=10.1.1.20.1229&rep=rep1&type=pdf",
+	url = "https://citeseerx.ist.psu.edu/viewdoc/download,jsessionid=E27EDE3E1B0DD63AED532ABBA7659734?doi=10.1.1.20.1229&rep=rep1&type=pdf",
 	url.size = "191480",
 	url.md5 = "237714bc1fbd225c9c1fc8d4a6d4797a",
 	url.mime = "application/pdf",
@@ -11105,7 +11221,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	month = aug,
 	year = "2010",
 	publisher = "Sciyo",
-	address = "Rijeka/Croatia",
+	address = "Rijeka, Istra/Croatia",
 	language = "english",
 	isbn = "978-953-307-115-2",
 	url = "http://www.intechopen.com/download/books/books_isbn/978-953-307-115-2",
@@ -11486,9 +11602,9 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	language = "english",
 	issn = "2070-1721",
 	doi = "10.17487/RFC5352",
-	abstract = "{Aggregate Server Access Protocol~(ASAP; RFC 5352), in conjunction with the Endpoint Handlespace Redundancy Protocol~(ENRP; RFC 5353), provides a high-availability data transfer mechanism over IP networks. ASAP uses a handle-based addressing model that isolates a logical communication endpoint from its IP address(es), thus effectively eliminating the binding between the communication endpoint and its physical IP address(es), which normally constitutes a single point of failure.
+	abstract = "{Aggregate Server Access Protocol~(ASAP, RFC 5352), in conjunction with the Endpoint Handlespace Redundancy Protocol~(ENRP, RFC 5353), provides a high-availability data transfer mechanism over IP networks. ASAP uses a handle-based addressing model that isolates a logical communication endpoint from its IP address(es), thus effectively eliminating the binding between the communication endpoint and its physical IP address(es), which normally constitutes a single point of failure.
  In addition, ASAP defines each logical communication destination as a pool, providing full transparent support for server pooling and load sharing. It also allows dynamic system scalability -- members of a server pool can be added or removed at any time without interrupting the service.
- ASAP is designed to take full advantage of the network level redundancy provided by the Stream Transmission Control Protocol~(SCTP; RFC 4960). Each transport protocol, other than SCTP, MUST have an accompanying transport mapping document. It should be noted that ASAP messages passed between Pool Elements~(PEs) and ENRP servers MUST use the SCTP transport protocol.
+ ASAP is designed to take full advantage of the network level redundancy provided by the Stream Transmission Control Protocol~(SCTP, RFC 4960). Each transport protocol, other than SCTP, MUST have an accompanying transport mapping document. It should be noted that ASAP messages passed between Pool Elements~(PEs) and ENRP servers MUST use the SCTP transport protocol.
  The high-availability server pooling is gained by combining two protocols, namely ASAP and ENRP, in which ASAP provides the user interface for Pool Handle to address translation, load sharing management, and fault management, while ENRP defines the high- availability Pool Handle translation service. This memo defines an Experimental Protocol for the Internet community.}",
 	url = "https://www.ietf.org/rfc/rfc5352.txt",
 	url.size = "118712",
@@ -11619,7 +11735,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "102713",
 	url.md5 = "4f01398b75e02d0a686b4727557198c7",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:29 CEST",
+	url.checked = "2016-06-08 15:18:14 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11639,7 +11755,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "15773",
 	url.md5 = "cd6ad1605e58c36d3cc56bc4cbe96891",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:29 CEST",
+	url.checked = "2016-06-08 15:18:14 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11659,7 +11775,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "25676",
 	url.md5 = "76d8a098f7aeeb7a20c685cd32c4846e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:29 CEST",
+	url.checked = "2016-06-08 15:18:14 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11679,7 +11795,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "44251",
 	url.md5 = "0a579671ca0a9db101e1fc4af40bca78",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:29 CEST",
+	url.checked = "2016-06-08 15:18:14 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11699,7 +11815,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "68772",
 	url.md5 = "bd404dc270f6c6b553b36a81f1f7565e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:30 CEST",
+	url.checked = "2016-06-08 15:18:15 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11719,7 +11835,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "164876",
 	url.md5 = "1879d3fef18becd38ff746e6627e4246",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:31 CEST",
+	url.checked = "2016-06-08 15:18:15 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11739,7 +11855,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "75704",
 	url.md5 = "cc231b1e50a72828522a3e7bbaa09857",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:32 CEST",
+	url.checked = "2016-06-08 15:18:16 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11759,7 +11875,27 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "41877",
 	url.md5 = "b924b2e805bea2d3062e5adbb4e6daad",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:32 CEST",
+	url.checked = "2016-06-08 15:18:16 CEST",
+	note = "{ISSN} 2070-1721"
+}
+
+@TechReport{ RFC6040,
+	author = "Bob Briscoe",
+	title = "{Tunnelling of Explicit Congestion Notification}",
+	type = "RFC",
+	number = "6040",
+	month = nov,
+	year = "2010",
+	institution = "IETF",
+	language = "english",
+	issn = "2070-1721",
+	doi = "10.17487/RFC6040",
+	abstract = "{This document redefines how the explicit congestion notification~(ECN) field of the IP header should be constructed on entry to and exit from any IP-in-IP tunnel. On encapsulation, it updates RFC 3168 to bring all IP-in-IP tunnels~(v4 or v6) into line with RFC 4301 IPsec ECN processing. On decapsulation, it updates both RFC 3168 and RFC 4301 to add new behaviours for previously unused combinations of inner and outer headers. The new rules ensure the ECN field is correctly propagated across a tunnel whether it is used to signal one or two severity levels of congestion; whereas before, only one severity level was supported. Tunnel endpoints can be updated in any order without affecting pre-existing uses of the ECN field, thus ensuring backward compatibility. Nonetheless, operators wanting to support two severity levels~(e.g., for pre-congestion notification -- PCN) can require compliance with this new specification. A thorough analysis of the reasoning for these changes and the implications is included. In the unlikely event that the new rules do not meet a specific need, RFC 4774 gives guidance on designing alternate ECN semantics, and this document extends that to include tunnelling issues.}",
+	url = "https://tools.ietf.org/rfc/rfc6040.txt",
+	url.size = "89412",
+	url.md5 = "d9e5a5e626b48ff23b121a662bdb06b4",
+	url.mime = "text/plain",
+	url.checked = "2016-06-30 10:18:03 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11779,7 +11915,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "15170",
 	url.md5 = "299b2d1e6957215b4aa34950e92ed70e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:32 CEST",
+	url.checked = "2016-06-08 15:18:16 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11799,7 +11935,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "33790",
 	url.md5 = "60e83332c459c8142e4095fb550d5478",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:32 CEST",
+	url.checked = "2016-06-08 15:18:16 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11819,7 +11955,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "103554",
 	url.md5 = "dde28af867ebe484f8fd89d3d0c61a77",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:33 CEST",
+	url.checked = "2016-06-08 15:18:17 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11839,7 +11975,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "82037",
 	url.md5 = "6d952bc6c1301eec4d9b121cc47565f9",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:33 CEST",
+	url.checked = "2016-06-08 15:18:17 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11859,7 +11995,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "205947",
 	url.md5 = "c9313c2fe19195b91f00ab06cdc0f97b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:34 CEST",
+	url.checked = "2016-06-08 15:18:17 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11879,7 +12015,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "235053",
 	url.md5 = "bf218f59af53aa00b8233c89f19809e2",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:35 CEST",
+	url.checked = "2016-06-08 15:18:18 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -11899,8 +12035,26 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "60283",
 	url.md5 = "be3686d84436748b8fe0b2b9760c7b44",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:35 CEST",
+	url.checked = "2016-06-08 15:18:18 CEST",
 	note = "{ISSN} 2070-1721"
+}
+
+@TechReport{ draft-ietf-aqm-ecn-benefits,
+	author = "Gorry Fairhurst and Michael Welzl",
+	title = "{The Benefits of using Explicit Congestion Notification~(ECN)}",
+	type = "Internet Draft",
+	number = "draft-ietf-aqm-ecn-benefits-08",
+	day = "24",
+	month = nov,
+	year = "2015",
+	institution = "IETF",
+	language = "english",
+	abstract = "{The goal of this document is to describe the potential benefits when applications use a transport that enables Explicit Congestion Notification~(ECN). The document outlines the principal gains in terms of increased throughput, reduced delay and other benefits when ECN is used over a network path that includes equipment that supports Congestion Experienced~(CE) marking. It also discusses challenges for successful deployment of ECN. It does not propose new algorithms to use ECN, nor does it describe the details of implementation of ECN in endpoint devices~(Internet hosts), routers or other network devices.}",
+	url = "https://tools.ietf.org/id/draft-ietf-aqm-ecn-benefits-08.txt",
+	url.size = "49094",
+	url.md5 = "0607947e0d9eabe21f55780003694e10",
+	url.mime = "text/plain",
+	url.checked = "2016-06-30 10:18:03 CEST"
 }
 
 @TechReport{ draft-ietf-v6ops-3gpp-eps,
@@ -11918,7 +12072,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "82204",
 	url.md5 = "c2c0d0c50fe1c8a27118785ba9da2d1d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:36 CEST"
+	url.checked = "2016-06-08 15:18:18 CEST"
 }
 
 @TechReport{ draft-ietf-mptcp-attacks,
@@ -11936,7 +12090,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "40471",
 	url.md5 = "7c29d4bd8c42aade4313ed1237c9aef9",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:36 CEST"
+	url.checked = "2016-06-08 15:18:18 CEST"
 }
 
 @TechReport{ draft-ietf-mptcp-experience,
@@ -11954,7 +12108,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "74483",
 	url.md5 = "d17b593d1eb2f80c632d0a1ee0ec6442",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:36 CEST"
+	url.checked = "2016-06-08 15:18:18 CEST"
 }
 
 @TechReport{ draft-ietf-mptcp-rfc6824bis,
@@ -11972,7 +12126,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "189148",
 	url.md5 = "ad5513a00268501a841ea90d9e5b5408",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:37 CEST"
+	url.checked = "2016-06-08 15:18:19 CEST"
 }
 
 @TechReport{ draft-bagnulo-mptcp-secure,
@@ -11990,7 +12144,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "18066",
 	url.md5 = "2e3ec022f5178ce96b8ee227279ddba1",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:37 CEST"
+	url.checked = "2016-06-08 15:18:19 CEST"
 }
 
 @TechReport{ draft-barre-mptcp-tfo,
@@ -12008,7 +12162,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "28159",
 	url.md5 = "231c50e7132b5892158beae42722a9f3",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:37 CEST"
+	url.checked = "2016-06-08 15:18:19 CEST"
 }
 
 @TechReport{ draft-barre-mptcp-impl,
@@ -12026,7 +12180,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "94744",
 	url.md5 = "812a639da8376b17bc1586daa52f1b3d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:38 CEST"
+	url.checked = "2016-06-08 15:18:19 CEST"
 }
 
 @TechReport{ draft-bonaventure-mptcp-addr,
@@ -12044,7 +12198,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20708",
 	url.md5 = "61e6aa33d8fd1ee4b7eea44ad45e0ced",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:38 CEST"
+	url.checked = "2016-06-08 15:18:20 CEST"
 }
 
 @TechReport{ draft-bonaventure-mptcp-backup,
@@ -12062,7 +12216,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "24217",
 	url.md5 = "dd8998820b6b7e976459d1341acca07f",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:38 CEST"
+	url.checked = "2016-06-08 15:18:20 CEST"
 }
 
 @TechReport{ draft-bonaventure-mptcp-long-options,
@@ -12080,7 +12234,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "44531",
 	url.md5 = "a65e5c5e0f9a64b94323dc362879c4a1",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:38 CEST"
+	url.checked = "2016-06-08 15:18:20 CEST"
 }
 
 @TechReport{ draft-bonaventure-mptcp-rst,
@@ -12098,7 +12252,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "27868",
 	url.md5 = "133ca3b1300a72b9c24e5f57895dd4be",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:38 CEST"
+	url.checked = "2016-06-08 15:18:20 CEST"
 }
 
 @TechReport{ draft-bonaventure-mptcp-timestamp,
@@ -12116,7 +12270,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "13701",
 	url.md5 = "44bcfc5daed72f4a1b472b2b0559bbee",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:39 CEST"
+	url.checked = "2016-06-08 15:18:20 CEST"
 }
 
 @TechReport{ draft-bonaventure-mptcp-tls,
@@ -12134,7 +12288,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "52415",
 	url.md5 = "76ac03858a694170cc5356291a92082b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:39 CEST"
+	url.checked = "2016-06-08 15:18:21 CEST"
 }
 
 @TechReport{ draft-bonaventure-mptcp-exp-option,
@@ -12152,7 +12306,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "16817",
 	url.md5 = "df76c51fe4413a4bf3286261a5212526",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:39 CEST"
+	url.checked = "2016-06-08 15:18:21 CEST"
 }
 
 @TechReport{ draft-boucadair-mptcp-probe-subflow,
@@ -12170,7 +12324,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "11684",
 	url.md5 = "0f49639ffe0f638bd02876ad6ad7ea59",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:39 CEST"
+	url.checked = "2016-06-08 15:18:21 CEST"
 }
 
 @TechReport{ draft-boucadair-mptcp-connectivity-checks,
@@ -12188,7 +12342,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "17852",
 	url.md5 = "d45c7db8acc4f155f9066b1609a9dbb9",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:40 CEST"
+	url.checked = "2016-06-08 15:18:21 CEST"
 }
 
 @TechReport{ draft-boucadair-mptcp-dhc,
@@ -12206,7 +12360,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "27581",
 	url.md5 = "3338620caf3dc4878625d8c8042478ad",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:40 CEST"
+	url.checked = "2016-06-08 15:18:21 CEST"
 }
 
 @TechReport{ draft-boucadair-mptcp-natfwfree-profile,
@@ -12224,25 +12378,25 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "24729",
 	url.md5 = "0d5cc1a4759cd6c9f15945d77ec82361",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:40 CEST"
+	url.checked = "2016-06-08 15:18:22 CEST"
 }
 
 @TechReport{ draft-boucadair-mptcp-max-subflow,
 	author = "Mohamed Boucadair and Christian Jacquenet",
 	title = "{Negotiating the Maximum Number of MPTCP Subflows}",
 	type = "Internet Draft",
-	number = "draft-boucadair-mptcp-max-subflow-01",
-	day = "7",
-	month = dec,
-	year = "2015",
+	number = "draft-boucadair-mptcp-max-subflow-02",
+	day = "31",
+	month = may,
+	year = "2016",
 	institution = "IETF, Individual Submission",
 	language = "english",
 	abstract = "{This document specifies an experimental Multipath TCP~(MPTCP) option that is meant to negotiate the maximum number of subflows that can be established and maintained for a given MPTCP connection. The purpose is to minimize any possible performance degradation that can be induced by a possibly large number of establishment requests for additional subflows if the remote endpoint is not appropriately dimensioned to handle such requests.}",
-	url = "https://tools.ietf.org/id/draft-boucadair-mptcp-max-subflow-01.txt",
-	url.size = "9560",
-	url.md5 = "aded9b78bf417d465d5cc09c787cebba",
+	url = "https://tools.ietf.org/id/draft-boucadair-mptcp-max-subflow-02.txt",
+	url.size = "10206",
+	url.md5 = "a05b9ed6018beafc3069f7185a7f7d5b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:40 CEST"
+	url.checked = "2016-06-08 15:18:22 CEST"
 }
 
 @TechReport{ draft-boucadair-mptcp-symmetric,
@@ -12260,7 +12414,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "13744",
 	url.md5 = "461451be821afa6b89971b5e38c92550",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:40 CEST"
+	url.checked = "2016-06-08 15:18:22 CEST"
 }
 
 @TechReport{ draft-coene-mptcp-conformance,
@@ -12278,7 +12432,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20772",
 	url.md5 = "76f328a79ddd0d0897e08befbda38290",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:41 CEST"
+	url.checked = "2016-06-08 15:18:22 CEST"
 }
 
 @TechReport{ draft-deng-mptcp-mobile-network-proxy,
@@ -12296,7 +12450,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "12439",
 	url.md5 = "bcdefd585214ce81618966ebb73f6090",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:41 CEST"
+	url.checked = "2016-06-08 15:18:22 CEST"
 }
 
 @TechReport{ draft-deng-mptcp-nrsack,
@@ -12314,7 +12468,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20346",
 	url.md5 = "cb731a28cc503684e8f93ef540ea3fcc",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:41 CEST"
+	url.checked = "2016-06-08 15:18:23 CEST"
 }
 
 @TechReport{ draft-deng-mptcp-proxy,
@@ -12332,7 +12486,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "40779",
 	url.md5 = "8e0a05cd5cd34763a020710d155e3298",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:41 CEST"
+	url.checked = "2016-06-08 15:18:23 CEST"
 }
 
 @TechReport{ draft-eardley-mptcp-implementations-survey,
@@ -12350,7 +12504,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "90046",
 	url.md5 = "b31b0299013229b2c2a5d84183b05e12",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:42 CEST"
+	url.checked = "2016-06-08 15:18:23 CEST"
 }
 
 @TechReport{ draft-hampel-mptcp-applicability-wireless-networks,
@@ -12368,7 +12522,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "51957",
 	url.md5 = "f5b8bd0d46e7f25f7c0e336f6baa2cd1",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:42 CEST"
+	url.checked = "2016-06-08 15:18:23 CEST"
 }
 
 @TechReport{ draft-hampel-mptcp-proxies-anchors,
@@ -12386,7 +12540,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "62213",
 	url.md5 = "0b8c33237fd36043ffe5b4d01daa51e6",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:42 CEST"
+	url.checked = "2016-06-08 15:18:23 CEST"
 }
 
 @TechReport{ draft-handley-mptcp-routing,
@@ -12404,7 +12558,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "32088",
 	url.md5 = "89f01959cb5a212bbc0080e731af13eb",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:43 CEST"
+	url.checked = "2016-06-08 15:18:24 CEST"
 }
 
 @TechReport{ draft-khalili-mptcp-congestion-control,
@@ -12422,7 +12576,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "23579",
 	url.md5 = "2b9c59e9cf8df07c3dd540097b897ba4",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:43 CEST"
+	url.checked = "2016-06-08 15:18:24 CEST"
 }
 
 @TechReport{ draft-khalili-mptcp-performance-issues,
@@ -12440,7 +12594,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "44098",
 	url.md5 = "53d2fc371b5d161ebaca1a1e7fd05166",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:43 CEST"
+	url.checked = "2016-06-08 15:18:24 CEST"
 }
 
 @TechReport{ draft-lopez-mptcp-middlebox,
@@ -12458,7 +12612,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "18799",
 	url.md5 = "131043f510f61bc86135c9ed5334f546",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:43 CEST"
+	url.checked = "2016-06-08 15:18:24 CEST"
 }
 
 @TechReport{ draft-paasch-mptcp-control-stream,
@@ -12476,7 +12630,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "27023",
 	url.md5 = "b00bdbe6e95f7adf0a82b825dbb3877b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:43 CEST"
+	url.checked = "2016-06-08 15:18:24 CEST"
 }
 
 @TechReport{ draft-paasch-mptcp-lowoverhead,
@@ -12494,7 +12648,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "18120",
 	url.md5 = "aa7d7697151b9600e7d2f5508be8373a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:44 CEST"
+	url.checked = "2016-06-08 15:18:25 CEST"
 }
 
 @TechReport{ draft-paasch-mptcp-ssl,
@@ -12512,7 +12666,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "14981",
 	url.md5 = "8a09de6237db4a6ff535bea96272f1d6",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:44 CEST"
+	url.checked = "2016-06-08 15:18:25 CEST"
 }
 
 @TechReport{ draft-paasch-mptcp-syncookies,
@@ -12530,7 +12684,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "33024",
 	url.md5 = "e36d008d7d2c9cd708f9b37f6233cc38",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:44 CEST"
+	url.checked = "2016-06-08 15:18:25 CEST"
 }
 
 @TechReport{ draft-palanivelanchetan-mptcp-challenges-usecases,
@@ -12548,7 +12702,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "8655",
 	url.md5 = "c82dad14a076fbe59656b4beb36dcf04",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:44 CEST"
+	url.checked = "2016-06-08 15:18:25 CEST"
 }
 
 @TechReport{ draft-sarolahti-mptcp-af-multipath,
@@ -12566,7 +12720,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "31134",
 	url.md5 = "bbb133f2df526854d6514815ab4f4f6f",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:44 CEST"
+	url.checked = "2016-06-08 15:18:25 CEST"
 }
 
 @TechReport{ draft-raiciu-mptcp-congestion,
@@ -12584,7 +12738,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "23062",
 	url.md5 = "993a3c25e14c7e31ccb4655556a0b3cf",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:45 CEST"
+	url.checked = "2016-06-08 15:18:26 CEST"
 }
 
 @TechReport{ draft-scharf-mptcp-api,
@@ -12602,7 +12756,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "63282",
 	url.md5 = "47683918502067eca18e6b2088797567",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:46 CEST"
+	url.checked = "2016-06-08 15:18:26 CEST"
 }
 
 @TechReport{ draft-scharf-mptcp-mctcp,
@@ -12620,7 +12774,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "91247",
 	url.md5 = "e92c931a9e3f7d0fa4e5354f1abe1c6e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:47 CEST"
+	url.checked = "2016-06-08 15:18:26 CEST"
 }
 
 @TechReport{ draft-singh-mptcp-plmt,
@@ -12638,7 +12792,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "81366",
 	url.md5 = "6f57c791d1ff001c7cfee00ec99ffe1e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:47 CEST"
+	url.checked = "2016-06-08 15:18:26 CEST"
 }
 
 @TechReport{ draft-walid-mptcp-congestion-control,
@@ -12656,7 +12810,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "25357",
 	url.md5 = "be5c335f908d6d64d71f11748a57be39",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:47 CEST"
+	url.checked = "2016-06-08 15:18:27 CEST"
 }
 
 @TechReport{ draft-wei-mptcp-proxy-mechanism,
@@ -12674,7 +12828,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "25550",
 	url.md5 = "37cfa56a518b5c4f120dc29d6207b3b9",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:47 CEST"
+	url.checked = "2016-06-08 15:18:27 CEST"
 }
 
 @TechReport{ draft-wing-mptcp-pcp,
@@ -12692,7 +12846,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "22242",
 	url.md5 = "e1cdd1cf573a40af556236d4abb6bfef",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:48 CEST"
+	url.checked = "2016-06-08 15:18:27 CEST"
 }
 
 @TechReport{ draft-wr-mptcp-single-homed,
@@ -12710,7 +12864,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "18573",
 	url.md5 = "338bb9171a0c7f168de35110949f23aa",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:48 CEST"
+	url.checked = "2016-06-08 15:18:27 CEST"
 }
 
 @TechReport{ draft-xue-mptcp-tmpp-unware-hosts,
@@ -12728,7 +12882,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "30696",
 	url.md5 = "6910759be28fcabbdfcd416a9ef23b74",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:48 CEST"
+	url.checked = "2016-06-08 15:18:28 CEST"
 }
 
 @TechReport{ draft-xu-mptcp-congestion-control,
@@ -12746,7 +12900,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20159",
 	url.md5 = "da88334f269ad0dd723f4488beb1a6cf",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:48 CEST"
+	url.checked = "2016-06-08 15:18:28 CEST"
 }
 
 @TechReport{ draft-xu-mptcp-prmp,
@@ -12764,25 +12918,25 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "24089",
 	url.md5 = "19f75d946fcac2f2f121628ada2e668b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:48 CEST"
+	url.checked = "2016-06-08 15:18:28 CEST"
 }
 
 @TechReport{ draft-xu-mptcp-momp,
 	author = "Changqiao Xu and Jiuren Qin and Hongke Zhang and Chunshan Xiong and Lei Zhu",
 	title = "{A Message-Oriented Extension to Multipath Transmission Control Protocol~(MPTCP)}",
 	type = "Internet Draft",
-	number = "draft-xu-mptcp-momp-01",
+	number = "draft-xu-mptcp-momp-02",
 	day = "3",
-	month = dec,
-	year = "2015",
+	month = jun,
+	year = "2016",
 	institution = "IETF, Individual Submission",
 	language = "english",
 	abstract = "{This memo specifies a message-oriented extension for Multipath TCP~(MPTCP) which aims to serve high-bandwidth and real-time applications. By introducing a message mapping to MPTCP, Message- Oriented MPTCP~(MO-MPTCP) attaches some message features like boundaries, priority and dependency to bytestream. With such message-oriented information, MPTCP senders can optimize their transfers.}",
-	url = "https://tools.ietf.org/id/draft-xu-mptcp-momp-01.txt",
-	url.size = "23166",
-	url.md5 = "a4a822b0a0d70a4221a51cff4c29ef0a",
+	url = "https://tools.ietf.org/id/draft-xu-mptcp-momp-02.txt",
+	url.size = "23332",
+	url.md5 = "fbad2c8ee860d68486e5b947f293771c",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:49 CEST"
+	url.checked = "2016-06-08 15:18:28 CEST"
 }
 
 @TechReport{ draft-aravind-mptcp-optimized-subflows,
@@ -12800,7 +12954,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "19358",
 	url.md5 = "4e63a18b3ab0547e001542fb8b454a25",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:49 CEST"
+	url.checked = "2016-06-08 15:18:28 CEST"
 }
 
 @TechReport{ draft-ietf-rmcat-sbd,
@@ -12818,7 +12972,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "44844",
 	url.md5 = "8d73a326ae0c382eeeb642d26541812f",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:49 CEST"
+	url.checked = "2016-06-08 15:18:29 CEST"
 }
 
 @TechReport{ RFC821,
@@ -12911,7 +13065,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "458860",
 	url.md5 = "1562c09fa8a9aac0b14b93557d71b7ec",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:50 CEST",
+	url.checked = "2016-06-08 15:18:29 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -12931,7 +13085,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "7392",
 	url.md5 = "19cd9ef681b1b0df8f2a54fd53059094",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:51 CEST",
+	url.checked = "2016-06-08 15:18:29 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -12951,7 +13105,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "29631",
 	url.md5 = "ef777225afd3ca68580d69e7db9c4241",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:51 CEST",
+	url.checked = "2016-06-08 15:18:29 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -12971,7 +13125,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "37509",
 	url.md5 = "05ec690ea51e8f631dbfd7a81dc62cab",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:51 CEST",
+	url.checked = "2016-06-08 15:18:30 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -12991,7 +13145,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "188544",
 	url.md5 = "3454faf5eb02fa122fb97234853b5575",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:52 CEST",
+	url.checked = "2016-06-08 15:18:30 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13011,7 +13165,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "43060",
 	url.md5 = "2fc18344af01e8ba3c28aa21ce8a27b4",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:52 CEST",
+	url.checked = "2016-06-08 15:18:30 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13031,7 +13185,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "52547",
 	url.md5 = "97da9a50c28dd413dc870d5230083cf8",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:53 CEST",
+	url.checked = "2016-06-08 15:18:30 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13051,7 +13205,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "61210",
 	url.md5 = "56b4df9ac1fabbc30aadbf796b892d0a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:53 CEST",
+	url.checked = "2016-06-08 15:18:30 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13071,7 +13225,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "12725",
 	url.md5 = "7f39fae75feac20399cd868a655afab4",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:54 CEST",
+	url.checked = "2016-06-08 15:18:31 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13091,7 +13245,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "23656",
 	url.md5 = "570529ffb4a329743ae586584560649d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:54 CEST",
+	url.checked = "2016-06-08 15:18:31 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13328,7 +13482,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20852",
 	url.md5 = "1f79a4581cb5220ff13179bad5e8196b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:54 CEST",
+	url.checked = "2016-06-08 15:18:31 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13348,7 +13502,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "126103",
 	url.md5 = "be18aea2b66422dd8d0dca05b09eb0cc",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:55 CEST",
+	url.checked = "2016-06-08 15:18:31 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13368,7 +13522,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "122549",
 	url.md5 = "85600131ad1cdecc84c31fbb0dffd6cf",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:56 CEST",
+	url.checked = "2016-06-08 15:18:31 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13388,7 +13542,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "91435",
 	url.md5 = "9cf0aeb5ad94d3cb05c4a7ef473f09b1",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:56 CEST",
+	url.checked = "2016-06-08 15:18:32 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13408,7 +13562,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "35107",
 	url.md5 = "6e6879691ad53f1cf5b62a5593d69041",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:56 CEST",
+	url.checked = "2016-06-08 15:18:32 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13428,7 +13582,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "35222",
 	url.md5 = "c6beb4140671d319f6433a3399cf6df2",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:56 CEST",
+	url.checked = "2016-06-08 15:18:32 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13448,7 +13602,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "84558",
 	url.md5 = "bb0bce9eda4c6ade1f65cdcf83c3979f",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:57 CEST",
+	url.checked = "2016-06-08 15:18:32 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13468,7 +13622,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "104624",
 	url.md5 = "1e7c3e7c50b7a2fe240fc51c425749a7",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:57 CEST",
+	url.checked = "2016-06-08 15:18:32 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13488,7 +13642,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "13140",
 	url.md5 = "6d6443162177772c026eb9e50ae2022a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:58 CEST",
+	url.checked = "2016-06-08 15:18:33 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13508,7 +13662,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "24599",
 	url.md5 = "dca7766edd1e4976cac5e64fcaeec1fd",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:58 CEST",
+	url.checked = "2016-06-08 15:18:33 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13528,7 +13682,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "18597",
 	url.md5 = "3a80e8fb8fe702c60efcd2f3f9d3f210",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:58 CEST",
+	url.checked = "2016-06-08 15:18:33 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13548,7 +13702,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "53524",
 	url.md5 = "443adbaa5000b356c9c8f138fae80915",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:12:58 CEST",
+	url.checked = "2016-06-08 15:18:33 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13568,7 +13722,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "289148",
 	url.md5 = "2ffd604f3947e521871545ec33269fda",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:00 CEST",
+	url.checked = "2016-06-08 15:18:34 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13588,7 +13742,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "68949",
 	url.md5 = "d5ace2fa7b8a555ca3e5c4cd66659fdc",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:00 CEST",
+	url.checked = "2016-06-08 15:18:34 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13608,7 +13762,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "9836",
 	url.md5 = "091dc7c7556059a33f0fbbdc2302d18d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:00 CEST",
+	url.checked = "2016-06-08 15:18:34 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13628,7 +13782,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "22714",
 	url.md5 = "39ab6c8390090565ea1245101b3a2024",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:01 CEST",
+	url.checked = "2016-06-08 15:18:34 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13648,7 +13802,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "103026",
 	url.md5 = "8a6e43116a5a35733c96b1f99e5ed268",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:01 CEST",
+	url.checked = "2016-06-08 15:18:34 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13668,7 +13822,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "73842",
 	url.md5 = "b7b57294f70ad60acc936f606365558c",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:01 CEST",
+	url.checked = "2016-06-08 15:18:35 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13688,7 +13842,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "13591",
 	url.md5 = "5f4621c90f925055c4fde42ad3b82bed",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:02 CEST",
+	url.checked = "2016-06-08 15:18:35 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13708,7 +13862,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "5694",
 	url.md5 = "58c94c41b9a2ac92420b5eea07bb202a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:02 CEST",
+	url.checked = "2016-06-08 15:18:35 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13728,7 +13882,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "146904",
 	url.md5 = "e4232fa8888890882e4ea77feeb628aa",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:03 CEST",
+	url.checked = "2016-06-08 15:18:35 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13748,7 +13902,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "19414",
 	url.md5 = "af90cf8731acd08766f7d4cd0d6454ec",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:03 CEST",
+	url.checked = "2016-06-08 15:18:35 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13768,7 +13922,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20502",
 	url.md5 = "c9680de1a6b8939e16fd5e2a4f4785b8",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:03 CEST",
+	url.checked = "2016-06-08 15:18:36 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13788,7 +13942,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "14440",
 	url.md5 = "2358ef21dd44eebc189d13921c6edcda",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:03 CEST",
+	url.checked = "2016-06-08 15:18:36 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13808,7 +13962,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "12975",
 	url.md5 = "32d2124afbca3828b6b7f4b510e21d09",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:03 CEST",
+	url.checked = "2016-06-08 15:18:36 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13828,7 +13982,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "86731",
 	url.md5 = "19ebaef78461d7ecadf6c9b837c6bbc1",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:05 CEST",
+	url.checked = "2016-06-08 15:18:37 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13848,7 +14002,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "25671",
 	url.md5 = "63fb10090e89c2cc944c77fa74e94aa6",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:05 CEST",
+	url.checked = "2016-06-08 15:18:38 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13868,7 +14022,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "242827",
 	url.md5 = "b9c0b48f84c064a57373c6e0a6773f76",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:06 CEST",
+	url.checked = "2016-06-08 15:18:38 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13888,7 +14042,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "223976",
 	url.md5 = "8fb33c8c39a8ad362ef4f869f83325e6",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:07 CEST",
+	url.checked = "2016-06-08 15:18:39 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13908,7 +14062,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "14329",
 	url.md5 = "50c6db1ab7c2125422e65b04391b08cb",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:08 CEST",
+	url.checked = "2016-06-08 15:18:39 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13928,7 +14082,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "77613",
 	url.md5 = "e66752c00bd4596489a39e7ff493d25b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:08 CEST",
+	url.checked = "2016-06-08 15:18:39 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13948,7 +14102,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "46523",
 	url.md5 = "aca2a049c94082a011b61d69a5f303df",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:08 CEST",
+	url.checked = "2016-06-08 15:18:40 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13968,7 +14122,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "52330",
 	url.md5 = "5ffdd3ee59967ad066b8e5d527e4a108",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:09 CEST",
+	url.checked = "2016-06-08 15:18:40 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -13988,7 +14142,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "47532",
 	url.md5 = "b868245ff19a91adace199655a52f20f",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:09 CEST",
+	url.checked = "2016-06-08 15:18:40 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14008,7 +14162,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "38064",
 	url.md5 = "0ecb27c582e6724baef28cc32805b172",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:09 CEST",
+	url.checked = "2016-06-08 15:18:40 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14028,7 +14182,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "94387",
 	url.md5 = "35dba43e9b0e2373bc09289409981ec8",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:09 CEST",
+	url.checked = "2016-06-08 15:18:40 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14048,7 +14202,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "98462",
 	url.md5 = "0eba9d71121afc17daf8f62d1afaf54f",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:10 CEST",
+	url.checked = "2016-06-08 15:18:41 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14068,7 +14222,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "524985",
 	url.md5 = "04146a4ba462ae3c65eb2be738b1c51c",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:11 CEST",
+	url.checked = "2016-06-08 15:18:41 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14088,7 +14242,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "168162",
 	url.md5 = "dece5599d1d82f09e8aa337605c1185d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:12 CEST",
+	url.checked = "2016-06-08 15:18:42 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14108,7 +14262,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "52831",
 	url.md5 = "a80416ac16990d2274c2ee24ce643325",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:13 CEST",
+	url.checked = "2016-06-08 15:18:42 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14128,7 +14282,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "54202",
 	url.md5 = "ddc5e7dee902c4e19f43344ae14daea4",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:14 CEST",
+	url.checked = "2016-06-08 15:18:42 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14148,7 +14302,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "85890",
 	url.md5 = "68f4c9a5670828247c1a56693f71f309",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:14 CEST",
+	url.checked = "2016-06-08 15:18:42 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14168,7 +14322,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "222516",
 	url.md5 = "834bc763ff48e53956adbec835860fe4",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:15 CEST",
+	url.checked = "2016-06-08 15:18:43 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14188,7 +14342,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "34190",
 	url.md5 = "c751b74922f23f2bf5716066941dcf64",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:15 CEST",
+	url.checked = "2016-06-08 15:18:43 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14208,7 +14362,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "32537",
 	url.md5 = "0cb4b63f4309224d3a6fd7a0114ed6e5",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:15 CEST",
+	url.checked = "2016-06-08 15:18:43 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14228,7 +14382,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "31351",
 	url.md5 = "78d08b1e214a85e2bcbb0df698dc3628",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:16 CEST",
+	url.checked = "2016-06-08 15:18:43 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14248,7 +14402,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "48646",
 	url.md5 = "de6f47de5d2a005ab2911eed8371480a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:16 CEST",
+	url.checked = "2016-06-08 15:18:43 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14268,7 +14422,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "7984",
 	url.md5 = "ed75fc9f92ea51f31bac43c31ace0df3",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:16 CEST",
+	url.checked = "2016-06-08 15:18:44 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14288,7 +14442,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "189810",
 	url.md5 = "d3c642ccea296cafad0930f2e149d0cb",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:17 CEST",
+	url.checked = "2016-06-08 15:18:44 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14308,7 +14462,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "50576",
 	url.md5 = "c754f6fe6c6d39682bd01c684b1c76e2",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:17 CEST",
+	url.checked = "2016-06-08 15:18:44 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14328,7 +14482,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "94788",
 	url.md5 = "267378a0977fbfa1dc922264a893bc1e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:18 CEST",
+	url.checked = "2016-06-08 15:18:44 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14348,7 +14502,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "24068",
 	url.md5 = "d84ac877c26e07053878383b113a753d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:18 CEST",
+	url.checked = "2016-06-08 15:18:45 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14368,7 +14522,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "129475",
 	url.md5 = "f75a7b120c557b3f50f87ff7b1c8513e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:19 CEST",
+	url.checked = "2016-06-08 15:18:45 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14388,7 +14542,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "422279",
 	url.md5 = "9fa63f5083e4d2112d2e71b008e387e8",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:20 CEST",
+	url.checked = "2016-06-08 15:18:45 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14408,7 +14562,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "17320",
 	url.md5 = "6561bef4bfce658d7c47cacbc6d0150a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:21 CEST",
+	url.checked = "2016-06-08 15:18:46 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14428,7 +14582,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "43542",
 	url.md5 = "aba4be84f8572a616332309c4e49c091",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:21 CEST",
+	url.checked = "2016-06-08 15:18:46 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14448,7 +14602,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "32266",
 	url.md5 = "3cbd85f295eb99432366e3a79a669147",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:21 CEST",
+	url.checked = "2016-06-08 15:18:46 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14468,7 +14622,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "44357",
 	url.md5 = "81c052b1b374fcdfc513ad485ad0b1f3",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:21 CEST",
+	url.checked = "2016-06-08 15:18:46 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14488,7 +14642,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "68386",
 	url.md5 = "f7a3f3b445ea9c9a224540a690d10d78",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:22 CEST",
+	url.checked = "2016-06-08 15:18:46 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14508,7 +14662,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "16627",
 	url.md5 = "955f51eb1fea70256840be9ac8a1bc70",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:22 CEST",
+	url.checked = "2016-06-08 15:18:47 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14528,7 +14682,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "35794",
 	url.md5 = "b3f9e2b846519c70665afd3aa1006d65",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:22 CEST",
+	url.checked = "2016-06-08 15:18:47 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14548,7 +14702,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "30976",
 	url.md5 = "83f00269758e2bb7a7b4ce8c2d53371f",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:22 CEST",
+	url.checked = "2016-06-08 15:18:47 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14568,7 +14722,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "297757",
 	url.md5 = "8c7ae0988fb53c647b7111bb6c9af1d4",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:23 CEST",
+	url.checked = "2016-06-08 15:18:49 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14588,7 +14742,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "15280",
 	url.md5 = "66828e7d66b90e832e3d18b885d8c3bf",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:23 CEST",
+	url.checked = "2016-06-08 15:18:49 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14608,7 +14762,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "17796",
 	url.md5 = "77f248458a11d2fb6c261c7e2a3b4273",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:23 CEST",
+	url.checked = "2016-06-08 15:18:49 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14628,7 +14782,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "17524",
 	url.md5 = "72d5ec77362bbb2bba4654ea85c126fa",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:24 CEST",
+	url.checked = "2016-06-08 15:18:50 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14648,7 +14802,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "37675",
 	url.md5 = "e91d9e355c0b6ca10cb871475e145399",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:24 CEST",
+	url.checked = "2016-06-08 15:18:50 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14668,7 +14822,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "147175",
 	url.md5 = "cf715e2c5a29ca68b7c1c1d5866c1be1",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:24 CEST",
+	url.checked = "2016-06-08 15:18:50 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14688,7 +14842,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "274855",
 	url.md5 = "a0b616146b754c23d25430a1bb61b1ae",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:26 CEST",
+	url.checked = "2016-06-08 15:18:51 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14708,7 +14862,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "19885",
 	url.md5 = "53b397fd407a7d76becaa5546a66510a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:27 CEST",
+	url.checked = "2016-06-08 15:18:51 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14728,7 +14882,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "36041",
 	url.md5 = "3fab6c417b7fc9568e02e36a60f9253d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:27 CEST",
+	url.checked = "2016-06-08 15:18:51 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14748,7 +14902,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "170966",
 	url.md5 = "f8f7c4e97d39abba3b55c8284f76882e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:27 CEST",
+	url.checked = "2016-06-08 15:18:51 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14768,7 +14922,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "35525",
 	url.md5 = "b5dbbcd0627d1fadc887e2e1a436ec53",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:28 CEST",
+	url.checked = "2016-06-08 15:18:52 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14788,7 +14942,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "21900",
 	url.md5 = "c8c033020cc19a7fbad47446175b6592",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:29 CEST",
+	url.checked = "2016-06-08 15:18:52 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14808,7 +14962,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "16986",
 	url.md5 = "f95d2fdfe28590dbf1b5967747b7d7ca",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:29 CEST",
+	url.checked = "2016-06-08 15:18:52 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14828,7 +14982,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "24198",
 	url.md5 = "17532fe7fca05269d94f29717536e22c",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:29 CEST",
+	url.checked = "2016-06-08 15:18:52 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14848,7 +15002,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "22644",
 	url.md5 = "3962ec32c91639aae167ee96badf6cdf",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:29 CEST",
+	url.checked = "2016-06-08 15:18:52 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14885,7 +15039,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "265055",
 	url.md5 = "431ace3994ebe3330cb3952030fb93a5",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:30 CEST",
+	url.checked = "2016-06-08 15:18:53 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14904,7 +15058,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "119726",
 	url.md5 = "8e9d0eba94b456e75ebbf220eb3495ce",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:31 CEST",
+	url.checked = "2016-06-08 15:18:53 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14923,7 +15077,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "36177",
 	url.md5 = "c0b54e55612963cbf53ffa722c89f78b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:32 CEST",
+	url.checked = "2016-06-08 15:18:53 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14942,7 +15096,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "47731",
 	url.md5 = "4f16370ef90d5c252845051cc4faa337",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:33 CEST",
+	url.checked = "2016-06-08 15:18:53 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14961,7 +15115,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "34670",
 	url.md5 = "197f2ac17be990dc4ba7c6a3a90d5cc0",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:33 CEST",
+	url.checked = "2016-06-08 15:18:54 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -14981,7 +15135,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "16333",
 	url.md5 = "e859fb7bbf61142eb6527425ef2cec25",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:33 CEST",
+	url.checked = "2016-06-08 15:18:54 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15001,7 +15155,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "70333",
 	url.md5 = "b799dc1cdceec432574b33dd8598da5c",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:34 CEST",
+	url.checked = "2016-06-08 15:18:54 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15021,7 +15175,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "23486",
 	url.md5 = "8fa8999399afda8aad40f2eca9c7adab",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:34 CEST",
+	url.checked = "2016-06-08 15:18:54 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15041,7 +15195,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "55076",
 	url.md5 = "fc677bdd6e784300423edf8d7ade36ca",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:34 CEST",
+	url.checked = "2016-06-08 15:18:54 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15061,7 +15215,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "67439",
 	url.md5 = "6599e416de5c2aaf58f4dc6e3d603461",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:34 CEST",
+	url.checked = "2016-06-08 15:18:55 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15081,7 +15235,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "27855",
 	url.md5 = "8bcb5504260b6d2da923dea088216d5a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:35 CEST",
+	url.checked = "2016-06-08 15:18:55 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15101,7 +15255,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "63437",
 	url.md5 = "b2caac277f775184cbffb7356c423034",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:35 CEST",
+	url.checked = "2016-06-08 15:18:55 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15121,7 +15275,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "259985",
 	url.md5 = "71511cdb60c3ccead3e557c696eb97fe",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:36 CEST",
+	url.checked = "2016-06-08 15:18:56 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15141,7 +15295,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20102",
 	url.md5 = "f028d5c10961516d6c892f1e462a2474",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:36 CEST",
+	url.checked = "2016-06-08 15:18:56 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15161,7 +15315,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "33856",
 	url.md5 = "4f24eee655af129dc58e2936e6595fce",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:37 CEST",
+	url.checked = "2016-06-08 15:18:56 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15181,7 +15335,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "21296",
 	url.md5 = "16ccf46ff5b1fe70e2da6e71bf96801b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:37 CEST",
+	url.checked = "2016-06-08 15:18:56 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15201,7 +15355,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "79801",
 	url.md5 = "ae27c32848e3e4a220e5fec8d6c4386a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:37 CEST",
+	url.checked = "2016-06-08 15:18:56 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15221,7 +15375,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "50999",
 	url.md5 = "0c9d421b69393c27cfc729e606373157",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:37 CEST",
+	url.checked = "2016-06-08 15:18:57 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15241,7 +15395,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "214407",
 	url.md5 = "b4b6c7fee04911e9a4fe8dcebd99717d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:38 CEST",
+	url.checked = "2016-06-08 15:18:57 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15261,7 +15415,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "41366",
 	url.md5 = "18b48db759e87796971c204b3ff95d99",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:38 CEST",
+	url.checked = "2016-06-08 15:18:57 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15281,7 +15435,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "340314",
 	url.md5 = "f95332f70f18eb9252756c7e2accc141",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:40 CEST",
+	url.checked = "2016-06-08 15:18:58 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15301,7 +15455,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "50338",
 	url.md5 = "6bb1e007cca616b2b5c24b0c700e5ef2",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:40 CEST",
+	url.checked = "2016-06-08 15:18:58 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15321,7 +15475,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "222702",
 	url.md5 = "4543896c3d9e57b14e8f9c4e68c35cab",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:41 CEST",
+	url.checked = "2016-06-08 15:18:58 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15341,7 +15495,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "60977",
 	url.md5 = "912a43ad6752c21b69528e6235f22bf9",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:41 CEST",
+	url.checked = "2016-06-08 15:18:58 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15361,7 +15515,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "215405",
 	url.md5 = "78bc6d48031bb8606f4d618fd0abed95",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:42 CEST",
+	url.checked = "2016-06-08 15:18:58 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15381,7 +15535,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "44983",
 	url.md5 = "767fef0cb9dc1cbfabc0548ef42709cd",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:42 CEST",
+	url.checked = "2016-06-08 15:18:59 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15401,7 +15555,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "75645",
 	url.md5 = "cc7edccaca156fbbccdff9ea97c0df92",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:43 CEST",
+	url.checked = "2016-06-08 15:18:59 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15421,7 +15575,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "127383",
 	url.md5 = "9c13fda19142fe60bdbe48a41c2a762e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:43 CEST",
+	url.checked = "2016-06-08 15:18:59 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15441,7 +15595,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "94699",
 	url.md5 = "17bb08dff9ce41702a4c193f0c0d6611",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:44 CEST",
+	url.checked = "2016-06-08 15:18:59 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15461,7 +15615,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "75665",
 	url.md5 = "87f092e9e4870faa58805cc18781083e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:44 CEST",
+	url.checked = "2016-06-08 15:19:00 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15481,7 +15635,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "38752",
 	url.md5 = "577be0f6757a4bb2df9d0e568ccbcefd",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:44 CEST",
+	url.checked = "2016-06-08 15:19:00 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15501,7 +15655,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "42507",
 	url.md5 = "2b7207bc23f5bb90945d8274572238a5",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:44 CEST",
+	url.checked = "2016-06-08 15:19:00 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15521,7 +15675,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "346022",
 	url.md5 = "9eeb61074f2f4f6c5c88b0554ece6a4e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:46 CEST",
+	url.checked = "2016-06-08 15:19:00 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15541,7 +15695,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "48753",
 	url.md5 = "c777383815bf4c8b75832bdf35f4bc6f",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:46 CEST",
+	url.checked = "2016-06-08 15:19:01 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15561,7 +15715,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "91851",
 	url.md5 = "8df71e2f2521a699a26652eac3381e9b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:46 CEST",
+	url.checked = "2016-06-08 15:19:01 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15581,7 +15735,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "29702",
 	url.md5 = "b3feb1bb3c349fff6ffd3d23c5c71430",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:47 CEST",
+	url.checked = "2016-06-08 15:19:01 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15601,7 +15755,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "25304",
 	url.md5 = "de4ce4a981d11d648d1e86e636b6b37e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:48 CEST",
+	url.checked = "2016-06-08 15:19:01 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15621,7 +15775,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "44339",
 	url.md5 = "d32ecdb03032631cdb56bdd8e2fc5846",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:48 CEST",
+	url.checked = "2016-06-08 15:19:01 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15641,7 +15795,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "132264",
 	url.md5 = "5b1e98468a928e953204b8ebdbe81b5d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:49 CEST",
+	url.checked = "2016-06-08 15:19:02 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15661,7 +15815,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "140096",
 	url.md5 = "82648c4dbe912489ee32306038a2f6e5",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:49 CEST",
+	url.checked = "2016-06-08 15:19:02 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15681,7 +15835,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "22072",
 	url.md5 = "691912ad58e3ae282ecc5525591cb427",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:50 CEST",
+	url.checked = "2016-06-08 15:19:02 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15701,7 +15855,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "53920",
 	url.md5 = "ed4a32d357a3f14449fff67e4ef6a4c0",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:50 CEST",
+	url.checked = "2016-06-08 15:19:02 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15721,7 +15875,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "52897",
 	url.md5 = "93ecd87c49a9b28356a2f0d0cd64c6b0",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:50 CEST",
+	url.checked = "2016-06-08 15:19:02 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15741,7 +15895,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "82403",
 	url.md5 = "0abd2ec982fcb655651024020859c50a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:51 CEST",
+	url.checked = "2016-06-08 15:19:03 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15761,7 +15915,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "24142",
 	url.md5 = "5a31c1fa436ce075157f720d1bbfce4c",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:51 CEST",
+	url.checked = "2016-06-08 15:19:03 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15781,7 +15935,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "35908",
 	url.md5 = "b8a8e7d8a08b8698e20331c8336015dc",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:51 CEST",
+	url.checked = "2016-06-08 15:19:03 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15801,7 +15955,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "262123",
 	url.md5 = "7bb7e62edb18e5530dc164acbea628f5",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:52 CEST",
+	url.checked = "2016-06-08 15:19:03 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15821,7 +15975,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "82328",
 	url.md5 = "6a0de79c2ab7c73c9af73ac20b77da42",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:52 CEST",
+	url.checked = "2016-06-08 15:19:04 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15841,7 +15995,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "114315",
 	url.md5 = "803d7b6619fe546e9bcfa430cc9df80a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:53 CEST",
+	url.checked = "2016-06-08 15:19:04 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15861,7 +16015,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "318830",
 	url.md5 = "0dde07c5fde2505bc7d159c125608dc3",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:56 CEST",
+	url.checked = "2016-06-08 15:19:04 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15881,7 +16035,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "47868",
 	url.md5 = "b1e22be3e85a067db600be3683db9b33",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:56 CEST",
+	url.checked = "2016-06-08 15:19:04 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15901,7 +16055,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "56014",
 	url.md5 = "87646f122509c2d1d22f487d1ab3edf3",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:56 CEST",
+	url.checked = "2016-06-08 15:19:05 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15921,7 +16075,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "48969",
 	url.md5 = "c6869cca458e143ce3f3255701393c24",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:57 CEST",
+	url.checked = "2016-06-08 15:19:05 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15941,7 +16095,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "3215",
 	url.md5 = "e730231c07020c7fc7b0d5df12855e30",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:57 CEST",
+	url.checked = "2016-06-08 15:19:05 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15962,7 +16116,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "9519",
 	url.md5 = "171140ce9bf13abbd2cb4c1acc13dd44",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:57 CEST",
+	url.checked = "2016-06-08 15:19:05 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -15983,7 +16137,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "11211",
 	url.md5 = "be872e60284a29dd9855feac359abce3",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:57 CEST",
+	url.checked = "2016-06-08 15:19:05 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16003,7 +16157,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "25521",
 	url.md5 = "5a6fd88ce43b91b80d1b09e039b8ee1e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:57 CEST",
+	url.checked = "2016-06-08 15:19:06 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16024,7 +16178,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "10127",
 	url.md5 = "62626225cc68f7ae54e9bffd8b7730bd",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:58 CEST",
+	url.checked = "2016-06-08 15:19:06 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16045,7 +16199,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "15024",
 	url.md5 = "db9978859ed19e692fd74359b9a8a982",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:58 CEST",
+	url.checked = "2016-06-08 15:19:06 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16065,7 +16219,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "15073",
 	url.md5 = "8e74a0e288ade6a6514e42ac1f2e98fa",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:13:58 CEST",
+	url.checked = "2016-06-08 15:19:06 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16085,7 +16239,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "647976",
 	url.md5 = "d7fad772fe534fb7542083c07f16600d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:00 CEST",
+	url.checked = "2016-06-08 15:19:07 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16105,7 +16259,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "170401",
 	url.md5 = "6a7d8e6a395facf7022753ca62e73847",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:01 CEST",
+	url.checked = "2016-06-08 15:19:07 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16125,7 +16279,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "11597",
 	url.md5 = "49b9e39c784d55abbe3704522a889d26",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:01 CEST",
+	url.checked = "2016-06-08 15:19:07 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16145,7 +16299,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "147196",
 	url.md5 = "2efd93098f0d3b33792265b974c60dc2",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:01 CEST",
+	url.checked = "2016-06-08 15:19:07 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16165,7 +16319,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "335617",
 	url.md5 = "6ef2e1fa5dfa252ad0f95a8ea17a33a8",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:04 CEST",
+	url.checked = "2016-06-08 15:19:08 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16185,7 +16339,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "53534",
 	url.md5 = "a1ac38c686d3372b535a2a526d360ae2",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:04 CEST",
+	url.checked = "2016-06-08 15:19:08 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16205,7 +16359,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "240492",
 	url.md5 = "7308f7061f1d644c8b28d9bb00487e1d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:05 CEST",
+	url.checked = "2016-06-08 15:19:08 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16225,7 +16379,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "66160",
 	url.md5 = "2eed2e070bede7811ab4af6c092cf501",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:05 CEST",
+	url.checked = "2016-06-08 15:19:08 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16245,7 +16399,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "222395",
 	url.md5 = "32801fd46ebd7cc09332aeadb804080e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:06 CEST",
+	url.checked = "2016-06-08 15:19:09 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16265,7 +16419,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "65717",
 	url.md5 = "c929425df25d0b471b0695fa1c4b161a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:06 CEST",
+	url.checked = "2016-06-08 15:19:09 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16285,7 +16439,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "299931",
 	url.md5 = "78fa7b7f376b12c42f039663823d62d6",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:07 CEST",
+	url.checked = "2016-06-08 15:19:09 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16305,7 +16459,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "241096",
 	url.md5 = "f3895e0f66e72454b38402ad916df4c4",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:09 CEST",
+	url.checked = "2016-06-08 15:19:09 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16325,7 +16479,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "451942",
 	url.md5 = "4c6d64c554b79888c16184f722c3a0cb",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:11 CEST",
+	url.checked = "2016-06-08 15:19:10 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16345,7 +16499,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "244800",
 	url.md5 = "67c715c9f29057d38f9e4ec58eb1e9a9",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:11 CEST",
+	url.checked = "2016-06-08 15:19:10 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16365,7 +16519,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "50646",
 	url.md5 = "673f6f226dda3c2c5491cb4e84da5503",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:12 CEST",
+	url.checked = "2016-06-08 15:19:10 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16385,7 +16539,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "237112",
 	url.md5 = "61cefc730d709cb22842b791a891d6ae",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:12 CEST",
+	url.checked = "2016-06-08 15:19:10 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16405,7 +16559,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "72734",
 	url.md5 = "2830fa011c68023335a4c1860d88b0a8",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:13 CEST",
+	url.checked = "2016-06-08 15:19:11 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16425,7 +16579,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "16858",
 	url.md5 = "bb6e774597833224c4f7d9b73f329cce",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:13 CEST",
+	url.checked = "2016-06-08 15:19:11 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16445,7 +16599,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "34048",
 	url.md5 = "483953c27339fe79328645403b79f7cc",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:13 CEST",
+	url.checked = "2016-06-08 15:19:11 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16465,7 +16619,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "16674",
 	url.md5 = "fd61d60a952f67832b30ff862bffdfec",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:13 CEST",
+	url.checked = "2016-06-08 15:19:11 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16485,7 +16639,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "15368",
 	url.md5 = "f389ae29c46ae60428664892a5a3869b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:14 CEST",
+	url.checked = "2016-06-08 15:19:11 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16505,7 +16659,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "57813",
 	url.md5 = "5b840f8cbb1e4a2edc401264158069ac",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:14 CEST",
+	url.checked = "2016-06-08 15:19:12 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16525,7 +16679,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "46532",
 	url.md5 = "cb7d0adfc0f27799dbb3c0ba84f8b648",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:14 CEST",
+	url.checked = "2016-06-08 15:19:12 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16545,7 +16699,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "27961",
 	url.md5 = "3ed0c7d6cb296c05c297287e23077969",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:14 CEST",
+	url.checked = "2016-06-08 15:19:12 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16565,7 +16719,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "43823",
 	url.md5 = "357d5981ce99a7dddf2679251cb8245a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:15 CEST",
+	url.checked = "2016-06-08 15:19:12 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16585,7 +16739,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "53591",
 	url.md5 = "f2d34eb3e7031efa111a7b4862861ecc",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:15 CEST",
+	url.checked = "2016-06-08 15:19:12 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16605,7 +16759,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "26032",
 	url.md5 = "286779973dc59825dd7222d2fe87b2b4",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:15 CEST",
+	url.checked = "2016-06-08 15:19:13 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16625,7 +16779,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "113738",
 	url.md5 = "e613923cffa21ad97b5095fb347a068f",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:15 CEST",
+	url.checked = "2016-06-08 15:19:14 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16645,7 +16799,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "63670",
 	url.md5 = "cd3c902afab4260aece7e4e674bc83d8",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:16 CEST",
+	url.checked = "2016-06-08 15:19:14 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -16666,7 +16820,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "21431",
 	url.md5 = "bf76d54ed66e260d74191295d59f523b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:17 CEST"
+	url.checked = "2016-06-08 15:19:15 CEST"
 }
 
 @TechReport{ draft-dreibholz-tsvwg-sctpsocket-sqinfo,
@@ -16684,7 +16838,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "13662",
 	url.md5 = "eeffb91b2195887f0c55eeab231f5c3a",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:17 CEST"
+	url.checked = "2016-06-08 15:19:15 CEST"
 }
 
 @TechReport{ draft-dreibholz-tsvwg-sctpsocket-multipath,
@@ -16702,7 +16856,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "12549",
 	url.md5 = "7b778a4195bb0f39fea7c7fa4cc1a366",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:17 CEST"
+	url.checked = "2016-06-08 15:19:15 CEST"
 }
 
 @TechReport{ draft-dreibholz-rserpool-score,
@@ -16720,7 +16874,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "18869",
 	url.md5 = "73c7bc2501052ed7bcc24623b82a7960",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:18 CEST"
+	url.checked = "2016-06-08 15:19:15 CEST"
 }
 
 @TechReport{ draft-dreibholz-rserpool-applic-distcomp,
@@ -16738,7 +16892,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "18832",
 	url.md5 = "ae240337d584a230b142c9ead321e354",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:18 CEST"
+	url.checked = "2016-06-08 15:19:15 CEST"
 }
 
 @TechReport{ draft-dreibholz-ipv4-flowlabel,
@@ -16756,7 +16910,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "17097",
 	url.md5 = "0f6dbc062b17925c7849ad6223182101",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:18 CEST"
+	url.checked = "2016-06-08 15:19:16 CEST"
 }
 
 @TechReport{ draft-dreibholz-rserpool-nextgen-ideas,
@@ -16774,7 +16928,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "14507",
 	url.md5 = "116e597f97bea999bb40c37de055a5d1",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:19 CEST"
+	url.checked = "2016-06-08 15:19:16 CEST"
 }
 
 @TechReport{ draft-dreibholz-rserpool-applic-mobility,
@@ -16792,7 +16946,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "15825",
 	url.md5 = "4afa8350b6dca5560dd9ebaf1d083f3b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:19 CEST"
+	url.checked = "2016-06-08 15:19:16 CEST"
 }
 
 @TechReport{ draft-dreibholz-rserpool-enrp-takeover,
@@ -16810,7 +16964,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "13606",
 	url.md5 = "b69175de859e77cc45ab43639ee398da",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:19 CEST"
+	url.checked = "2016-06-08 15:19:16 CEST"
 }
 
 @TechReport{ draft-dreibholz-rserpool-asap-hropt,
@@ -16828,7 +16982,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "13156",
 	url.md5 = "f112681e6a9eec626a028079f3f867e8",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:19 CEST"
+	url.checked = "2016-06-08 15:19:16 CEST"
 }
 
 @TechReport{ draft-dreibholz-rserpool-delay,
@@ -16846,7 +17000,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "17189",
 	url.md5 = "2b57445c4bbfb3fcaf22e2d44200b02f",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:19 CEST"
+	url.checked = "2016-06-08 15:19:17 CEST"
 }
 
 @TechReport{ draft-coene-rserpool-applic-ipfix,
@@ -16864,7 +17018,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "14844",
 	url.md5 = "820623ecd2402ea54b27e235d3a91882",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:20 CEST"
+	url.checked = "2016-06-08 15:19:17 CEST"
 }
 
 @TechReport{ draft-hohendorf-secure-sctp,
@@ -16882,7 +17036,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "91297",
 	url.md5 = "b14b7cd1a663f507c5685316175d9891",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:20 CEST"
+	url.checked = "2016-06-08 15:19:17 CEST"
 }
 
 @TechReport{ draft-dreibholz-tsvwg-sctp-nextgen-ideas,
@@ -16900,7 +17054,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "15811",
 	url.md5 = "5d4856f682eed6e281f72a952ae63a32",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:20 CEST"
+	url.checked = "2016-06-08 15:19:17 CEST"
 }
 
 @TechReport{ draft-dreibholz-vnfpool-rserpool-applic,
@@ -16918,25 +17072,25 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "34745",
 	url.md5 = "4862308ddeafe90c6edd20d375eb15a7",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:20 CEST"
+	url.checked = "2016-06-08 15:19:17 CEST"
 }
 
 @TechReport{ draft-tuexen-tsvwg-sctp-multipath,
 	author = "Paul~D. Amer and Martin Becke and Thomas Dreibholz and Nasif Ekiz and Janardhan~R. Iyengar and Preethi Natarajan and Randall~R. Stewart and Michael Tüxen",
 	title = "{Load Sharing for the Stream Control Transmission Protocol~(SCTP)}",
 	type = "Internet Draft",
-	number = "draft-tuexen-tsvwg-sctp-multipath-11",
-	day = "30",
-	month = nov,
-	year = "2015",
+	number = "draft-tuexen-tsvwg-sctp-multipath-12",
+	day = "2",
+	month = jun,
+	year = "2016",
 	institution = "IETF, Individual Submission",
 	language = "english",
 	abstract = "{The Stream Control Transmission Protocol~(SCTP) supports multi-homing for providing network fault tolerance. However, mainly one path is used for data transmission. Only timer-based retransmissions are carried over other paths as well. This document describes how multiple paths can be used simultaneously for transmitting user messages.}",
-	url = "https://tools.ietf.org/id/draft-tuexen-tsvwg-sctp-multipath-11.txt",
-	url.size = "62243",
-	url.md5 = "09b8baf03fb4b0eb17a8cfa5851bcc45",
+	url = "https://tools.ietf.org/id/draft-tuexen-tsvwg-sctp-multipath-12.txt",
+	url.size = "62940",
+	url.md5 = "ae099b3d81380e95126f471e1f7cdecf",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:21 CEST"
+	url.checked = "2016-06-08 15:19:18 CEST"
 }
 
 @TechReport{ draft-ietf-tsvwg-sctp-dtls-encaps,
@@ -16954,7 +17108,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20211",
 	url.md5 = "7b992aafb2d6ed832b59ef983ac092c3",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:21 CEST"
+	url.checked = "2016-06-08 15:19:18 CEST"
 }
 
 @TechReport{ draft-ietf-tsvwg-natsupp,
@@ -16972,7 +17126,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "87275",
 	url.md5 = "5470dada768db1b5b2977e10ade1871e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:21 CEST"
+	url.checked = "2016-06-08 15:19:18 CEST"
 }
 
 @TechReport{ draft-ietf-tsvwg-sctp-failover,
@@ -16990,7 +17144,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "54375",
 	url.md5 = "f246060f8d6326f3c7629e3e36f9d48e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:22 CEST"
+	url.checked = "2016-06-08 15:19:18 CEST"
 }
 
 @TechReport{ draft-ietf-tsvwg-sctp-prpolicies,
@@ -17008,7 +17162,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "21033",
 	url.md5 = "f487e88da239ee899e5df05ac41e9312",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:22 CEST"
+	url.checked = "2016-06-08 15:19:19 CEST"
 }
 
 @TechReport{ RFC7496,
@@ -17027,7 +17181,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "21272",
 	url.md5 = "7fbe15c06aa1e3f4ff4876603ce88e67",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:22 CEST",
+	url.checked = "2016-06-08 15:19:19 CEST",
 	note = "{ISSN} 2070-1721"
 }
 
@@ -17046,7 +17200,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "51816",
 	url.md5 = "bdcdd79c76bc371ee7cd27d2e3d6f962",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:23 CEST"
+	url.checked = "2016-06-08 15:19:19 CEST"
 }
 
 @TechReport{ draft-ietf-forces-sctptml,
@@ -17064,7 +17218,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "61602",
 	url.md5 = "6d59c05966cdda45f7d0bda32a1e4312",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:23 CEST"
+	url.checked = "2016-06-08 15:19:19 CEST"
 }
 
 @TechReport{ draft-ietf-ipfix-export-per-sctp-stream,
@@ -17082,7 +17236,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "58667",
 	url.md5 = "85477e4933b0eef969a37948dc3b5946",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:23 CEST"
+	url.checked = "2016-06-08 15:19:19 CEST"
 }
 
 @TechReport{ draft-ietf-mmusic-sctp-sdp,
@@ -17100,7 +17254,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "50794",
 	url.md5 = "8d1b4d24966e25be5b35a85887f8fa40",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:24 CEST"
+	url.checked = "2016-06-08 15:19:20 CEST"
 }
 
 @TechReport{ draft-ietf-rohc-sctp-requirements,
@@ -17117,7 +17271,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "18955",
 	url.md5 = "4a8519e04a57ee8eade1541f651a9c21",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:24 CEST"
+	url.checked = "2016-06-08 15:19:20 CEST"
 }
 
 @TechReport{ draft-ietf-sigtran-sctp-applicability,
@@ -17134,7 +17288,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "25992",
 	url.md5 = "45afaddab982123230068312829e8ae6",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:28 CEST"
+	url.checked = "2016-06-08 15:19:22 CEST"
 }
 
 @TechReport{ draft-ietf-sigtran-sctp-mib,
@@ -17152,7 +17306,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "82783",
 	url.md5 = "b1a76217884d1c93c4a516cab7b1ee8e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:28 CEST"
+	url.checked = "2016-06-08 15:19:23 CEST"
 }
 
 @TechReport{ draft-ietf-sigtran-signalling-over-sctp-applic,
@@ -17170,7 +17324,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "45839",
 	url.md5 = "4fb19c2bc1b416ea317b40cc0125d4b6",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:29 CEST"
+	url.checked = "2016-06-08 15:19:23 CEST"
 }
 
 @TechReport{ draft-lei-tsvwg-sctp-compr-requirements-profile,
@@ -17188,7 +17342,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "40496",
 	url.md5 = "90c9c1743a28dec02bd997cb1a06d6c2",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:29 CEST"
+	url.checked = "2016-06-08 15:19:23 CEST"
 }
 
 @TechReport{ draft-loreto-mmusic-sctp-sdp,
@@ -17206,7 +17360,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "17651",
 	url.md5 = "01a4e2f012a883adc4334de358e19128",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:29 CEST"
+	url.checked = "2016-06-08 15:19:23 CEST"
 }
 
 @TechReport{ draft-loughney-sctp-sig-prot,
@@ -17223,7 +17377,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "12573",
 	url.md5 = "97593513166c44bb332219bd317451ec",
 	url.mime = "application/octet-stream",
-	url.checked = "2016-05-19 17:14:29 CEST"
+	url.checked = "2016-06-08 15:19:23 CEST"
 }
 
 @TechReport{ draft-marushin-sctp-asconfext,
@@ -17241,7 +17395,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "27092",
 	url.md5 = "8a2604f115705d0c23b155b3763d5498",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:29 CEST"
+	url.checked = "2016-06-08 15:19:24 CEST"
 }
 
 @TechReport{ draft-natarajan-tsvwg-sctp-nrsack,
@@ -17259,7 +17413,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "41772",
 	url.md5 = "0955c82e76a45506f1259c3753bd3e03",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:30 CEST"
+	url.checked = "2016-06-08 15:19:24 CEST"
 }
 
 @TechReport{ draft-ong-sigtran-sctpover,
@@ -17276,7 +17430,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20130",
 	url.md5 = "fde5ca5b117e6e6fb36a884441adf34d",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:33 CEST"
+	url.checked = "2016-06-08 15:19:26 CEST"
 }
 
 @TechReport{ draft-riegel-tuexen-mobile-sctp,
@@ -17294,7 +17448,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "29451",
 	url.md5 = "5e393894e54c0539f7c7a28756348ef3",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:33 CEST"
+	url.checked = "2016-06-08 15:19:26 CEST"
 }
 
 @TechReport{ draft-stewart-otis-sctp-ddp-rdma,
@@ -17311,7 +17465,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20617",
 	url.md5 = "21871004ff405d1f752aa715f78e6267",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:36 CEST"
+	url.checked = "2016-06-08 15:19:28 CEST"
 }
 
 @TechReport{ draft-stewart-sctp-pktdrprep,
@@ -17329,7 +17483,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "26667",
 	url.md5 = "93cc5b5f6155751476e26ebf8977ab24",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:37 CEST"
+	url.checked = "2016-06-08 15:19:29 CEST"
 }
 
 @TechReport{ draft-stewart-sctp-roi,
@@ -17346,7 +17500,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "10606",
 	url.md5 = "013aee1d4c55e0cf3e3b102e951a41d0",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:37 CEST"
+	url.checked = "2016-06-08 15:19:29 CEST"
 }
 
 @TechReport{ draft-stewart-tsvwg-sctp-nonce,
@@ -17364,7 +17518,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "25481",
 	url.md5 = "7ac5f5ab47477f5b537691875dbfc905",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:37 CEST"
+	url.checked = "2016-06-08 15:19:29 CEST"
 }
 
 @TechReport{ draft-stewart-tsvwg-sctpecn,
@@ -17382,7 +17536,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "25034",
 	url.md5 = "a77babe4d3782480e3afa6fc5de79876",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:37 CEST"
+	url.checked = "2016-06-08 15:19:29 CEST"
 }
 
 @TechReport{ draft-stewart-tsvwg-sctp-ndata,
@@ -17400,7 +17554,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "21655",
 	url.md5 = "f61b386eb963bf95fa00ff2b14a606c8",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:38 CEST"
+	url.checked = "2016-06-08 15:19:30 CEST"
 }
 
 @TechReport{ draft-stewart-tsvwg-reconfuse-sctp,
@@ -17418,7 +17572,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "18561",
 	url.md5 = "a84dd9ebc2c42fb73264a0f24d9fa68b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:38 CEST"
+	url.checked = "2016-06-08 15:19:30 CEST"
 }
 
 @TechReport{ draft-stewart-tsvwg-sctpscore,
@@ -17436,7 +17590,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "21427",
 	url.md5 = "f19d9f9ae2b38b6ea5cabf46e351b128",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:38 CEST"
+	url.checked = "2016-06-08 15:19:30 CEST"
 }
 
 @TechReport{ draft-sjkoh-mobile-sctp-handover,
@@ -17453,7 +17607,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "25195",
 	url.md5 = "05363cbfb6e6603aac0d0aa42c8bfdd7",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:38 CEST"
+	url.checked = "2016-06-08 15:19:30 CEST"
 }
 
 @TechReport{ draft-sjkoh-mobile-sctp-mobileip,
@@ -17471,7 +17625,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "27504",
 	url.md5 = "ea8de46f82bd9fd18332743d3a9bf572",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:38 CEST"
+	url.checked = "2016-06-08 15:19:30 CEST"
 }
 
 @TechReport{ draft-sjkoh-sctp-mobility,
@@ -17489,7 +17643,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "36901",
 	url.md5 = "555bf644fc828f0815862c14f31d06b8",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:39 CEST"
+	url.checked = "2016-06-08 15:19:31 CEST"
 }
 
 @TechReport{ draft-trammell-ipfix-sctp-change,
@@ -17507,7 +17661,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "20400",
 	url.md5 = "774f96c585c6f8475a81006418b1f3ed",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:39 CEST"
+	url.checked = "2016-06-08 15:19:31 CEST"
 }
 
 @TechReport{ draft-tuexen-tsvwg-sctp-scheduling,
@@ -17525,7 +17679,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "10440",
 	url.md5 = "330a192561319fdc4875c34afd2d8c98",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:39 CEST"
+	url.checked = "2016-06-08 15:19:31 CEST"
 }
 
 @TechReport{ draft-vibansal-sctpsocket-congestion,
@@ -17543,7 +17697,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "23971",
 	url.md5 = "c6d8d135f26874c86d1ebbed005c2b19",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:39 CEST"
+	url.checked = "2016-06-08 15:19:31 CEST"
 }
 
 @TechReport{ draft-west-sctp-epic,
@@ -17560,7 +17714,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "49356",
 	url.md5 = "a55f73f1ecb97f0d76fc02b9ed48a2a2",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:40 CEST"
+	url.checked = "2016-06-08 15:19:32 CEST"
 }
 
 @TechReport{ draft-xie-behave-sctp-nat-cons,
@@ -17578,7 +17732,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "12734",
 	url.md5 = "a4c3706a220bd69b0a55af51b55972e6",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:40 CEST"
+	url.checked = "2016-06-08 15:19:32 CEST"
 }
 
 @TechReport{ draft-xie-tsvwg-sctp-nat,
@@ -17596,7 +17750,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "14209",
 	url.md5 = "4dfc1190359c80765e7398401acab73b",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:40 CEST"
+	url.checked = "2016-06-08 15:19:32 CEST"
 }
 
 @TechReport{ draft-iyengar-sctp-cacc,
@@ -17632,7 +17786,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "18012",
 	url.md5 = "a4d778450a680c54e3a77024f102bb71",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:40 CEST"
+	url.checked = "2016-06-08 15:19:32 CEST"
 }
 
 @TechReport{ draft-ietf-rtcweb-overview,
@@ -17650,7 +17804,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "47923",
 	url.md5 = "3dd24c126067b613ec3516f55c9ab326",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:40 CEST"
+	url.checked = "2016-06-08 15:19:33 CEST"
 }
 
 @TechReport{ draft-hinden-ipng-overview,
@@ -17684,7 +17838,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "30148",
 	url.md5 = "bc1aa9e7e0a060b9806b73155ec8f46e",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:41 CEST"
+	url.checked = "2016-06-08 15:19:33 CEST"
 }
 
 @TechReport{ draft-ietf-rserpool-overview,
@@ -17936,7 +18090,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "103281",
 	url.md5 = "82b045878d3eb3b75dda3a4553aa2558",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:41 CEST"
+	url.checked = "2016-06-08 15:19:33 CEST"
 }
 
 @TechReport{ IEEE-802.1D,
@@ -18045,7 +18199,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "168111",
 	url.md5 = "36856da1f85da0930fdd05f59a2624c3",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:41 CEST"
+	url.checked = "2016-06-08 15:19:34 CEST"
 }
 
 @TechReport{ draft-ietf-mptcp-congestion,
@@ -18063,7 +18217,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "28548",
 	url.md5 = "9c3dd75d0ab9f25cba4bd5dfc7c56527",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:42 CEST"
+	url.checked = "2016-06-08 15:19:34 CEST"
 }
 
 @TechReport{ draft-ietf-mptcp-architecture,
@@ -18081,7 +18235,7 @@ The growing need for and deployment of multi-homed applications makes large-scal
 	url.size = "72124",
 	url.md5 = "2bf6eb088b4342bdd521eb6c62b83a10",
 	url.mime = "text/plain",
-	url.checked = "2016-05-19 17:14:43 CEST"
+	url.checked = "2016-06-08 15:19:34 CEST"
 }
 
 % ====== Technical Reports =================================================
@@ -19305,7 +19459,7 @@ In the context of this thesis, a system for the cost-efficient transfer of varia
 	year = "2014",
 	school = "University of Oslo",
 	address = "Oslo/Norway",
-	abstract = "{There is extensive on-going research taking place with the goal of implementing transport layer protocols that are able to utilize multi-homing on machines (connection to multiple ISPs). Multi-homing has potential to improve resilience and increase total goodput compared to using a single connection. This would e.g. benefit the trend of more and more services being moved online and into the cloud. The NorNet Core multi-homed network testbed aims to facilitate this research by offering programmable virtual machines located at multiple different sites across the world, accessible for researchers. The aim of this project is the design and implementation of a demonstration platform for NorNet Core that enables the testbed to be illustratively demonstrated to potential new users. This is done by offering users interactive experiments, and geographical visualization of various communication scenarios between nodes in the NorNet Core network in real time. The demonstration platform puts emphasis on demonstrating the unique aspects of NorNet Core compared to other networking testbeds; namely the multi-homed nature and IPv6 support for all of the nodes. This thesis discusses the technical aspects of designing and implementing the platform, as well as demonstrating the finished result with various demonstration scenarios. The Qt programming framework was chosen as the primary development framework for this application.}",
+	abstract = "{There is extensive on-going research taking place with the goal of implementing transport layer protocols that are able to utilize multi-homing on machines (connection to multiple ISPs). Multi-homing has potential to improve resilience and increase total goodput compared to using a single connection. This would e.g. benefit the trend of more and more services being moved online and into the cloud. The NorNet Core multi-homed network testbed aims to facilitate this research by offering programmable virtual machines located at multiple different sites across the world, accessible for researchers. The aim of this project is the design and implementation of a demonstration platform for NorNet Core that enables the testbed to be illustratively demonstrated to potential new users. This is done by offering users interactive experiments, and geographical visualization of various communication scenarios between nodes in the NorNet Core network in real time. The demonstration platform puts emphasis on demonstrating the unique aspects of NorNet Core compared to other networking testbeds, namely the multi-homed nature and IPv6 support for all of the nodes. This thesis discusses the technical aspects of designing and implementing the platform, as well as demonstrating the finished result with various demonstration scenarios. The Qt programming framework was chosen as the primary development framework for this application.}",
 	url = "https://www.simula.no/file/simulasimula2786pdf/download",
 	url.size = "8230656",
 	url.md5 = "0dca91d037f4e6765f6fb5526f141f06",
@@ -21273,7 +21427,7 @@ In the context of this thesis, a system for the cost-efficient transfer of varia
 	language = "english",
 	issn = "1051-8215",
 	doi = "10.1109/TCSVT.2007.905532",
-	keywords = "IEC standards;ISO standards;video coding;H.264/AVC standard;Joint Video Team;MPEG;partial bit stream decoding;scalable video coding extension;Automatic voltage control;Decoding;IEC standards;ISO standards;Scalability;Static VAr compensators;Streaming media;Transform coding;Video coding;Video compression;H.264/AVC;MPEG-4;Scalable Video Coding (SVC);standards;video",
+	keywords = "IEC standards,ISO standards,video coding,H.264/AVC standard,Joint Video Team,MPEG,partial bit stream decoding,scalable video coding extension,Automatic voltage control,Decoding,IEC standards,ISO standards,Scalability,Static VAr compensators,Streaming media,Transform coding,Video coding,Video compression,H.264/AVC,MPEG-4,Scalable Video Coding (SVC),standards,video",
 	url = "http://ieeexplore.ieee.org/xpls/icp.jsp?arnumber=4317636&tag=1&isnumber=",
 	url.size = "186982",
 	url.md5 = "fee551593528937fde2b18abd62b179a",
@@ -21420,7 +21574,7 @@ In the context of this thesis, a system for the cost-efficient transfer of varia
 	publisher = "IEEE Press",
 	issn = "0018-9448",
 	doi = "10.1109/TIT.2006.874414",
-	keywords = "delay estimation;least squares approximations;maximum entropy methods;probability;telecommunication network topology;LSE;delay-induced link probability;global objective function;least square error;maximum-entropy principle;network topology;network-wide measurement;one-way delay estimation;Clocks;Delay effects;Delay estimation;Global Positioning System;IP networks;Network servers;Network topology;Routing protocols;Synchronization;Time measurement;Delay estimation;mathematical optimization;maximum entropy;network measurements;one-way delay",
+	keywords = "delay estimation,least squares approximations,maximum entropy methods,probability,telecommunication network topology,LSE,delay-induced link probability,global objective function,least square error,maximum-entropy principle,network topology,network-wide measurement,one-way delay estimation,Clocks,Delay effects,Delay estimation,Global Positioning System,IP networks,Network servers,Network topology,Routing protocols,Synchronization,Time measurement,Delay estimation,mathematical optimization,maximum entropy,network measurements,one-way delay",
 	url = "http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1638554&isnumber=",
 	url.size = "746894",
 	url.md5 = "52f9f7cff1e100c019e3e07e15ea3076",
@@ -21439,7 +21593,7 @@ In the context of this thesis, a system for the cost-efficient transfer of varia
 	month = jul,
 	year = "2008",
 	doi = "10.1109/IEEESTD.2008.4579760",
-	keywords = "IEEE standards;distributed control;protocols;synchronisation;IEEE standard;distributed objects;heterogeneous systems;local clock computing resources;network communication;networked control systems;networked measurement;packet networks;precision clock synchronization protocol;system-wide synchronization accuracy;1588-2008;boundary clock;clock;distributed system;master clock;measurement and control system;real-time clock;synchronized clock;transparent clock",
+	keywords = "IEEE standards,distributed control,protocols,synchronisation,IEEE standard,distributed objects,heterogeneous systems,local clock computing resources,network communication,networked control systems,networked measurement,packet networks,precision clock synchronization protocol,system-wide synchronization accuracy,1588-2008,boundary clock,clock,distributed system,master clock,measurement and control system,real-time clock,synchronized clock,transparent clock",
 	abstract = "{A protocol is provided in this standard that enables precise synchronization of clocks in measurement and control systems implemented with technologies such as network communication, local computing, and distributed objects. The protocol is applicable to systems communicating via packet networks. Heterogeneous systems are enabled that include clocks of various inherent precision, resolution, and stability to synchronize. System-wide synchronization accuracy and precision in the sub-microsecond range are supported with minimal network and local clock computing resources. Simple systems are installed and operated without requiring the management attention of users because the default behavior of the protocol allows for it.}"
 }
 
