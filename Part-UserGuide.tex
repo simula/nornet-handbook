@@ -261,7 +261,8 @@ For the research part of \noun{NorNet Core}, there are obviously use cases for r
 \label{cha:Getting-Access}
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-In this chapter, the user part of accessing and using \noun{NorNet Core} is described. The maintenance part will be described in Chapter~\ref{cha:Maintenance}.
+In this chapter, the user part of accessing and using \noun{NorNet Core} is described.
+% The maintenance part will be described in Chapter~\ref{cha:Maintenance}.
 
 
 % ###########################################################################
@@ -309,7 +310,9 @@ A \noun{NorNet Core} user needs access into the \noun{NorNet Core} network. The 
 \label{sub:The-Gatekeeper}
 % ===========================================================================
 
-The Gatekeeper server\index{Gatekeeper} \href{ssh://gatekeeper.nntb.no}{gatekeeper.nntb.no}\index{gatekeeper.nntb.no}\footnote{\href{ssh://gatekeeper.nntb.no}{gatekeeper.nntb.no}\index{gatekeeper.nntb.no} is actually an alias for the server \href{ssh://oesthorn.nntb.no}{oesthorn.nntb.no}\index{oesthorn.nntb.no}, to be explained in Section~\ref{sec:The-Gatekeeper}.} provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the Gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
+The Gatekeeper server\index{Gatekeeper} \href{ssh://gatekeeper.nntb.no}{gatekeeper.nntb.no}\index{gatekeeper.nntb.no}\footnote{\href{ssh://gatekeeper.nntb.no}{gatekeeper.nntb.no}\index{gatekeeper.nntb.no} is actually an alias for the server \href{ssh://oesthorn.nntb.no}{oesthorn.nntb.no}\index{oesthorn.nntb.no}).}
+% to be explained in Section~\ref{sec:The-Gatekeeper}.}
+provides the simplest form of access to the \noun{NorNet Core} network. It is just a Linux machine that is connected to the \noun{NorNet Core} network as well as to the outside Internet. SSH\index{Secure Shell} can be used to access this machine. In the following, some useful commands that are provided by standard Linux distributions are explained. Note, that access to the Gatekeeper is not restricted to Linux. In fact, any operating system with appropriate tools (SSH, etc.) can be used as well.
 
 The following examples give a short overview of what is possible with SSH. Note, that they are not meant to be complete. Refer to the manual page of \texttt{ssh}\footnote{\texttt{ssh} manual page: \texttt{\href{man:ssh}{man ssh}}.} and various SSH tutorials in the Internet for further information.
 
@@ -562,7 +565,9 @@ Further information under ``My Account'' provides mappings of the user to one or
 
 The own SSH public key can be uploaded in the ``Key'' tab of the ``My Account'' section, as shown in Figure~\ref{cap:PLC-Account-Details-Key-and-Roles}. Note, that multiple keys can be provided here. The PLC user interface currently only supports a single key for authentication. Therefore, only the first key will be used. However, the PLC does not display any warning when having uploaded multiple keys! It is therefore strongly recommended to not have more than one key in the interface. A further pitfall for new users is trying to upload their private key here. The PLC will in this case complain about the key length, but not about using a private key.
 
-After upload of the public key, it may take up to about 1~hour until the new key gets distributed to all \noun{NorNet Core} research nodes. Key updates are made by the nodes in random intervals (by the Node Manager -- to be described in Section~\ref{sec:Node-Manager}), i.e.\ changes made in the PLC web interface are not applied immediately!
+After upload of the public key, it may take up to about 1~hour until the new key gets distributed to all \noun{NorNet Core} research nodes. Key updates are made by the nodes in random intervals (by the Node Manager),
+% -- to be described in Section~\ref{sec:Node-Manager}),
+i.e.\ changes made in the PLC web interface are not applied immediately!
 
 
 % ===========================================================================
@@ -686,7 +691,8 @@ Clicking on a research node displays details about the node itself, as shown in 
 
  \item ``fcdistro''\index{fcdistro}\index{Tag!fcdistro}: The variant of \noun{Fedora Core Linux} that runs on the node, e.g.\ ``fc18'' for version~18.
 
- \item ``pldistro''\index{pldistro}\index{Tag!pldistro}: The software distribution that is installed on the research nodes. Possible values are currently ``lxc'' (stock \noun{PlanetLab}-LXC software) and ``nornet'' (the \noun{NorNet} distribution, to be introduced in Chapter~\ref{cha:Distribution}).
+ \item ``pldistro''\index{pldistro}\index{Tag!pldistro}: The software distribution that is installed on the research nodes. Possible values are currently ``lxc'' (stock \noun{PlanetLab}-LXC software) and ``nornet'' (the \noun{NorNet} distribution).
+ % , to be introduced in Chapter~\ref{cha:Distribution}).
  
  \item ``nornet\_is\_managed\_node''\index{nornet\_is\_managed\_node}\index{Tag!nornet\_is\_managed\_node}: Denotes whether the research node is a \noun{NorNet Core}-managed node~(``1'') or not~(``0''). \noun{NorNet Core}-managed nodes are assumed to be modified by scripts on the PLC server (by the \noun{NorNet Core} staff) only. Therefore, the configuration of the nodes should \emph{not} be changed in the PLC web interface (even if the user's role allows to do this) to avoid misconfiguration!
 
@@ -786,7 +792,9 @@ The slice details page also allows to add/remove nodes from/to the slice.
 
  \item ``nornet\_slice\_node\_index''\index{nornet\_slice\_node\_index}\index{Tag!nornet\_slice\_node\_index}: This tag is a node-specific tag. That is, for each node associated with the slice, there may be a separate nornet\_slice\_node\_index tag. The tag defines the node index of the sliver. It is then used to systematically allocate the IP~addresses in case of using own IP~addresses for the sliver.
  
- \item ``interface''\index{interface}\index{Tag!interface}: This node-specific tag contains the contents of a \noun{Fedora Core Linux} network interface configuration file (i.e.\ \texttt{/etc/sysconfig/network-scripts/ifcfg-eth0}\index{ifcfg-eth0}), as string representation of a Python dictionary. This tag is generated by the management script on the PLC, according to a site's ISP configuration and the value of the nornet\_slice\_node\_index tag. It is used by the Node Manager (to be introduced in Section~\ref{sec:Node-Manager}) to generate the corresponding network configuration for the sliver.
+ \item ``interface''\index{interface}\index{Tag!interface}: This node-specific tag contains the contents of a \noun{Fedora Core Linux} network interface configuration file (i.e.\ \texttt{/etc/sysconfig/network-scripts/ifcfg-eth0}\index{ifcfg-eth0}), as string representation of a Python dictionary. This tag is generated by the management script on the PLC, according to a site's ISP configuration and the value of the nornet\_slice\_node\_index tag. It is used by the Node Manager
+ % (to be introduced in Section~\ref{sec:Node-Manager})
+ to generate the corresponding network configuration for the sliver.
 \end{itemize}
 
 Details on the research nodes, i.e.\ particularly their slivers and all IP~addresses, can be found in Chapter~\ref{cha:Site-Details}.
@@ -951,7 +959,7 @@ The \noun{NorNet Core} users, of course, are invited to provide references to th
 \subsection{Package Server and \noun{Launchpad} PPA}
 % ===========================================================================
 
-The Package Server\index{Package Server} at \url{http://packages.nntb.no}\footnote{\href{https://packages.nntb.no}{packages.nntb.no}\index{packages.nntb.no} is actually an alias for the server \href{http://bjoernholt.simula.nornet}{bjoernholt.simula.nornet}\index{bjoernholt.simula.nornet}.} provides some \noun{NorNet}-related software packages for \noun{Fedora Core Linux}\index{Fedora Core}\index{Linux!Fedora Core} as package repositories. In order to use the packages with \texttt{yum}\footnote{\texttt{yum} manual page: \texttt{\href{man:yum}{man yum}}.}, it is necessary to create a configuration file \texttt{/etc/yum.repos.d/nornet.repo}:
+The Package Server\index{Package Server} at \url{http://packages.nntb.no}\footnote{\href{https://packages.nntb.no}{packages.nntb.no}\index{packages.nntb.no} is actually an alias for the server \href{http://bjoernholt.simula.nornet}{bjoernholt.simula.nornet}\index{bjoernholt.simula.nornet}.} provides some \noun{NorNet}-related software packages for \noun{Fedora Core Linux}\index{Fedora Core}\index{Linux!Fedora Core} as package repositories. In order to use the packages with \texttt{dnf}\footnote{\texttt{dnf} manual page: \texttt{\href{man:dnf}{man dnf}}.}, it is necessary to create a configuration file \texttt{/etc/yum.repos.d/nornet.repo}:
 \begin{lstlisting}
 [NorNet-Applications]
 name=NorNet Applications
@@ -1000,7 +1008,7 @@ ssh and keys
 \label{sec:Installing-Software}
 % ###########################################################################
 
-yum ...
+dnf ...
 
 gcc, etc.
 
