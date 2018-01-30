@@ -44,7 +44,7 @@ fi
 TEMP_EPS=`mktemp /tmp/tmpEPS.XXXXXXXXXX`
 TEMP_PDF=`mktemp /tmp/tmpPDF.XXXXXXXXXX`
 
-dia -n -t eps-pango -e $TEMP_EPS $1 >/dev/null && \
+dia-normal -n -t eps-pango -e $TEMP_EPS $1 >/dev/null && \
 epstopdf --outfile=$TEMP_PDF $TEMP_EPS && \
 pdfcrop $TEMP_PDF $2
 
